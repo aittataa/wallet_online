@@ -1,0 +1,24 @@
+------------------ Change The package name
+change_app_package_name: ^1.0.0
+flutter pub get
+flutter pub run change_app_package_name:main com.wallet_manager.app
+
+------------------ Change The name
+flutter_launcher_name: ^0.0.1
+flutter_launcher_name:name: "iShopping"
+flutter pub get
+flutter pub run flutter_launcher_name:main
+
+------------------ Change The icon
+flutter_launcher_icons: ^0.9.0
+flutter_icons:
+  android: "app_icon_round"
+  ios: true
+  image_path: "assets/icons/app_icon_round.png"
+flutter pub get
+flutter pub run flutter_launcher_icons:main
+
+------------------ Build APK
+flutter clean
+flutter build apk --release
+flutter build apk --release --target-platform android-arm
