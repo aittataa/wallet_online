@@ -3,16 +3,16 @@ import 'package:flutter/material.dart';
 import 'package:wallet_online/app/config/themes/app_theme.dart';
 
 class FieldText extends StatelessWidget {
-  final int? index;
-  final bool state;
-  final String? hintText;
-  final int? maxLines;
   final TextEditingController? controller;
+  final String hintText;
+  final int index;
+  final bool state;
+  final int maxLines;
   const FieldText({
     Key? key,
-    this.index,
+    this.index = 0,
     this.state = false,
-    this.hintText,
+    required this.hintText,
     this.maxLines = 1,
     this.controller,
   }) : super(key: key);

@@ -3,14 +3,12 @@ import 'package:wallet_online/app/config/constants/app_constant.dart';
 import 'package:wallet_online/app/config/themes/app_theme.dart';
 
 class HeaderButton extends StatelessWidget {
-  final int? index;
   final String title;
   final IconData icon;
   final bool state;
   final Function()? onPressed;
   const HeaderButton({
     Key? key,
-    this.index,
     required this.title,
     required this.icon,
     this.state = false,

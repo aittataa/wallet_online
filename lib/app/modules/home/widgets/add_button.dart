@@ -2,15 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:wallet_online/app/config/themes/app_theme.dart';
 
 class AddButton extends StatelessWidget {
-  final int? index;
-  final String? title;
-  final Color? color;
+  final String title;
+  final Color color;
   final Function()? onPressed;
   const AddButton({
     Key? key,
-    this.index,
-    this.title,
-    this.color,
+    required this.title,
+    required this.color,
     this.onPressed,
   }) : super(key: key);
 

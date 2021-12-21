@@ -155,7 +155,7 @@ class _HomeViewState extends State<HomeView> {
         }
       }),
       floatingActionButton: ActionButton(
-        onIncomeTap: () {
+        onPressed: () {
           showCupertinoModalPopup(
             barrierColor: AppTheme.secondaryBackColor.withOpacity(.5),
             context: context,

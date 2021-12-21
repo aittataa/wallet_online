@@ -2,22 +2,32 @@ import 'package:flutter/material.dart';
 import 'package:wallet_online/app/config/messages/app_message.dart';
 import 'package:wallet_online/app/config/themes/app_theme.dart';
 import 'package:wallet_online/app/data/models/categories.dart';
+import 'package:wallet_online/app/modules/home/controllers/home_controller.dart';
+import 'package:wallet_online/app/modules/home/widgets/add_button.dart';
+import 'package:wallet_online/app/modules/home/widgets/datetime_picker.dart';
 import 'package:wallet_online/app/modules/home/widgets/dropdown_list.dart';
 import 'package:wallet_online/app/modules/home/widgets/field_text.dart';
 
 class TransactionForm extends StatefulWidget {
+  final HomeController controller;
+  final int pageIndex;
   final List<Categories> myList;
-  const TransactionForm({Key? key, required this.myList}) : super(key: key);
+  const TransactionForm({Key? key, required this.controller, required this.pageIndex, required this.myList}) : super(key: key);
   @override
   State<TransactionForm> createState() => _TransactionFormState();
 }
 
 class _TransactionFormState extends State<TransactionForm> {
+  final TextEditingController amount = TextEditingController();
+  final TextEditingController description = TextEditingController();
+  late int pageIndex;
   late List<Categories> myList;
   late String selectedCategory = "";
+  late DateTime selectedDate = DateTime.now();
   @override
   void initState() {
     super.initState();
+    pageIndex = widget.pageIndex;
     myList = widget.myList;
     selectedCategory = myList.first.title!;
   }
@@ -25,7 +35,7 @@ class _TransactionFormState extends State<TransactionForm> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      // padding: const EdgeInsets.only(top: 5, bottom: 10, left: 10, right: 10),
+      padding: const EdgeInsets.only(top: 5, bottom: 10, left: 10, right: 10),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
@@ -33,17 +43,19 @@ class _TransactionFormState extends State<TransactionForm> {
             children: [
               Expanded(
                 child: FieldText(
-                  index: 0,
-                  controller: TextEditingController(),
-                  state: true,
+                  controller: amount,
                   hintText: AppMessage.amount,
+                  index: pageIndex,
+                  state: true,
+                  maxLines: 1,
                 ),
               ),
-              const SizedBox(width: 5),
+              SizedBox(width: 5),
               Expanded(
                 child: DropdownList(
                   onChanged: (value) {
                     setState(() => {selectedCategory = value});
+                    print(selectedCategory);
                   },
                   hint: AppMessage.labelCategory,
                   value: selectedCategory,
@@ -64,18 +76,24 @@ class _TransactionFormState extends State<TransactionForm> {
               ),
             ],
           ),
-          //DateTimePicker(),
-          // FieldText(
-          //   controller: descriptionController,
-          //   hintText: AppMessage.typeMessage,
-          //   maxLines: 3,
-          // ),
-          // AddButton(
-          //   index: index,
-          //   title: AppMessage.labelAdd,
-          //   color: index == 0 ? AppTheme.incomeColor : AppTheme.expenseColor,
-          //   //onPressed: onPressed,
-          // ),
+          DateTimePicker(
+            onDateTimeChanged: (value) {
+              setState(() => {selectedDate = value});
+              print(value);
+            },
+          ),
+          FieldText(
+            controller: description,
+            hintText: AppMessage.typeMessage,
+            index: pageIndex,
+            state: false,
+            maxLines: 3,
+          ),
+          AddButton(
+            title: AppMessage.labelAdd,
+            color: pageIndex == 0 ? AppTheme.incomeColor : AppTheme.expenseColor,
+            onPressed: () {},
+          ),
         ],
       ),
     );

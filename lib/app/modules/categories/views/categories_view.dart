@@ -25,7 +25,7 @@ class _CategoriesViewState extends State<CategoriesView> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text(AppMessage.labelCategories)),
-      floatingActionButton: ActionButton(),
+      floatingActionButton: ActionButton(onPressed: () {}),
       body: Obx(() {
         final bool state = controller.state.value;
         if (state) {

@@ -2,8 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:wallet_online/app/config/themes/app_theme.dart';
 
 class DateTimePicker extends StatelessWidget {
-  final Function(DateTime)? onDateTimeChanged;
-  const DateTimePicker({Key? key, this.onDateTimeChanged}) : super(key: key);
+  final Function(DateTime) onDateTimeChanged;
+  const DateTimePicker({Key? key, required this.onDateTimeChanged}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -14,7 +14,7 @@ class DateTimePicker extends StatelessWidget {
         border: Border.all(color: AppTheme.mainColor),
       ),
       child: CupertinoDatePicker(
-        onDateTimeChanged: (value) {},
+        onDateTimeChanged: onDateTimeChanged,
         initialDateTime: DateTime.now(),
         mode: CupertinoDatePickerMode.date,
         minimumYear: DateTime.now().year - 5,

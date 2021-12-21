@@ -33,7 +33,6 @@ class DataSources extends GetConnect {
       $_color INTEGER NOT NULL,
       $_state BIT NOT NULL
   );''';
-
   static String _tbl_category_data_query = '''
   INSERT INTO $_tbl_category($_id, $_title, $_color, $_state)VALUES
     (1, 'Others', '${AppFunction.getRandomColor}', 0),
@@ -89,9 +88,9 @@ class DataSources extends GetConnect {
         await db.execute(_tbl_transaction_query);
 
         /// TODO : Data
-        await db.execute(_tbl_settings_data_query);
-        await db.execute(_tbl_category_data_query);
-        await db.execute(_tbl_transaction_data_query);
+        // await db.execute(_tbl_settings_data_query);
+        // await db.execute(_tbl_category_data_query);
+        // await db.execute(_tbl_transaction_data_query);
       },
     );
     //return _myDataBase;
