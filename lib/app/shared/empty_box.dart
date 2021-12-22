@@ -1,5 +1,4 @@
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
 import 'package:wallet_online/app/config/themes/app_theme.dart';
 
 class EmptyBox extends StatelessWidget {

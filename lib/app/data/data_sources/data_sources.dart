@@ -125,13 +125,12 @@ class DataSources extends GetConnect {
           ORDER BY $_total DESC , $_id DESC
     ''';
     final response = await db.rawQuery(query);
-    print(response);
     return categoriesFromMap(response);
   }
 
   Future insertCategory(Categories category) async {
     final db = await _database;
-    return db.insert(_tbl_category, category.toMap());
+    return await db.insert(_tbl_category, category.toMap());
   }
 
   /// TODO : About Transactions

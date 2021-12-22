@@ -3,16 +3,21 @@ import 'package:wallet_online/app/config/messages/app_message.dart';
 import 'package:wallet_online/app/config/themes/app_theme.dart';
 import 'package:wallet_online/app/data/models/categories.dart';
 import 'package:wallet_online/app/modules/home/controllers/home_controller.dart';
-import 'package:wallet_online/app/modules/home/widgets/add_button.dart';
 import 'package:wallet_online/app/modules/home/widgets/datetime_picker.dart';
 import 'package:wallet_online/app/modules/home/widgets/dropdown_list.dart';
-import 'package:wallet_online/app/modules/home/widgets/field_text.dart';
+import 'package:wallet_online/app/shared/add_button.dart';
+import 'package:wallet_online/app/shared/field_text.dart';
 
 class TransactionForm extends StatefulWidget {
   final HomeController controller;
   final int pageIndex;
   final List<Categories> myList;
-  const TransactionForm({Key? key, required this.controller, required this.pageIndex, required this.myList}) : super(key: key);
+  const TransactionForm({
+    Key? key,
+    required this.controller,
+    required this.pageIndex,
+    required this.myList,
+  }) : super(key: key);
   @override
   State<TransactionForm> createState() => _TransactionFormState();
 }
@@ -20,6 +25,7 @@ class TransactionForm extends StatefulWidget {
 class _TransactionFormState extends State<TransactionForm> {
   final TextEditingController amount = TextEditingController();
   final TextEditingController description = TextEditingController();
+  late HomeController controller;
   late int pageIndex;
   late List<Categories> myList;
   late String selectedCategory = "";
@@ -27,9 +33,10 @@ class _TransactionFormState extends State<TransactionForm> {
   @override
   void initState() {
     super.initState();
+    controller = widget.controller;
     pageIndex = widget.pageIndex;
     myList = widget.myList;
-    selectedCategory = myList.first.title!;
+    myList.isNotEmpty ? selectedCategory = myList.first.title! : selectedCategory = "Category";
   }
 
   @override
@@ -62,7 +69,7 @@ class _TransactionFormState extends State<TransactionForm> {
                   myList: List.generate(widget.myList.length, (index) {
                     final Categories category = widget.myList[index];
                     return DropdownMenuItem(
-                      value: category.title,
+                      value: "${category.title}",
                       child: Text(
                         "${category.title}",
                         style: const TextStyle(

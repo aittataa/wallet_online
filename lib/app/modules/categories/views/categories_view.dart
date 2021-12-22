@@ -2,9 +2,12 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:wallet_online/app/config/constants/app_constant.dart';
+import 'package:wallet_online/app/config/functions/app_function.dart';
 import 'package:wallet_online/app/config/messages/app_message.dart';
+import 'package:wallet_online/app/config/themes/app_theme.dart';
 import 'package:wallet_online/app/data/models/categories.dart';
 import 'package:wallet_online/app/modules/categories/controllers/categories_controller.dart';
+import 'package:wallet_online/app/modules/categories/widgets/categories_add.dart';
 import 'package:wallet_online/app/modules/categories/widgets/categories_page.dart';
 import 'package:wallet_online/app/shared/action_button.dart';
 import 'package:wallet_online/app/shared/bounce_point.dart';
@@ -18,73 +21,72 @@ class CategoriesView extends StatefulWidget {
 
 class _CategoriesViewState extends State<CategoriesView> {
   final CategoriesController controller = Get.put(CategoriesController());
-  late PageController pageController = PageController();
-  late int pageIndex = 0;
+  @override
+  void initState() {
+    super.initState();
+    AppConstant.pageController = PageController(initialPage: AppConstant.pageIndex);
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text(AppMessage.labelCategories)),
-      floatingActionButton: ActionButton(onPressed: () {}),
+      floatingActionButton: ActionButton(
+        onPressed: () {
+          showCupertinoModalPopup(
+            barrierColor: AppTheme.secondaryBackColor.withOpacity(.5),
+            context: context,
+            builder: (context) {
+              return CategoriesAdd(
+                controller: controller,
+                index: AppConstant.pageIndex,
+              );
+            },
+          );
+        },
+      ),
       body: Obx(() {
         final bool state = controller.state.value;
         if (state) {
           return BouncePoint();
         } else {
           final List<Categories> myList = controller.categories;
-          final bool isEmpty = myList.isEmpty;
-          if (isEmpty) {
-            return EmptyBox();
-          } else {
-            return Column(
-              children: [
-                Row(
-                  children: [
-                    HeaderButton(
-                      title: AppMessage.incomes,
-                      icon: CupertinoIcons.square_arrow_down_fill,
-                      state: pageIndex == 0,
-                      onPressed: () {
-                        setState(() {
-                          pageIndex = 0;
-                          pageController.animateToPage(
-                            pageIndex,
-                            duration: AppConstant.durationPage,
-                            curve: AppConstant.curve,
-                          );
-                        });
-                      },
-                    ),
-                    HeaderButton(
-                      title: AppMessage.expenses,
-                      icon: CupertinoIcons.square_arrow_up_fill,
-                      state: pageIndex == 1,
-                      onPressed: () {
-                        setState(() {
-                          pageIndex = 1;
-                          pageController.animateToPage(
-                            pageIndex,
-                            duration: AppConstant.durationPage,
-                            curve: AppConstant.curve,
-                          );
-                        });
-                      },
-                    ),
-                  ],
-                ),
+          final bool isNotEmpty = myList.isNotEmpty;
+          return Column(
+            children: [
+              Row(
+                children: [
+                  HeaderButton(
+                    title: AppMessage.incomes,
+                    icon: CupertinoIcons.square_arrow_down_fill,
+                    state: AppConstant.pageIndex == 0,
+                    onPressed: () {
+                      setState(() {
+                        AppFunction.animateToPage(0);
+                      });
+                    },
+                  ),
+                  HeaderButton(
+                    title: AppMessage.expenses,
+                    icon: CupertinoIcons.square_arrow_up_fill,
+                    state: AppConstant.pageIndex == 1,
+                    onPressed: () {
+                      setState(() {
+                        AppFunction.animateToPage(1);
+                      });
+                    },
+                  ),
+                ],
+              ),
+              if (isNotEmpty)
                 Expanded(
                   child: PageView(
                     onPageChanged: (index) {
                       setState(() {
-                        pageIndex = index;
-                        pageController.animateToPage(
-                          pageIndex,
-                          duration: AppConstant.durationPage,
-                          curve: AppConstant.curve,
-                        );
+                        AppFunction.animateToPage(index);
                       });
                     },
-                    controller: pageController,
+                    controller: AppConstant.pageController,
                     physics: BouncingScrollPhysics(),
                     children: [
                       CategoriesPage(
@@ -97,10 +99,11 @@ class _CategoriesViewState extends State<CategoriesView> {
                       ),
                     ],
                   ),
-                ),
-              ],
-            );
-          }
+                )
+              else
+                Expanded(child: EmptyBox()),
+            ],
+          );
         }
       }),
     );

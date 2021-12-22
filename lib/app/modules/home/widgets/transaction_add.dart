@@ -19,14 +19,11 @@ class TransactionAdd extends StatefulWidget {
 
 class _TransactionAddState extends State<TransactionAdd> {
   late HomeController controller;
-  late PageController pageController = PageController();
-  late int pageIndex = 0;
 
   @override
   void initState() {
     super.initState();
-    pageIndex = 0;
-    pageController = PageController(initialPage: pageIndex);
+    AppConstant.pageController = PageController(initialPage: AppConstant.pageIndex);
     controller = widget.controller;
   }
 
@@ -47,22 +44,22 @@ class _TransactionAddState extends State<TransactionAdd> {
             HeaderButton(
               title: AppMessage.incomes,
               icon: CupertinoIcons.square_arrow_down_fill,
-              state: pageIndex == 0,
+              state: AppConstant.pageIndex == 0,
               onPressed: () {
                 setState(() {
-                  pageIndex = 0;
-                  pageController.jumpToPage(pageIndex);
+                  AppConstant.pageIndex = 0;
+                  AppConstant.pageController.jumpToPage(AppConstant.pageIndex);
                 });
               },
             ),
             HeaderButton(
               title: AppMessage.expenses,
               icon: CupertinoIcons.square_arrow_up_fill,
-              state: pageIndex == 1,
+              state: AppConstant.pageIndex == 1,
               onPressed: () {
                 setState(() {
-                  pageIndex = 1;
-                  pageController.jumpToPage(pageIndex);
+                  AppConstant.pageIndex = 1;
+                  AppConstant.pageController.jumpToPage(AppConstant.pageIndex);
                 });
               },
             ),
@@ -72,23 +69,23 @@ class _TransactionAddState extends State<TransactionAdd> {
           width: AppConstant.screenWidth * 0.95,
           height: 300,
           child: PageView(
-            onPageChanged: (index) {
-              setState(() {
-                pageIndex = index;
-                pageController.jumpToPage(pageIndex);
-              });
-            },
-            controller: pageController,
+            // onPageChanged: (index) {
+            //   setState(() {
+            //     AppConstant.pageIndex = index;
+            //     AppConstant.pageController.jumpToPage(AppConstant.pageIndex);
+            //   });
+            // },
+            controller: AppConstant.pageController,
             physics: NeverScrollableScrollPhysics(),
             children: [
               TransactionForm(
                 controller: controller,
-                pageIndex: pageIndex,
+                pageIndex: AppConstant.pageIndex,
                 myList: myList.where((category) => category.state == 0).toList(),
               ),
               TransactionForm(
                 controller: controller,
-                pageIndex: pageIndex,
+                pageIndex: AppConstant.pageIndex,
                 myList: myList.where((category) => category.state == 1).toList(),
               ),
             ],

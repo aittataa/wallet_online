@@ -20,7 +20,8 @@ class CategoriesController extends GetxController {
   }
 
   addCategory(Categories category) async {
-    var data = _dataSources.insertCategory(category);
+    var data = await _dataSources.insertCategory(category);
+    loadCategories;
     return data;
   }
 }

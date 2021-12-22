@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:intl/intl.dart';
+import 'package:wallet_online/app/config/constants/app_constant.dart';
 import 'package:wallet_online/app/config/themes/app_theme.dart';
 
 class AppFunction {
@@ -46,12 +47,14 @@ class AppFunction {
   }
   */
 
-  // static animateToPage(int index) {
-  //   AppConstant.pageIndex = index;
-  //   AppConstant.controller.jumpToPage(
-  //     AppConstant.pageIndex,
-  //   );
-  // }
+  static animateToPage(int index) {
+    AppConstant.pageIndex = index;
+    AppConstant.pageController.animateToPage(
+      AppConstant.pageIndex,
+      duration: AppConstant.durationPage,
+      curve: AppConstant.curve,
+    );
+  }
 
   /*
   static gridDelegate({

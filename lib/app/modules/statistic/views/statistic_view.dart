@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:wallet_online/app/config/constants/app_constant.dart';
+import 'package:wallet_online/app/config/functions/app_function.dart';
 import 'package:wallet_online/app/config/messages/app_message.dart';
 import 'package:wallet_online/app/data/models/categories.dart';
 import 'package:wallet_online/app/modules/statistic/controllers/statistic_controller.dart';
@@ -17,8 +18,11 @@ class StatisticView extends StatefulWidget {
 
 class _StatisticViewState extends State<StatisticView> {
   final StatisticController controller = Get.put(StatisticController());
-  late PageController pageController = PageController();
-  late int pageIndex = 0;
+  @override
+  void initState() {
+    super.initState();
+    AppConstant.pageController = PageController(initialPage: AppConstant.pageIndex);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -30,75 +34,59 @@ class _StatisticViewState extends State<StatisticView> {
           return BouncePoint();
         } else {
           final List<Categories> myList = controller.categories;
-          final bool isEmpty = myList.isEmpty;
-          if (isEmpty) {
-            return EmptyBox();
-          } else {
-            return Column(
-              children: [
-                Row(
-                  children: [
-                    HeaderButton(
-                      title: AppMessage.incomes,
-                      icon: CupertinoIcons.square_arrow_down_fill,
-                      state: pageIndex == 0,
-                      onPressed: () {
-                        setState(() {
-                          pageIndex = 0;
-                          pageController.animateToPage(
-                            pageIndex,
-                            duration: AppConstant.durationPage,
-                            curve: AppConstant.curve,
-                          );
-                        });
-                      },
-                    ),
-                    HeaderButton(
-                      title: AppMessage.expenses,
-                      icon: CupertinoIcons.square_arrow_up_fill,
-                      state: pageIndex == 1,
-                      onPressed: () {
-                        setState(() {
-                          pageIndex = 1;
-                          pageController.animateToPage(
-                            pageIndex,
-                            duration: AppConstant.durationPage,
-                            curve: AppConstant.curve,
-                          );
-                        });
-                      },
-                    ),
-                  ],
-                ),
+          final bool isNotEmpty = myList.isNotEmpty;
+          return Column(
+            children: [
+              Row(
+                children: [
+                  HeaderButton(
+                    title: AppMessage.incomes,
+                    icon: CupertinoIcons.square_arrow_down_fill,
+                    state: AppConstant.pageIndex == 0,
+                    onPressed: () {
+                      setState(() {
+                        AppFunction.animateToPage(0);
+                      });
+                    },
+                  ),
+                  HeaderButton(
+                    title: AppMessage.expenses,
+                    icon: CupertinoIcons.square_arrow_up_fill,
+                    state: AppConstant.pageIndex == 1,
+                    onPressed: () {
+                      setState(() {
+                        AppFunction.animateToPage(1);
+                      });
+                    },
+                  ),
+                ],
+              ),
+              if (isNotEmpty)
                 Expanded(
                   child: PageView(
                     onPageChanged: (index) {
                       setState(() {
-                        pageIndex = index;
-                        pageController.animateToPage(
-                          pageIndex,
-                          duration: AppConstant.durationPage,
-                          curve: AppConstant.curve,
-                        );
+                        AppFunction.animateToPage(index);
                       });
                     },
-                    controller: pageController,
+                    controller: AppConstant.pageController,
                     physics: BouncingScrollPhysics(),
                     children: [
                       StatisticPage(
                         controller: controller,
-                        myList: myList.where((category) => category.state == 0).toList()..sort((a, b) => b.total!.compareTo(a.total!)),
+                        myList: myList.where((category) => category.state == 0 && category.total! > 0).toList()..sort((a, b) => b.total!.compareTo(a.total!)),
                       ),
                       StatisticPage(
                         controller: controller,
-                        myList: myList.where((category) => category.state == 1).toList()..sort((a, b) => b.total!.compareTo(a.total!)),
+                        myList: myList.where((category) => category.state == 1 && category.total! > 0).toList()..sort((a, b) => b.total!.compareTo(a.total!)),
                       ),
                     ],
                   ),
-                ),
-              ],
-            );
-          }
+                )
+              else
+                Expanded(child: EmptyBox()),
+            ],
+          );
         }
       }),
     );
