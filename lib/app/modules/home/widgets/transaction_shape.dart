@@ -67,7 +67,8 @@ class TransactionShape extends StatelessWidget {
           ],
         ),
         subtitle: Text(
-          AppFunction.dateShape(transaction.date),
+          AppFunction.dateShape(transaction.date!),
+          //"${transaction.date}",
           overflow: TextOverflow.ellipsis,
           style: TextStyle(
             color: AppTheme.primaryTextColor.withOpacity(.5),

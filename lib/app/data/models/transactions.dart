@@ -36,7 +36,7 @@ class Transactions {
     return {
       "id": id,
       "description": description,
-      "date": date,
+      "date": date?.toIso8601String(),
       "amount": amount,
       "category_id": categoryID,
       "state": state,

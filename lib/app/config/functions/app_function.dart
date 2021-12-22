@@ -21,7 +21,7 @@ class AppFunction {
 
   static int get getRandomColor => Color(Random().nextInt(0xFFFFFFFF)).withAlpha(0xFF).value;
 
-  static String dateShape(date) => DateFormat('MMM dd, yyyy').format(date);
+  static String dateShape(DateTime date) => DateFormat('MMM dd, yyyy').format(date);
 
   static int getCategoryID(String value, List myList) {
     return myList.where((category) => category.title == value).toList()[0].id;

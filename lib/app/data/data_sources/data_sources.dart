@@ -101,7 +101,7 @@ class DataSources extends GetConnect {
 
   Future updateSettings(Settings settings) async {
     final db = await _database;
-    return db.update(
+    return await db.update(
       _tbl_settings,
       settings.toMap(),
       where: "$_id = ?",
@@ -144,7 +144,7 @@ class DataSources extends GetConnect {
 
   Future insertTransaction(Transactions transaction) async {
     final db = await _database;
-    return db.insert(_tbl_transaction, transaction.toMap());
+    return await db.insert(_tbl_transaction, transaction.toMap());
   }
 
   Future deleteTransaction(int id) async {
