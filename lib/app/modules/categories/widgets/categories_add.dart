@@ -80,13 +80,12 @@ class _CategoriesAddState extends State<CategoriesAdd> {
                       color: color,
                       state: index,
                     );
-                    var data = await controller.addCategory(category);
+                    var data = controller.addCategory(category);
                     print(data);
                     Navigator.pop(context);
-                    //Get.back();
-                    //Get.offAll(() => InitialView(pageIndex: 1));
                   }
                 } catch (e) {
+                  AppFunction.snackBar(title: "", message: "Something Went Wrong");
                   throw Exception("Something Went Wrong");
                 }
               },

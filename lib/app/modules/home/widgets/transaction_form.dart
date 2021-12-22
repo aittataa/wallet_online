@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:wallet_online/app/config/functions/app_function.dart';
 import 'package:wallet_online/app/config/messages/app_message.dart';
 import 'package:wallet_online/app/config/themes/app_theme.dart';
 import 'package:wallet_online/app/data/models/categories.dart';
+import 'package:wallet_online/app/data/models/transactions.dart';
 import 'package:wallet_online/app/modules/home/controllers/home_controller.dart';
 import 'package:wallet_online/app/modules/home/widgets/datetime_picker.dart';
 import 'package:wallet_online/app/modules/home/widgets/dropdown_list.dart';
@@ -23,12 +25,13 @@ class TransactionForm extends StatefulWidget {
 }
 
 class _TransactionFormState extends State<TransactionForm> {
-  final TextEditingController amount = TextEditingController();
-  final TextEditingController description = TextEditingController();
+  final TextEditingController amountController = TextEditingController();
+  final TextEditingController descriptionController = TextEditingController();
   late HomeController controller;
   late int pageIndex;
   late List<Categories> myList;
   late String selectedCategory = "";
+  late int selectedCategoryId = 0;
   late DateTime selectedDate = DateTime.now();
   @override
   void initState() {
@@ -41,7 +44,7 @@ class _TransactionFormState extends State<TransactionForm> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return Padding(
       padding: const EdgeInsets.only(top: 5, bottom: 10, left: 10, right: 10),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -50,7 +53,7 @@ class _TransactionFormState extends State<TransactionForm> {
             children: [
               Expanded(
                 child: FieldText(
-                  controller: amount,
+                  controller: amountController,
                   hintText: AppMessage.amount,
                   index: pageIndex,
                   state: true,
@@ -62,7 +65,8 @@ class _TransactionFormState extends State<TransactionForm> {
                 child: DropdownList(
                   onChanged: (value) {
                     setState(() => {selectedCategory = value});
-                    print(selectedCategory);
+                    selectedCategoryId = AppFunction.getCategoryID(selectedCategory, myList);
+                    print("$selectedCategoryId $selectedCategory");
                   },
                   hint: AppMessage.labelCategory,
                   value: selectedCategory,
@@ -86,11 +90,11 @@ class _TransactionFormState extends State<TransactionForm> {
           DateTimePicker(
             onDateTimeChanged: (value) {
               setState(() => {selectedDate = value});
-              print(value);
+              print(selectedDate);
             },
           ),
           FieldText(
-            controller: description,
+            controller: descriptionController,
             hintText: AppMessage.typeMessage,
             index: pageIndex,
             state: false,
@@ -99,7 +103,26 @@ class _TransactionFormState extends State<TransactionForm> {
           AddButton(
             title: AppMessage.labelAdd,
             color: pageIndex == 0 ? AppTheme.incomeColor : AppTheme.expenseColor,
-            onPressed: () {},
+            onPressed: () async {
+              //try {
+              if (myList.isNotEmpty && amountController.text.isNotEmpty) {
+                selectedCategoryId = AppFunction.getCategoryID(selectedCategory, myList);
+                final Transactions transaction = Transactions(
+                  amount: double.parse(amountController.text),
+                  description: descriptionController.text.trim(),
+                  date: DateTime.now(),
+                  state: pageIndex,
+                  categoryID: selectedCategoryId,
+                );
+                var data = await controller.addTransaction(transaction);
+                print(data);
+              }
+              // } catch (e) {
+              //   AppFunction.snackBar(title: "Error", message: "Something Went Wrong");
+              //   throw Exception("Something Went Wrong");
+              // }
+              //Navigator.pop(context);
+            },
           ),
         ],
       ),

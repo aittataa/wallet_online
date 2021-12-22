@@ -69,12 +69,6 @@ class _TransactionAddState extends State<TransactionAdd> {
           width: AppConstant.screenWidth * 0.95,
           height: 300,
           child: PageView(
-            // onPageChanged: (index) {
-            //   setState(() {
-            //     AppConstant.pageIndex = index;
-            //     AppConstant.pageController.jumpToPage(AppConstant.pageIndex);
-            //   });
-            // },
             controller: AppConstant.pageController,
             physics: NeverScrollableScrollPhysics(),
             children: [

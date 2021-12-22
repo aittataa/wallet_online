@@ -14,18 +14,24 @@ import 'package:wallet_online/app/shared/action_button.dart';
 import 'package:wallet_online/app/shared/bounce_point.dart';
 import 'package:wallet_online/app/shared/empty_box.dart';
 
-class HomeView extends StatefulWidget {
-  @override
-  State<HomeView> createState() => _HomeViewState();
-}
-
-class _HomeViewState extends State<HomeView> {
+class HomeView extends StatelessWidget {
   final HomeController controller = Get.put(HomeController());
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text(AppMessage.appTitle)),
+      floatingActionButton: ActionButton(
+        onPressed: () {
+          showCupertinoModalPopup(
+            barrierColor: AppTheme.secondaryBackColor.withOpacity(.5),
+            context: context,
+            builder: (context) {
+              return TransactionAdd(controller: controller);
+            },
+          );
+        },
+      ),
       body: Obx(() {
         final bool state = controller.state.value;
         if (state) {
@@ -36,8 +42,8 @@ class _HomeViewState extends State<HomeView> {
           if (isEmpty) {
             return EmptyBox();
           } else {
-            final double incomes = AppFunction.loadCount(myList.where((transaction) => transaction.state == 0).toList());
-            final double expenses = AppFunction.loadCount(myList.where((transaction) => transaction.state == 1).toList());
+            final double incomes = AppFunction.loadCount(myList, 0);
+            final double expenses = AppFunction.loadCount(myList, 1);
             final balance = incomes - expenses;
             final balanceState = balance >= 0;
             return ListView(
@@ -60,12 +66,7 @@ class _HomeViewState extends State<HomeView> {
                           PieChartData(
                             sectionsSpace: 1,
                             borderData: FlBorderData(show: false),
-                            pieTouchData: PieTouchData(
-                              enabled: true,
-                              // touchCallback: (value) {
-                              //   messageBox(context, message: value.touchInput.buttons.toString());
-                              // },
-                            ),
+                            pieTouchData: PieTouchData(enabled: true),
                             sections: List.generate(2, (i) {
                               switch (i) {
                                 case 0:
@@ -141,10 +142,8 @@ class _HomeViewState extends State<HomeView> {
                       onPressed: () async {
                         int id = transaction.id!;
                         var data = await controller.deleteTransaction(id);
-                        setState(() {
-                          print(myList.remove(transaction));
-                          print(data);
-                        });
+                        print(myList.remove(transaction));
+                        print(data);
                       },
                     );
                   },
@@ -154,17 +153,6 @@ class _HomeViewState extends State<HomeView> {
           }
         }
       }),
-      floatingActionButton: ActionButton(
-        onPressed: () {
-          showCupertinoModalPopup(
-            barrierColor: AppTheme.secondaryBackColor.withOpacity(.5),
-            context: context,
-            builder: (context) {
-              return TransactionAdd(controller: controller);
-            },
-          );
-        },
-      ),
     );
   }
 }
