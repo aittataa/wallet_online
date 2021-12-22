@@ -13,7 +13,7 @@ class AppFunction {
 
   static loadCount(List myList, int state) {
     try {
-      return myList.where((transaction) => transaction.state == state).toList().map((transaction) => transaction.amountController).reduce((a, b) => a! + b!);
+      return myList.where((transaction) => transaction.state == state).toList().map((transaction) => transaction.amount).reduce((a, b) => a! + b!);
     } catch (e) {
       return 0.0;
     }
@@ -23,7 +23,7 @@ class AppFunction {
 
   static String dateShape(date) => DateFormat('MMM dd, yyyy').format(date);
 
-  static getCategoryID(String value, List myList) {
+  static int getCategoryID(String value, List myList) {
     return myList.where((category) => category.title == value).toList()[0].id;
   }
 
@@ -58,21 +58,6 @@ class AppFunction {
       curve: AppConstant.curve,
     );
   }
-
-  /*
-  static gridDelegate({
-    int crossAxisCount = 1,
-    double spacing = 10,
-    double childAspectRatio = 1,
-  }) {
-    return SliverGridDelegateWithFixedCrossAxisCount(
-      crossAxisCount: crossAxisCount,
-      childAspectRatio: childAspectRatio,
-      mainAxisSpacing: spacing,
-      crossAxisSpacing: spacing,
-    );
-  }
-  */
 
   static get configureDependencies {
     SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);

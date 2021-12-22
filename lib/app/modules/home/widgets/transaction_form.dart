@@ -110,12 +110,13 @@ class _TransactionFormState extends State<TransactionForm> {
                 final Transactions transaction = Transactions(
                   amount: double.parse(amountController.text),
                   description: descriptionController.text.trim(),
-                  date: DateTime.now(),
+                  //date: DateTime.tryParse(selectedDate.toString()),
                   state: pageIndex,
                   categoryID: selectedCategoryId,
                 );
-                var data = await controller.addTransaction(transaction);
+                var data = controller.addTransaction(transaction);
                 print(data);
+                Navigator.pop(context);
               }
               // } catch (e) {
               //   AppFunction.snackBar(title: "Error", message: "Something Went Wrong");

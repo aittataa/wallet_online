@@ -24,7 +24,7 @@ class Transactions {
     return Transactions(
       id: map['id'],
       description: map['description'],
-      date: DateTime.parse(map['date']),
+      date: map['date'] == null ? null : DateTime.parse(map['date']),
       amount: map['amount'],
       categoryID: map['category_id'],
       categoryTitle: map['title'],

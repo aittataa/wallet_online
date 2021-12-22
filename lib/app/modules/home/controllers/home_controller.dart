@@ -36,7 +36,6 @@ class HomeController extends GetxController {
 
   deleteTransaction(int id) async {
     var data = await _dataSources.deleteTransaction(id);
-    loadTransactions;
     return data;
   }
 }
