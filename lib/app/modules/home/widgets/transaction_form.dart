@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:wallet_online/app/config/functions/app_function.dart';
 import 'package:wallet_online/app/config/messages/app_message.dart';
 import 'package:wallet_online/app/config/themes/app_theme.dart';
@@ -7,6 +8,7 @@ import 'package:wallet_online/app/data/models/transactions.dart';
 import 'package:wallet_online/app/modules/home/controllers/home_controller.dart';
 import 'package:wallet_online/app/modules/home/widgets/datetime_picker.dart';
 import 'package:wallet_online/app/modules/home/widgets/dropdown_list.dart';
+import 'package:wallet_online/app/modules/initial/views/initial_view.dart';
 import 'package:wallet_online/app/shared/add_button.dart';
 import 'package:wallet_online/app/shared/field_text.dart';
 
@@ -104,26 +106,26 @@ class _TransactionFormState extends State<TransactionForm> {
             title: AppMessage.labelAdd,
             color: pageIndex == 0 ? AppTheme.incomeColor : AppTheme.expenseColor,
             onPressed: () async {
-              //try {
-              if (myList.isNotEmpty && amountController.text.isNotEmpty) {
-                selectedCategoryId = AppFunction.getCategoryID(selectedCategory, myList);
-                final Transactions transaction = Transactions(
-                  amount: double.parse(amountController.text),
-                  description: descriptionController.text.trim(),
-                  date: selectedDate,
-                  // date: DateTime.parse(selectedDate.toUtc()),
-                  state: pageIndex,
-                  categoryID: selectedCategoryId,
-                );
-                var data = await controller.addTransaction(transaction);
-                print(data);
+              try {
+                if (myList.isNotEmpty && amountController.text.isNotEmpty) {
+                  selectedCategoryId = AppFunction.getCategoryID(selectedCategory, myList);
+                  final Transactions transaction = Transactions(
+                    amount: double.parse(amountController.text),
+                    description: descriptionController.text.trim(),
+                    date: selectedDate,
+                    state: pageIndex,
+                    categoryID: selectedCategoryId,
+                  );
+                  var data = await controller.addTransaction(transaction);
+                  print(data);
+                  Get.offAll(() => InitialView(pageIndex: 0));
+                }
                 Navigator.pop(context);
+              } catch (e) {
+                Navigator.pop(context);
+                AppFunction.snackBar(title: "Error", message: "Something Went Wrong");
+                throw Exception("Something Went Wrong");
               }
-              // } catch (e) {
-              //   AppFunction.snackBar(title: "Error", message: "Something Went Wrong");
-              //   throw Exception("Something Went Wrong");
-              // }
-              //Navigator.pop(context);
             },
           ),
         ],

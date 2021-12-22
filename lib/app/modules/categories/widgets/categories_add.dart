@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:wallet_online/app/config/constants/app_constant.dart';
 import 'package:wallet_online/app/config/functions/app_function.dart';
 import 'package:wallet_online/app/config/messages/app_message.dart';
 import 'package:wallet_online/app/config/themes/app_theme.dart';
 import 'package:wallet_online/app/data/models/categories.dart';
 import 'package:wallet_online/app/modules/categories/controllers/categories_controller.dart';
+import 'package:wallet_online/app/modules/initial/views/initial_view.dart';
 import 'package:wallet_online/app/shared/add_button.dart';
 import 'package:wallet_online/app/shared/field_text.dart';
 
@@ -82,10 +84,12 @@ class _CategoriesAddState extends State<CategoriesAdd> {
                     );
                     var data = controller.addCategory(category);
                     print(data);
-                    Navigator.pop(context);
+                    Get.offAll(() => InitialView(pageIndex: 1));
                   }
+                  Navigator.pop(context);
                 } catch (e) {
-                  AppFunction.snackBar(title: "", message: "Something Went Wrong");
+                  Navigator.pop(context);
+                  AppFunction.snackBar(title: "Error", message: "Something Went Wrong");
                   throw Exception("Something Went Wrong");
                 }
               },

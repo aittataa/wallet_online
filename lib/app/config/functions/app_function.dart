@@ -31,7 +31,8 @@ class AppFunction {
     return Get.snackbar(
       title,
       message,
-      backgroundColor: AppTheme.mainColor,
+      backgroundColor: AppTheme.expenseColor,
+      margin: EdgeInsets.all(10),
       titleText: Text(
         title,
         style: TextStyle(
@@ -46,7 +47,6 @@ class AppFunction {
           fontWeight: FontWeight.bold,
         ),
       ),
-      margin: EdgeInsets.all(10),
     );
   }
 
