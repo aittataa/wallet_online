@@ -11,9 +11,21 @@ import 'package:wallet_online/app/config/themes/app_theme.dart';
 class AppFunction {
   AppFunction._();
 
+  static lunchNew(context, {required Widget builder}) {
+    return showCupertinoModalPopup(
+      barrierColor: AppTheme.secondaryBackColor.withOpacity(.5),
+      context: context,
+      builder: (context) => builder,
+    );
+  }
+
   static loadCount(List myList, int state) {
     try {
-      return myList.where((transaction) => transaction.state == state).toList().map((transaction) => transaction.amount).reduce((a, b) => a! + b!);
+      return myList
+          .where((transaction) => transaction.state == state)
+          .toList()
+          .map((transaction) => transaction.amount)
+          .reduce((a, b) => a! + b!);
     } catch (e) {
       return 0.0;
     }

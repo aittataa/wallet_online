@@ -4,7 +4,6 @@ import 'package:get/get.dart';
 import 'package:wallet_online/app/config/constants/app_constant.dart';
 import 'package:wallet_online/app/config/functions/app_function.dart';
 import 'package:wallet_online/app/config/messages/app_message.dart';
-import 'package:wallet_online/app/config/themes/app_theme.dart';
 import 'package:wallet_online/app/data/models/categories.dart';
 import 'package:wallet_online/app/modules/categories/controllers/categories_controller.dart';
 import 'package:wallet_online/app/modules/categories/widgets/categories_add.dart';
@@ -32,18 +31,13 @@ class _CategoriesViewState extends State<CategoriesView> {
     return Scaffold(
       appBar: AppBar(title: Text(AppMessage.labelCategories)),
       floatingActionButton: ActionButton(
-        onPressed: () {
-          showCupertinoModalPopup(
-            barrierColor: AppTheme.secondaryBackColor.withOpacity(.5),
-            context: context,
-            builder: (context) {
-              return CategoriesAdd(
-                controller: controller,
-                index: AppConstant.pageIndex,
-              );
-            },
-          );
-        },
+        onPressed: () => AppFunction.lunchNew(
+          context,
+          builder: CategoriesAdd(
+            controller: controller,
+            index: AppConstant.pageIndex,
+          ),
+        ),
       ),
       body: Obx(() {
         final bool state = controller.state.value;

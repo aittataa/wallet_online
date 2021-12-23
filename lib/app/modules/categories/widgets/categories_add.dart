@@ -85,8 +85,9 @@ class _CategoriesAddState extends State<CategoriesAdd> {
                     var data = controller.addCategory(category);
                     print(data);
                     Get.offAll(() => InitialView(pageIndex: 1));
+                  } else {
+                    Navigator.pop(context);
                   }
-                  Navigator.pop(context);
                 } catch (e) {
                   Navigator.pop(context);
                   AppFunction.snackBar(title: "Error", message: "Something Went Wrong");

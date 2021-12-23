@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:wallet_online/app/config/constants/app_constant.dart';
 import 'package:wallet_online/app/config/themes/app_theme.dart';
@@ -35,6 +36,34 @@ class CategoryShape extends StatelessWidget {
         title: Text(
           "${category.title}",
           style: TextStyle(color: AppTheme.primaryTextColor, fontWeight: FontWeight.w900),
+        ),
+        trailing: Container(
+          // color: Colors.black,
+          width: 100,
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.end,
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: [
+              IconButton(
+                onPressed: () {
+                  print("Update");
+                },
+                icon: Icon(
+                  Icons.edit,
+                  color: AppTheme.primaryIconColor.withOpacity(.75),
+                ),
+              ),
+              IconButton(
+                onPressed: () {
+                  print("Delete");
+                },
+                icon: Icon(
+                  Icons.delete,
+                  color: AppTheme.primaryIconColor.withOpacity(.75),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );

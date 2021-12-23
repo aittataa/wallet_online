@@ -1,3 +1,7 @@
+settingsFromMap(map) {
+  return List<Settings>.from(map.map((value) => Settings.fromMap(value)));
+}
+
 class Settings {
   final int? id;
   final String? currency;

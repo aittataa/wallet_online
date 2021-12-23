@@ -93,10 +93,10 @@ class DataSources extends GetConnect {
   }
 
   /// TODO : About Settings
-  Future<Settings> get getSettings async {
+  Future<List<Settings>> get getSettings async {
     final db = await _database;
-    final myList = await db.query(_tbl_settings);
-    return List<Settings>.from(myList.map((value) => Settings.fromMap(value))).first;
+    final response = await db.query(_tbl_settings);
+    return settingsFromMap(response);
   }
 
   Future updateSettings(Settings settings) async {
@@ -126,7 +126,8 @@ class DataSources extends GetConnect {
 
   Future insertCategory(Categories category) async {
     final db = await _database;
-    return await db.insert(_tbl_category, category.toMap());
+    var response = await db.insert(_tbl_category, category.toMap());
+    return response;
   }
 
   /// TODO : About Transactions
@@ -144,15 +145,13 @@ class DataSources extends GetConnect {
 
   Future insertTransaction(Transactions transaction) async {
     final db = await _database;
-    return await db.insert(_tbl_transaction, transaction.toMap());
+    var response = await db.insert(_tbl_transaction, transaction.toMap());
+    return response;
   }
 
   Future deleteTransaction(int id) async {
     final db = await _database;
-    return await db.delete(
-      _tbl_transaction,
-      where: "$_id = ?",
-      whereArgs: [id],
-    );
+    var response = await db.delete(_tbl_transaction, where: "$_id = ?", whereArgs: [id]);
+    return response;
   }
 }

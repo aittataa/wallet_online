@@ -1,6 +1,5 @@
 name: wallet_online
 version: 1.0.0+1
-publish_to: none
 description: Wallet Online.
 environment: 
   sdk: '>=2.12.0 <3.0.0'
@@ -8,14 +7,12 @@ environment:
 dependencies: 
   cupertino_icons: ^1.0.2
   get: 4.6.1
-  http: ^0.13.4
   animated_splash_screen: ^1.1.0
   flutter_spinkit: ^5.0.0
   sqflite: 2.0.1
   fl_chart: 0.40.6
   intl: 0.17.0
-  flutter_speed_dial: 5.0.0+1
-  flutter: 
+  flutter:
     sdk: flutter
 
 dev_dependencies: 

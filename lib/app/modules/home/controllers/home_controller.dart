@@ -12,25 +12,25 @@ class HomeController extends GetxController {
   @override
   void onInit() {
     super.onInit();
-    loadCategories;
-    loadTransactions;
+    _loadCategories;
+    _loadTransactions;
   }
 
-  get loadTransactions async {
-    state.value = true;
-    transactions.value = await _dataSources.getTransactions;
-    state.value = false;
-  }
-
-  get loadCategories async {
+  get _loadCategories async {
     state.value = true;
     categories.value = await _dataSources.getCategories;
     state.value = false;
   }
 
+  get _loadTransactions async {
+    state.value = true;
+    transactions.value = await _dataSources.getTransactions;
+    state.value = false;
+  }
+
   addTransaction(Transactions transaction) async {
     var data = _dataSources.insertTransaction(transaction);
-    loadTransactions;
+    _loadTransactions;
     return data;
   }
 

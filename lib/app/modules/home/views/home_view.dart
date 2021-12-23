@@ -14,7 +14,12 @@ import 'package:wallet_online/app/shared/action_button.dart';
 import 'package:wallet_online/app/shared/bounce_point.dart';
 import 'package:wallet_online/app/shared/empty_box.dart';
 
-class HomeView extends StatelessWidget {
+class HomeView extends StatefulWidget {
+  @override
+  State<HomeView> createState() => _HomeViewState();
+}
+
+class _HomeViewState extends State<HomeView> {
   final HomeController controller = Get.put(HomeController());
 
   @override
@@ -22,15 +27,12 @@ class HomeView extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(title: Text(AppMessage.appTitle)),
       floatingActionButton: ActionButton(
-        onPressed: () {
-          showCupertinoModalPopup(
-            barrierColor: AppTheme.secondaryBackColor.withOpacity(.5),
-            context: context,
-            builder: (context) {
-              return TransactionAdd(controller: controller);
-            },
-          );
-        },
+        onPressed: () => AppFunction.lunchNew(
+          context,
+          builder: TransactionAdd(
+            controller: controller,
+          ),
+        ),
       ),
       body: Obx(() {
         final bool state = controller.state.value;
@@ -72,7 +74,7 @@ class HomeView extends StatelessWidget {
                                 case 0:
                                   final bool state = incomes != 0;
                                   return PieChartSectionData(
-                                    value: state ? incomes : null,
+                                    value: state ? incomes : 0,
                                     color: AppTheme.incomeColor,
                                     radius: 50,
                                     showTitle: state,
@@ -85,7 +87,7 @@ class HomeView extends StatelessWidget {
                                 case 1:
                                   final bool state = expenses != 0;
                                   return PieChartSectionData(
-                                    value: state ? expenses : null,
+                                    value: state ? expenses : 0,
                                     color: AppTheme.expenseColor,
                                     radius: 50,
                                     showTitle: state,
@@ -142,8 +144,12 @@ class HomeView extends StatelessWidget {
                       onPressed: () async {
                         int id = transaction.id!;
                         var data = await controller.deleteTransaction(id);
-                        print(myList.remove(transaction));
-                        print(data);
+                        setState(() {
+                          print(myList.remove(transaction));
+                          print(data);
+                        });
+
+                        //Get.offAll(() => InitialView(pageIndex: 0));
                       },
                     );
                   },

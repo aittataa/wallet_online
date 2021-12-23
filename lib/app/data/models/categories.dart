@@ -1,4 +1,4 @@
-categoriesFromMap(var map) {
+categoriesFromMap(map) {
   return List<Categories>.from(map.map((value) => Categories.fromMap(value)));
 }
 
