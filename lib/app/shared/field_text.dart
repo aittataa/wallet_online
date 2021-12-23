@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:wallet_online/app/config/constants/app_constant.dart';
 import 'package:wallet_online/app/config/themes/app_theme.dart';
 
 class FieldText extends StatelessWidget {
@@ -36,7 +37,7 @@ class FieldText extends StatelessWidget {
                 color: index == 0 ? AppTheme.incomeColor : AppTheme.expenseColor,
               )
             : null,
-        suffixText: state ? "MAD" : null,
+        suffixText: state ? "${AppConstant.appCurrency}" : null,
         contentPadding: const EdgeInsets.all(10),
         hintText: hintText,
         hintStyle: TextStyle(

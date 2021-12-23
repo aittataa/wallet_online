@@ -37,7 +37,7 @@ class StatisticShape extends StatelessWidget {
           style: TextStyle(color: AppTheme.primaryTextColor, fontWeight: FontWeight.w900),
         ),
         trailing: Text(
-          "${category.total!.toStringAsFixed(2)} MAD",
+          "${category.total!.toStringAsFixed(2)} ${AppConstant.appCurrency}",
           style: TextStyle(color: AppTheme.primaryTextColor, fontWeight: FontWeight.w900),
         ),
       ),

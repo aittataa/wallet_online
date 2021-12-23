@@ -7,6 +7,9 @@ class AppConstant {
   AppConstant._();
 
   /// TODO : Screen Controller
+  static String appCurrency = AppMessage.currencyMAD;
+
+  /// TODO : Screen Controller
   static PageController pageController = PageController();
   static int pageIndex = 0;
 

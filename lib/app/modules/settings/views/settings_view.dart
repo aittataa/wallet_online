@@ -5,6 +5,7 @@ import 'package:wallet_online/app/config/messages/app_message.dart';
 import 'package:wallet_online/app/config/themes/app_theme.dart';
 import 'package:wallet_online/app/data/models/settings.dart';
 import 'package:wallet_online/app/modules/home/widgets/dropdown_list.dart';
+import 'package:wallet_online/app/modules/initial/views/initial_view.dart';
 import 'package:wallet_online/app/modules/settings/controllers/settings_controller.dart';
 import 'package:wallet_online/app/shared/add_button.dart';
 import 'package:wallet_online/app/shared/bounce_point.dart';
@@ -23,7 +24,7 @@ class _SettingsViewState extends State<SettingsView> {
   @override
   void initState() {
     super.initState();
-    selectedCurrency = AppMessage.currencyUSD;
+    selectedCurrency = AppConstant.appCurrency;
     selectedLanguage = AppMessage.languageEN;
   }
 
@@ -37,6 +38,7 @@ class _SettingsViewState extends State<SettingsView> {
           return BouncePoint();
         } else {
           final List<Settings> myList = controller.settings;
+
           final bool isNotEmpty = myList.isNotEmpty;
           if (isNotEmpty) {
             return Padding(
@@ -45,7 +47,7 @@ class _SettingsViewState extends State<SettingsView> {
                 children: [
                   Container(
                     width: 150,
-                    height: 150,
+                    height: 250,
                     margin: const EdgeInsets.symmetric(vertical: 10),
                     decoration: BoxDecoration(
                       shape: BoxShape.circle,
@@ -53,6 +55,7 @@ class _SettingsViewState extends State<SettingsView> {
                       image: DecorationImage(image: AssetImage(AppMessage.appIconRound)),
                     ),
                   ),
+                  /*
                   ListTile(
                     dense: true,
                     contentPadding: const EdgeInsets.symmetric(vertical: 5),
@@ -62,7 +65,9 @@ class _SettingsViewState extends State<SettingsView> {
                       child: Text(
                         "${AppMessage.languageLabel} :",
                         style: TextStyle(
-                            color: AppTheme.primaryTextColor, fontWeight: FontWeight.w900),
+                          color: AppTheme.primaryTextColor,
+                          fontWeight: FontWeight.w900,
+                        ),
                       ),
                     ),
                     title: DropdownList(
@@ -86,6 +91,7 @@ class _SettingsViewState extends State<SettingsView> {
                       }),
                     ),
                   ),
+                  */
                   ListTile(
                     dense: true,
                     contentPadding: const EdgeInsets.symmetric(vertical: 5),
@@ -126,10 +132,13 @@ class _SettingsViewState extends State<SettingsView> {
                       title: AppMessage.labelSave,
                       color: AppTheme.mainColor,
                       onPressed: () async {
-                        // final data = dataProvider.updateSettings(
-                        //   Settings(id: 1, currency: selectedCurrency),
-                        // );
-                        // if (data != null) messageBox(context, message: Messages.saveMessage);
+                        final data = await controller.updateSettings(
+                          Settings(id: 1, currency: selectedCurrency),
+                        );
+                        if (data != null) {
+                          AppConstant.appCurrency = selectedCurrency;
+                          Get.offAll(() => InitialView(pageIndex: 3));
+                        }
                       },
                     ),
                   ),

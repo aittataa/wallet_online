@@ -35,7 +35,8 @@ class TransactionShape extends StatelessWidget {
         leading: SizedBox(
           width: MediaQuery.of(context).size.width * .25,
           child: Text(
-            (transaction.state == 0 ? "+" : "-") + "${transaction.amount!.toStringAsFixed(2)} MAD",
+            (transaction.state == 0 ? "+" : "-") +
+                "${transaction.amount!.toStringAsFixed(2)} ${AppConstant.appCurrency}",
             overflow: TextOverflow.ellipsis,
             style: TextStyle(
               color: transaction.state == 0 ? AppTheme.incomeColor : AppTheme.expenseColor,
@@ -68,7 +69,6 @@ class TransactionShape extends StatelessWidget {
         ),
         subtitle: Text(
           AppFunction.dateShape(transaction.date!),
-          //"${transaction.date}",
           overflow: TextOverflow.ellipsis,
           style: TextStyle(
             color: AppTheme.primaryTextColor.withOpacity(.5),
