@@ -6,6 +6,14 @@ import 'package:wallet_online/app/data/models/settings.dart';
 import 'package:wallet_online/app/data/models/transactions.dart';
 
 class DataSources extends GetConnect {
+  @override
+  void onInit() async {
+    print("DataSources initialized");
+    await getSettings;
+    await getCategories;
+    await getTransactions;
+  }
+
   static const String _db_name = "wallet.db";
   static const String _id = "id";
   static const String _state = "state";

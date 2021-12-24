@@ -87,40 +87,43 @@ class _CategoriesAddState extends State<CategoriesAdd> {
               title: AppMessage.labelAdd,
               color: state ? AppTheme.incomeColor : AppTheme.expenseColor,
               onPressed: () async {
-                //try {
-                if (_controller.text.isNotEmpty) {
-                  String title = _controller.text.trim();
-                  int color = AppFunction.getRandomColor;
-                  var data;
+                try {
+                  if (_controller.text.trim().isNotEmpty) {
+                    String title = _controller.text.trim();
 
-                  if (widget.status) {
-                    data = await controller.updateCategory(
-                      Categories(
-                        id: widget.category.id,
-                        title: title,
-                        color: color,
-                        state: index,
-                      ),
-                    );
+                    var data;
+                    if (widget.status) {
+                      data = await controller.updateCategory(
+                        Categories(
+                          title: title,
+                          id: widget.category.id,
+                          color: widget.category.color,
+                          state: widget.category.state,
+                        ),
+                      );
+                    } else {
+                      int color = AppFunction.getRandomColor;
+                      data = await controller.addCategory(
+                        Categories(
+                          title: title,
+                          color: color,
+                          state: index,
+                        ),
+                      );
+                    }
+                    setState(() {
+                      print(data);
+                      Get.offAll(() => InitialView(pageIndex: 1));
+                    });
                   } else {
-                    data = await controller.addCategory(
-                      Categories(
-                        title: title,
-                        color: color,
-                        state: index,
-                      ),
-                    );
+                    Navigator.pop(context);
+                    AppFunction.snackBar(title: "Error", message: "Please Type Some Category");
                   }
-                  print(data);
-                  Get.offAll(() => InitialView(pageIndex: 1));
-                } else {
+                } catch (e) {
                   Navigator.pop(context);
+                  AppFunction.snackBar(title: "Error", message: "Something Went Wrong");
+                  throw Exception("Something Went Wrong");
                 }
-                // } catch (e) {
-                //   Navigator.pop(context);
-                //   AppFunction.snackBar(title: "Error", message: "Something Went Wrong");
-                //   throw Exception("Something Went Wrong");
-                // }
               },
             )
           ],

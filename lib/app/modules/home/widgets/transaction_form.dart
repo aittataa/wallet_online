@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:wallet_online/app/config/functions/app_function.dart';
 import 'package:wallet_online/app/config/messages/app_message.dart';
 import 'package:wallet_online/app/config/themes/app_theme.dart';
@@ -7,6 +8,7 @@ import 'package:wallet_online/app/data/models/transactions.dart';
 import 'package:wallet_online/app/modules/home/controllers/home_controller.dart';
 import 'package:wallet_online/app/modules/home/widgets/datetime_picker.dart';
 import 'package:wallet_online/app/modules/home/widgets/dropdown_list.dart';
+import 'package:wallet_online/app/modules/initial/views/initial_view.dart';
 import 'package:wallet_online/app/shared/add_button.dart';
 import 'package:wallet_online/app/shared/field_text.dart';
 
@@ -106,6 +108,7 @@ class _TransactionFormState extends State<TransactionForm> {
             onPressed: () async {
               try {
                 if (myList.isNotEmpty && amountController.text.isNotEmpty) {
+                  print(myList.isNotEmpty);
                   selectedCategoryId = AppFunction.getCategoryID(selectedCategory, myList);
                   final Transactions transaction = Transactions(
                     amount: double.parse(amountController.text),
@@ -117,15 +120,15 @@ class _TransactionFormState extends State<TransactionForm> {
                   );
                   var data = await controller.addTransaction(transaction);
                   setState(() {
-                    Navigator.pop(context);
                     print(data);
+                    Get.offAll(() => InitialView(pageIndex: 0));
                   });
-                  //Get.offAll(() => InitialView(pageIndex: 0));
                 } else {
-                  // Navigator.pop(context);
+                  Navigator.pop(context);
+                  AppFunction.snackBar(title: "Error", message: "Please Add Category First");
                 }
               } catch (e) {
-                // Navigator.pop(context);
+                Navigator.pop(context);
                 AppFunction.snackBar(title: "Error", message: "Something Went Wrong");
                 throw Exception("Something Went Wrong");
               }
