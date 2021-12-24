@@ -109,6 +109,7 @@ class _TransactionFormState extends State<TransactionForm> {
                   selectedCategoryId = AppFunction.getCategoryID(selectedCategory, myList);
                   final Transactions transaction = Transactions(
                     amount: double.parse(amountController.text),
+                    title: selectedCategory,
                     description: descriptionController.text.trim(),
                     date: selectedDate,
                     state: pageIndex,

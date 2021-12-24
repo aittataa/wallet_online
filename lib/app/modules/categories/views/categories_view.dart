@@ -36,6 +36,8 @@ class _CategoriesViewState extends State<CategoriesView> {
           builder: CategoriesAdd(
             controller: controller,
             index: AppConstant.pageIndex,
+            status: false,
+            category: Categories(),
           ),
         ),
       ),
@@ -85,11 +87,13 @@ class _CategoriesViewState extends State<CategoriesView> {
                     children: [
                       CategoriesPage(
                         controller: controller,
-                        myList: myList.where((category) => category.state == 0).toList()..sort((a, b) => b.id!.compareTo(a.id!)),
+                        myList: myList.where((category) => category.state == 0).toList()
+                          ..sort((a, b) => b.id!.compareTo(a.id!)),
                       ),
                       CategoriesPage(
                         controller: controller,
-                        myList: myList.where((category) => category.state == 1).toList()..sort((a, b) => b.id!.compareTo(a.id!)),
+                        myList: myList.where((category) => category.state == 1).toList()
+                          ..sort((a, b) => b.id!.compareTo(a.id!)),
                       ),
                     ],
                   ),

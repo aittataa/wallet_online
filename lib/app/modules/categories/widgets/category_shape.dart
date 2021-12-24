@@ -1,9 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:wallet_online/app/config/constants/app_constant.dart';
+import 'package:wallet_online/app/config/functions/app_function.dart';
 import 'package:wallet_online/app/config/themes/app_theme.dart';
 import 'package:wallet_online/app/data/models/categories.dart';
 import 'package:wallet_online/app/modules/categories/controllers/categories_controller.dart';
+import 'package:wallet_online/app/modules/categories/widgets/categories_add.dart';
 
 class CategoryShape extends StatelessWidget {
   final CategoriesController controller;
@@ -37,28 +39,35 @@ class CategoryShape extends StatelessWidget {
           "${category.title}",
           style: TextStyle(color: AppTheme.primaryTextColor, fontWeight: FontWeight.w900),
         ),
-        trailing: Container(
-          // color: Colors.black,
+        trailing: SizedBox(
           width: 100,
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.end,
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
               IconButton(
-                onPressed: () {
-                  print("Update");
-                },
-                icon: Icon(
-                  Icons.edit,
-                  color: AppTheme.primaryIconColor.withOpacity(.75),
+                padding: EdgeInsets.zero,
+                color: AppTheme.primaryIconColor.withOpacity(.75),
+                splashColor: AppTheme.transparentColor,
+                highlightColor: AppTheme.transparentColor,
+                icon: Icon(Icons.edit),
+                onPressed: () => AppFunction.lunchNew(
+                  context,
+                  builder: CategoriesAdd(
+                    controller: controller,
+                    index: AppConstant.pageIndex,
+                    status: true,
+                    category: category,
+                  ),
                 ),
               ),
               IconButton(
-                onPressed: () {
+                onPressed: () async {
+                  // var data = await controller
                   print("Delete");
                 },
                 icon: Icon(
-                  Icons.delete,
+                  CupertinoIcons.delete_solid,
                   color: AppTheme.primaryIconColor.withOpacity(.75),
                 ),
               ),

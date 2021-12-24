@@ -12,8 +12,16 @@ import 'package:wallet_online/app/shared/field_text.dart';
 
 class CategoriesAdd extends StatefulWidget {
   final CategoriesController controller;
+  final bool status;
   final int index;
-  CategoriesAdd({Key? key, required this.controller, required this.index}) : super(key: key);
+  final Categories category;
+  CategoriesAdd({
+    Key? key,
+    required this.controller,
+    required this.index,
+    this.status = false,
+    required this.category,
+  }) : super(key: key);
 
   @override
   State<CategoriesAdd> createState() => _CategoriesAddState();
@@ -24,12 +32,18 @@ class _CategoriesAddState extends State<CategoriesAdd> {
   late CategoriesController controller;
   late int index;
   late bool state;
+  late Categories category;
   @override
   void initState() {
     super.initState();
     controller = widget.controller;
     index = widget.index;
     state = index == 0;
+    category = widget.category;
+
+    if (widget.status) {
+      _controller.text = category.title!;
+    }
   }
 
   @override
@@ -73,26 +87,40 @@ class _CategoriesAddState extends State<CategoriesAdd> {
               title: AppMessage.labelAdd,
               color: state ? AppTheme.incomeColor : AppTheme.expenseColor,
               onPressed: () async {
-                try {
-                  if (_controller.text.isNotEmpty) {
-                    String title = _controller.text.trim();
-                    int color = AppFunction.getRandomColor;
-                    final Categories category = Categories(
-                      title: title,
-                      color: color,
-                      state: index,
+                //try {
+                if (_controller.text.isNotEmpty) {
+                  String title = _controller.text.trim();
+                  int color = AppFunction.getRandomColor;
+                  var data;
+
+                  if (widget.status) {
+                    data = await controller.updateCategory(
+                      Categories(
+                        id: widget.category.id,
+                        title: title,
+                        color: color,
+                        state: index,
+                      ),
                     );
-                    var data = controller.addCategory(category);
-                    print(data);
-                    Get.offAll(() => InitialView(pageIndex: 1));
                   } else {
-                    Navigator.pop(context);
+                    data = await controller.addCategory(
+                      Categories(
+                        title: title,
+                        color: color,
+                        state: index,
+                      ),
+                    );
                   }
-                } catch (e) {
+                  print(data);
+                  Get.offAll(() => InitialView(pageIndex: 1));
+                } else {
                   Navigator.pop(context);
-                  AppFunction.snackBar(title: "Error", message: "Something Went Wrong");
-                  throw Exception("Something Went Wrong");
                 }
+                // } catch (e) {
+                //   Navigator.pop(context);
+                //   AppFunction.snackBar(title: "Error", message: "Something Went Wrong");
+                //   throw Exception("Something Went Wrong");
+                // }
               },
             )
           ],

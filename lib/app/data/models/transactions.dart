@@ -8,7 +8,7 @@ class Transactions {
   final DateTime? date;
   final double? amount;
   final int? categoryID;
-  final String? categoryTitle;
+  final String? title;
   final int? state;
   Transactions({
     this.id,
@@ -16,30 +16,31 @@ class Transactions {
     this.date,
     this.amount,
     this.categoryID,
-    this.categoryTitle,
+    this.title,
     this.state,
   });
 
   factory Transactions.fromMap(Map<String, dynamic> map) {
     return Transactions(
       id: map['id'],
-      description: map['description'],
-      date: map['date'] == null ? null : DateTime.parse(map['date']),
       amount: map['amount'],
-      categoryID: map['category_id'],
-      categoryTitle: map['title'],
+      title: map['title'],
+      description: map['description'],
+      date: DateTime.parse(map['date']),
       state: map['state'],
+      categoryID: map['category_id'],
     );
   }
 
   Map<String, dynamic> toMap() {
     return {
       "id": id,
+      "amount": amount,
+      "title": title,
       "description": description,
       "date": date?.toIso8601String(),
-      "amount": amount,
-      "category_id": categoryID,
       "state": state,
+      "category_id": categoryID,
     };
   }
 }

@@ -47,7 +47,7 @@ class TransactionShape extends StatelessWidget {
         title: Row(
           children: [
             Text(
-              "${transaction.categoryTitle}",
+              "${transaction.title}",
               overflow: TextOverflow.ellipsis,
               style: const TextStyle(
                 color: AppTheme.primaryTextColor,
@@ -81,7 +81,7 @@ class TransactionShape extends StatelessWidget {
           color: AppTheme.mainColor,
           splashColor: AppTheme.transparentColor,
           highlightColor: AppTheme.transparentColor,
-          icon: const Icon(CupertinoIcons.trash_fill),
+          icon: const Icon(CupertinoIcons.delete_solid),
         ),
       ),
     );
