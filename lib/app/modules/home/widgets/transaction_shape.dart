@@ -11,12 +11,10 @@ class TransactionShape extends StatelessWidget {
   final HomeController controller;
   final Transactions transaction;
   final Function()? onPressed;
-  //final Function()? onTap;
   const TransactionShape({
     Key? key,
     required this.controller,
     required this.transaction,
-    //this.onTap,
     this.onPressed,
   }) : super(key: key);
   @override

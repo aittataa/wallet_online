@@ -10,7 +10,13 @@ import 'package:wallet_online/app/modules/categories/widgets/categories_add.dart
 class CategoryShape extends StatelessWidget {
   final CategoriesController controller;
   final Categories category;
-  const CategoryShape({Key? key, required this.controller, required this.category});
+  final Function()? onPressed;
+  const CategoryShape({
+    Key? key,
+    required this.controller,
+    required this.category,
+    this.onPressed,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -62,10 +68,7 @@ class CategoryShape extends StatelessWidget {
                 ),
               ),
               IconButton(
-                onPressed: () async {
-                  // var data = await controller
-                  print("Delete");
-                },
+                onPressed: onPressed,
                 icon: Icon(
                   CupertinoIcons.delete_solid,
                   color: AppTheme.primaryIconColor.withOpacity(.75),

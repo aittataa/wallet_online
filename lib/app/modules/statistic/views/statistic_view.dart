@@ -8,7 +8,6 @@ import 'package:wallet_online/app/data/models/categories.dart';
 import 'package:wallet_online/app/modules/statistic/controllers/statistic_controller.dart';
 import 'package:wallet_online/app/modules/statistic/widgets/statistic_page.dart';
 import 'package:wallet_online/app/shared/bounce_point.dart';
-import 'package:wallet_online/app/shared/empty_box.dart';
 import 'package:wallet_online/app/shared/header_button.dart';
 
 class StatisticView extends StatefulWidget {
@@ -34,7 +33,6 @@ class _StatisticViewState extends State<StatisticView> {
           return BouncePoint();
         } else {
           final List<Categories> myList = controller.categories;
-          final bool isNotEmpty = myList.isNotEmpty;
           return Column(
             children: [
               Row(
@@ -61,30 +59,33 @@ class _StatisticViewState extends State<StatisticView> {
                   ),
                 ],
               ),
-              if (isNotEmpty)
-                Expanded(
-                  child: PageView(
-                    onPageChanged: (index) {
-                      setState(() {
-                        AppFunction.animateToPage(index);
-                      });
-                    },
-                    controller: AppConstant.pageController,
-                    physics: BouncingScrollPhysics(),
-                    children: [
-                      StatisticPage(
-                        controller: controller,
-                        myList: myList.where((category) => category.state == 0 && category.total! > 0).toList()..sort((a, b) => b.total!.compareTo(a.total!)),
-                      ),
-                      StatisticPage(
-                        controller: controller,
-                        myList: myList.where((category) => category.state == 1 && category.total! > 0).toList()..sort((a, b) => b.total!.compareTo(a.total!)),
-                      ),
-                    ],
-                  ),
-                )
-              else
-                Expanded(child: EmptyBox()),
+              Expanded(
+                child: PageView(
+                  onPageChanged: (index) {
+                    setState(() {
+                      AppFunction.animateToPage(index);
+                    });
+                  },
+                  controller: AppConstant.pageController,
+                  physics: BouncingScrollPhysics(),
+                  children: [
+                    StatisticPage(
+                      controller: controller,
+                      myList: myList
+                          .where((category) => category.state == 0 && category.total! > 0)
+                          .toList()
+                        ..sort((a, b) => b.total!.compareTo(a.total!)),
+                    ),
+                    StatisticPage(
+                      controller: controller,
+                      myList: myList
+                          .where((category) => category.state == 1 && category.total! > 0)
+                          .toList()
+                        ..sort((a, b) => b.total!.compareTo(a.total!)),
+                    ),
+                  ],
+                ),
+              ),
             ],
           );
         }

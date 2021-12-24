@@ -10,10 +10,10 @@ class CategoriesController extends GetxController {
   @override
   void onInit() {
     super.onInit();
-    loadCategories;
+    _loadCategories;
   }
 
-  get loadCategories async {
+  get _loadCategories async {
     state.value = true;
     categories.value = await _dataSources.getCategories;
     state.value = false;
@@ -21,18 +21,19 @@ class CategoriesController extends GetxController {
 
   addCategory(Categories category) async {
     var data = await _dataSources.insertCategory(category);
-    loadCategories;
+    _loadCategories;
     return data;
   }
 
   updateCategory(Categories category) async {
     var data = await _dataSources.updateCategory(category);
-    loadCategories;
+    _loadCategories;
     return data;
   }
 
   deleteCategory(int id) async {
     var data = await _dataSources.deleteCategory(id);
+    _loadCategories;
     return data;
   }
 }

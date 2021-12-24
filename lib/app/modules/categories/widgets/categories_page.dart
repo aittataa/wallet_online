@@ -4,7 +4,7 @@ import 'package:wallet_online/app/modules/categories/controllers/categories_cont
 import 'package:wallet_online/app/modules/categories/widgets/category_shape.dart';
 import 'package:wallet_online/app/shared/empty_box.dart';
 
-class CategoriesPage extends StatelessWidget {
+class CategoriesPage extends StatefulWidget {
   final CategoriesController controller;
   final List<Categories> myList;
   const CategoriesPage({
@@ -12,25 +12,37 @@ class CategoriesPage extends StatelessWidget {
     required this.controller,
     required this.myList,
   }) : super(key: key);
+  @override
+  State<CategoriesPage> createState() => _CategoriesPageState();
+}
 
+class _CategoriesPageState extends State<CategoriesPage> {
   @override
   Widget build(BuildContext context) {
-    if (myList.isNotEmpty) {
+    if (widget.myList.isNotEmpty) {
       return ListView.builder(
         shrinkWrap: true,
         padding: const EdgeInsets.all(10),
         physics: const BouncingScrollPhysics(),
-        itemCount: myList.length,
+        itemCount: widget.myList.length,
         itemBuilder: (context, i) {
-          final Categories category = myList[i];
+          final Categories category = widget.myList[i];
           return CategoryShape(
-            controller: controller,
+            controller: widget.controller,
             category: category,
+            onPressed: () async {
+              final int id = category.id!;
+              var data = await widget.controller.deleteCategory(id);
+              setState(() {
+                print(widget.myList.remove(category));
+                print(data);
+              });
+            },
           );
         },
       );
     } else {
-      return EmptyBox();
+      return const EmptyBox();
     }
   }
 }
