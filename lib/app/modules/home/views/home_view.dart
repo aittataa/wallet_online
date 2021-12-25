@@ -148,7 +148,6 @@ class _HomeViewState extends State<HomeView> {
                           print(myList.remove(transaction));
                           print(data);
                         });
-
                         //Get.offAll(() => InitialView(pageIndex: 0));
                       },
                     );

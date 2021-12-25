@@ -6,12 +6,22 @@ import 'package:wallet_online/app/data/models/settings.dart';
 import 'package:wallet_online/app/data/models/transactions.dart';
 
 class DataSources extends GetConnect {
+  // final WebSocketChannel channel = IOWebSocketChannel.connect(
+  //   Uri.parse('wss://echo.websocket.org'),
+  // );
+  //.connect(Uri.parse('ws://localhost:1234'));
+
   @override
   void onInit() async {
+    // channel.stream.listen((message) {
+    //   channel.sink.add('received!');
+    //   channel.sink.close(status.goingAway);
+    // });
+
     print("DataSources initialized");
-    await getSettings;
-    await getCategories;
-    await getTransactions;
+    // await getSettings;
+    // await getCategories;
+    // await getTransactions;
   }
 
   static const String _db_name = "wallet.db";
@@ -82,12 +92,7 @@ class DataSources extends GetConnect {
 
   Future updateSettings(Settings settings) async {
     final db = await _database;
-    var response = await db.update(
-      _tbl_settings,
-      settings.toMap(),
-      where: "$_id = ?",
-      whereArgs: [settings.id],
-    );
+    var response = await db.update(_tbl_settings, settings.toMap(), where: "$_id = ?", whereArgs: [settings.id]);
     return response;
   }
 
@@ -114,32 +119,20 @@ class DataSources extends GetConnect {
 
   Future updateCategory(Categories category) async {
     final db = await _database;
-    var response = await db.update(
-      _tbl_category,
-      category.toMap(),
-      where: "$_id = ?",
-      whereArgs: [category.id],
-    );
+    var response = await db.update(_tbl_category, category.toMap(), where: "$_id = ?", whereArgs: [category.id]);
     return response;
   }
 
   Future deleteCategory(int id) async {
     final db = await _database;
-    var response = await db.delete(
-      _tbl_category,
-      where: "$_id = ?",
-      whereArgs: [id],
-    );
+    var response = await db.delete(_tbl_category, where: "$_id = ?", whereArgs: [id]);
     return response;
   }
 
   /// TODO : About Transactions
   Future<List<Transactions>> get getTransactions async {
     final db = await _database;
-    var response = await db.query(
-      _tbl_transaction,
-      orderBy: "$_tbl_transaction.$_id DESC",
-    );
+    var response = await db.query(_tbl_transaction, orderBy: "$_tbl_transaction.$_id DESC");
     return transactionsFromMap(response);
   }
 
@@ -151,11 +144,7 @@ class DataSources extends GetConnect {
 
   Future deleteTransaction(int id) async {
     final db = await _database;
-    var response = await db.delete(
-      _tbl_transaction,
-      where: "$_id = ?",
-      whereArgs: [id],
-    );
+    var response = await db.delete(_tbl_transaction, where: "$_id = ?", whereArgs: [id]);
     return response;
   }
 }

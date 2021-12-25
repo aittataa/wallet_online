@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:wallet_online/app/config/functions/app_function.dart';
 import 'package:wallet_online/app/config/messages/app_message.dart';
 import 'package:wallet_online/app/config/themes/app_theme.dart';
@@ -8,7 +7,6 @@ import 'package:wallet_online/app/data/models/transactions.dart';
 import 'package:wallet_online/app/modules/home/controllers/home_controller.dart';
 import 'package:wallet_online/app/modules/home/widgets/datetime_picker.dart';
 import 'package:wallet_online/app/modules/home/widgets/dropdown_list.dart';
-import 'package:wallet_online/app/modules/initial/views/initial_view.dart';
 import 'package:wallet_online/app/shared/add_button.dart';
 import 'package:wallet_online/app/shared/field_text.dart';
 
@@ -121,7 +119,8 @@ class _TransactionFormState extends State<TransactionForm> {
                   var data = await controller.addTransaction(transaction);
                   setState(() {
                     print(data);
-                    Get.offAll(() => InitialView(pageIndex: 0));
+                    Navigator.pop(context);
+                    //Get.offAll(() => InitialView(pageIndex: 0));
                   });
                 } else {
                   Navigator.pop(context);

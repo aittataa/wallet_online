@@ -18,7 +18,6 @@ class WalletOnline extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      smartManagement: SmartManagement.full,
       title: AppMessage.appTitle,
       theme: AppTheme.themeData,
       getPages: AppPages.routes,
