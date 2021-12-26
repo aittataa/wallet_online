@@ -50,7 +50,6 @@ class _SettingsViewState extends State<SettingsView> {
                     margin: const EdgeInsets.symmetric(vertical: 10),
                     decoration: BoxDecoration(
                       shape: BoxShape.circle,
-                      //boxShadow: [AppConstant.boxShadow],
                       image: DecorationImage(image: AssetImage(AppMessage.appLogo)),
                     ),
                   ),
@@ -98,7 +97,7 @@ class _SettingsViewState extends State<SettingsView> {
                     leading: SizedBox(
                       width: 100,
                       child: Text(
-                        "${AppMessage.currencyLabel} :",
+                        "${AppMessage.currencyLabel} : ",
                         style: TextStyle(
                           color: AppTheme.primaryTextColor,
                           fontWeight: FontWeight.w900,

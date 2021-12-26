@@ -21,7 +21,6 @@ class SettingsController extends GetxController {
 
   updateSettings(Settings settings) async {
     var data = await _dataSources.updateSettings(settings);
-    _loadSettings;
     return data;
   }
 }
