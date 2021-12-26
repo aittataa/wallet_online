@@ -20,11 +20,7 @@ class AppFunction {
 
   static loadCount(List myList, int state) {
     try {
-      return myList
-          .where((transaction) => transaction.state == state)
-          .toList()
-          .map((transaction) => transaction.amount)
-          .reduce((a, b) => a! + b!);
+      return myList.where((transaction) => transaction.state == state).toList().map((transaction) => transaction.amount).reduce((a, b) => a! + b!);
     } catch (e) {
       return 0.0;
     }
@@ -74,7 +70,8 @@ class AppFunction {
     SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
     SystemChrome.setSystemUIOverlayStyle(
       SystemUiOverlayStyle(
-        systemNavigationBarColor: AppTheme.primaryBackColor,
+        systemNavigationBarColor: AppTheme.transparentColor,
+        systemNavigationBarDividerColor: AppTheme.transparentColor,
         systemNavigationBarIconBrightness: Brightness.dark,
         statusBarColor: AppTheme.transparentColor,
         statusBarIconBrightness: Brightness.dark,
