@@ -33,7 +33,6 @@ class CategoriesController extends GetxController {
 
   deleteCategory(int id) async {
     var data = await _dataSources.deleteCategory(id);
-    _loadCategories;
     return data;
   }
 }
