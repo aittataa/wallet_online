@@ -102,37 +102,37 @@ class _TransactionFormState extends State<TransactionForm> {
             title: AppMessage.labelAdd,
             color: pageIndex == 0 ? AppTheme.incomeColor : AppTheme.expenseColor,
             onPressed: () async {
-              try {
-                if (myList.isNotEmpty && amountController.text.isNotEmpty) {
-                  selectedCategoryId = AppFunction.getCategoryID(selectedCategory, myList);
-                  final Transactions transaction = Transactions(
-                    amount: double.parse(amountController.text),
-                    title: selectedCategory,
-                    description: descriptionController.text.trim(),
-                    date: selectedDate,
-                    state: pageIndex,
-                    categoryID: selectedCategoryId,
-                  );
-                  var data = await controller.addTransaction(transaction);
-                  setState(() {
-                    debugPrint(data);
-                    Navigator.pop(context);
-                  });
-                } else {
-                  Navigator.pop(context);
-                  AppFunction.snackBar(
-                    title: AppMessage.errorTitle,
-                    message: AppMessage.errorMessage_1,
-                  );
-                }
-              } catch (e) {
+              //try {
+              if (myList.isNotEmpty && amountController.text.isNotEmpty) {
+                selectedCategoryId = AppFunction.getCategoryID(selectedCategory, myList);
+                final Transactions transaction = Transactions(
+                  amount: double.parse(amountController.text),
+                  title: selectedCategory,
+                  description: descriptionController.text.trim(),
+                  date: selectedDate,
+                  state: pageIndex,
+                  categoryID: selectedCategoryId,
+                );
+                var data = await controller.addTransaction(transaction);
+                //setState(() {
+                print(data);
+                Navigator.pop(context);
+                //});
+              } else {
                 Navigator.pop(context);
                 AppFunction.snackBar(
                   title: AppMessage.errorTitle,
-                  message: AppMessage.errorMessage_2,
+                  message: AppMessage.errorMessage_1,
                 );
-                throw Exception(AppMessage.errorMessage_2);
               }
+              // } catch (e) {
+              //   Navigator.pop(context);
+              //   AppFunction.snackBar(
+              //     title: AppMessage.errorTitle,
+              //     message: AppMessage.errorMessage_2,
+              //   );
+              //   throw Exception(AppMessage.errorMessage_2);
+              // }
             },
           ),
         ],

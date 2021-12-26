@@ -135,7 +135,7 @@ class _SettingsViewState extends State<SettingsView> {
                           Settings(id: 1, currency: selectedCurrency),
                         );
                         AppConstant.appCurrency = selectedCurrency;
-                        debugPrint(data);
+                        print(data);
                       },
                     ),
                   ),

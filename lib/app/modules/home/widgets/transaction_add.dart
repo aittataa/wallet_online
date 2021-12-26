@@ -75,12 +75,12 @@ class _TransactionAddState extends State<TransactionAdd> {
               TransactionForm(
                 controller: controller,
                 pageIndex: AppConstant.pageIndex,
-                myList: myList.where((category) => category.state == 0).toList(),
+                myList: myList.where((category) => category.state == 0).toList()..sort((a, b) => b.id!.compareTo(a.id!)),
               ),
               TransactionForm(
                 controller: controller,
                 pageIndex: AppConstant.pageIndex,
-                myList: myList.where((category) => category.state == 1).toList(),
+                myList: myList.where((category) => category.state == 1).toList()..sort((a, b) => b.id!.compareTo(a.id!)),
               ),
             ],
           ),

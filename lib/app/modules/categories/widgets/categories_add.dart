@@ -110,7 +110,7 @@ class _CategoriesAddState extends State<CategoriesAdd> {
                       );
                     }
                     setState(() {
-                      debugPrint(data);
+                      print(data);
                       Navigator.pop(context);
                     });
                   } else {
