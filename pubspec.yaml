@@ -7,7 +7,6 @@ environment:
 dependencies: 
   cupertino_icons: ^1.0.2
   get: 4.6.1
-  web_socket_channel: ^2.1.0
   animated_splash_screen: ^1.1.0
   flutter_spinkit: ^5.0.0
   sqflite: 2.0.1
@@ -16,7 +15,7 @@ dependencies:
   flutter:
     sdk: flutter
 
-dev_dependencies: 
+dev_dependencies:
   flutter_test:
     sdk: flutter
 

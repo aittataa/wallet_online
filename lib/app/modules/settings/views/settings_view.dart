@@ -50,8 +50,8 @@ class _SettingsViewState extends State<SettingsView> {
                     margin: const EdgeInsets.symmetric(vertical: 10),
                     decoration: BoxDecoration(
                       shape: BoxShape.circle,
-                      boxShadow: [AppConstant.boxShadow],
-                      image: DecorationImage(image: AssetImage(AppMessage.appIconRound)),
+                      //boxShadow: [AppConstant.boxShadow],
+                      image: DecorationImage(image: AssetImage(AppMessage.appLogo)),
                     ),
                   ),
                   /*
