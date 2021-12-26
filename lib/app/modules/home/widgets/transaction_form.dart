@@ -66,7 +66,6 @@ class _TransactionFormState extends State<TransactionForm> {
                   onChanged: (value) {
                     setState(() => {selectedCategory = value});
                     selectedCategoryId = AppFunction.getCategoryID(selectedCategory, myList);
-                    print("$selectedCategoryId $selectedCategory");
                   },
                   hint: AppMessage.labelCategory,
                   value: selectedCategory,
@@ -90,7 +89,6 @@ class _TransactionFormState extends State<TransactionForm> {
           DateTimePicker(
             onDateTimeChanged: (value) {
               setState(() => {selectedDate = value});
-              print(selectedDate);
             },
           ),
           FieldText(
@@ -106,7 +104,6 @@ class _TransactionFormState extends State<TransactionForm> {
             onPressed: () async {
               try {
                 if (myList.isNotEmpty && amountController.text.isNotEmpty) {
-                  print(myList.isNotEmpty);
                   selectedCategoryId = AppFunction.getCategoryID(selectedCategory, myList);
                   final Transactions transaction = Transactions(
                     amount: double.parse(amountController.text),
@@ -118,9 +115,8 @@ class _TransactionFormState extends State<TransactionForm> {
                   );
                   var data = await controller.addTransaction(transaction);
                   setState(() {
-                    print(data);
+                    debugPrint(data);
                     Navigator.pop(context);
-                    //Get.offAll(() => InitialView(pageIndex: 0));
                   });
                 } else {
                   Navigator.pop(context);

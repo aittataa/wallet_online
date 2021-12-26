@@ -29,9 +29,7 @@ class _HomeViewState extends State<HomeView> {
       floatingActionButton: ActionButton(
         onPressed: () => AppFunction.lunchNew(
           context,
-          builder: TransactionAdd(
-            controller: controller,
-          ),
+          builder: TransactionAdd(controller: controller),
         ),
       ),
       body: Obx(() {
@@ -145,10 +143,9 @@ class _HomeViewState extends State<HomeView> {
                         final int id = transaction.id!;
                         var data = await controller.deleteTransaction(id);
                         setState(() {
-                          print(myList.remove(transaction));
-                          print(data);
+                          myList.remove(transaction);
+                          debugPrint(data);
                         });
-                        //Get.offAll(() => InitialView(pageIndex: 0));
                       },
                     );
                   },

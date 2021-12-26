@@ -34,8 +34,8 @@ class _CategoriesPageState extends State<CategoriesPage> {
               final int id = category.id!;
               var data = await widget.controller.deleteCategory(id);
               setState(() {
-                print(widget.myList.remove(category));
-                print(data);
+                widget.myList.remove(category);
+                debugPrint(data);
               });
             },
           );

@@ -110,9 +110,8 @@ class _CategoriesAddState extends State<CategoriesAdd> {
                       );
                     }
                     setState(() {
-                      print(data);
+                      debugPrint(data);
                       Navigator.pop(context);
-                      //Get.offAll(() => InitialView(pageIndex: 1));
                     });
                   } else {
                     Navigator.pop(context);
