@@ -115,12 +115,12 @@ class _CategoriesAddState extends State<CategoriesAdd> {
                     });
                   } else {
                     Navigator.pop(context);
-                    AppFunction.snackBar(title: "Error", message: "Please Type Some Category");
+                    AppFunction.snackBar(title: AppMessage.errorTitle, message: AppMessage.errorMessage_1);
                   }
                 } catch (e) {
                   Navigator.pop(context);
-                  AppFunction.snackBar(title: "Error", message: "Something Went Wrong");
-                  throw Exception("Something Went Wrong");
+                  AppFunction.snackBar(title: AppMessage.errorTitle, message: AppMessage.errorMessage_2);
+                  throw Exception(AppMessage.errorMessage_2);
                 }
               },
             )

@@ -1,6 +1,6 @@
 import 'package:get/get.dart';
-import 'package:wallet_online/app/config/constants/app_constant.dart';
 
+import '../config/constants/app_constant.dart';
 import '../modules/categories/bindings/categories_binding.dart';
 import '../modules/categories/views/categories_view.dart';
 import '../modules/home/bindings/home_binding.dart';

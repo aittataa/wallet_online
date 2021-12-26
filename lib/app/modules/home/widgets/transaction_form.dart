@@ -120,12 +120,18 @@ class _TransactionFormState extends State<TransactionForm> {
                   });
                 } else {
                   Navigator.pop(context);
-                  AppFunction.snackBar(title: "Error", message: "Please Add Category First");
+                  AppFunction.snackBar(
+                    title: AppMessage.errorTitle,
+                    message: AppMessage.errorMessage_1,
+                  );
                 }
               } catch (e) {
                 Navigator.pop(context);
-                AppFunction.snackBar(title: "Error", message: "Something Went Wrong");
-                throw Exception("Something Went Wrong");
+                AppFunction.snackBar(
+                  title: AppMessage.errorTitle,
+                  message: AppMessage.errorMessage_2,
+                );
+                throw Exception(AppMessage.errorMessage_2);
               }
             },
           ),

@@ -44,7 +44,7 @@ class StatisticPage extends StatelessWidget {
                     color: Color(category.color!),
                     radius: 115,
                     titlePositionPercentageOffset: .75,
-                    title: "${category.total!.toStringAsFixed(2)} MAD",
+                    title: "${category.total!.toStringAsFixed(2)} ${AppConstant.appCurrency}",
                     titleStyle: const TextStyle(
                       color: AppTheme.primaryTextColor,
                       fontWeight: FontWeight.w900,

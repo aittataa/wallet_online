@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:wallet_online/app/config/constants/app_constant.dart';
 import 'package:wallet_online/app/config/themes/app_theme.dart';
 
 class AddButton extends StatelessWidget {
@@ -17,8 +18,8 @@ class AddButton extends StatelessWidget {
     return MaterialButton(
       onPressed: onPressed,
       minWidth: double.infinity,
-      elevation: 3,
-      highlightElevation: 3,
+      elevation: AppConstant.elevation,
+      highlightElevation: AppConstant.elevation,
       color: color,
       splashColor: AppTheme.transparentColor,
       highlightColor: AppTheme.transparentColor,

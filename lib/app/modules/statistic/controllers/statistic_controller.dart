@@ -10,10 +10,10 @@ class StatisticController extends GetxController {
   @override
   void onInit() {
     super.onInit();
-    loadCategories;
+    _loadCategories;
   }
 
-  get loadCategories async {
+  get _loadCategories async {
     state.value = true;
     categories.value = await _dataSources.getCategories;
     state.value = false;

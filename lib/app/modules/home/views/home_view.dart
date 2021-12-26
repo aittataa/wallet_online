@@ -76,7 +76,7 @@ class _HomeViewState extends State<HomeView> {
                                     color: AppTheme.incomeColor,
                                     radius: 50,
                                     showTitle: state,
-                                    title: "${incomes.toStringAsFixed(2)} MAD",
+                                    title: "${incomes.toStringAsFixed(2)} ${AppConstant.appCurrency}",
                                     titleStyle: const TextStyle(
                                       color: AppTheme.primaryTextColor,
                                       fontWeight: FontWeight.w900,
@@ -89,7 +89,7 @@ class _HomeViewState extends State<HomeView> {
                                     color: AppTheme.expenseColor,
                                     radius: 50,
                                     showTitle: state,
-                                    title: "${expenses.toStringAsFixed(2)} MAD",
+                                    title: "${expenses.toStringAsFixed(2)} ${AppConstant.appCurrency}",
                                     titleStyle: const TextStyle(
                                       color: AppTheme.primaryTextColor,
                                       fontWeight: FontWeight.w900,
@@ -97,7 +97,7 @@ class _HomeViewState extends State<HomeView> {
                                   );
 
                                 default:
-                                  throw "Oh no! Something Wrong";
+                                  throw Exception(AppMessage.errorMessage_2);
                               }
                             }),
                           ),
@@ -117,7 +117,7 @@ class _HomeViewState extends State<HomeView> {
                               ),
                             ),
                             Text(
-                              "${balance.toStringAsFixed(2)} MAD",
+                              "${balance.toStringAsFixed(2)} ${AppConstant.appCurrency}",
                               style: TextStyle(
                                 color: balanceState ? AppTheme.incomeColor : AppTheme.expenseColor,
                                 fontWeight: FontWeight.w900,

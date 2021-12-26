@@ -17,6 +17,8 @@ class AppConstant {
   static double screenWidth = Get.width;
   static double screenHeight = Get.height;
 
+  static const double elevation = 2.5;
+
   /// TODO : Curves
   static const Curve curve = Curves.linearToEaseOut;
 

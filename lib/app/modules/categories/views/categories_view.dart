@@ -55,9 +55,7 @@ class _CategoriesViewState extends State<CategoriesView> {
                     icon: CupertinoIcons.square_arrow_down_fill,
                     state: AppConstant.pageIndex == 0,
                     onPressed: () {
-                      setState(() {
-                        AppFunction.animateToPage(0);
-                      });
+                      setState(() => {AppFunction.animateToPage(0)});
                     },
                   ),
                   HeaderButton(
@@ -65,9 +63,7 @@ class _CategoriesViewState extends State<CategoriesView> {
                     icon: CupertinoIcons.square_arrow_up_fill,
                     state: AppConstant.pageIndex == 1,
                     onPressed: () {
-                      setState(() {
-                        AppFunction.animateToPage(1);
-                      });
+                      setState(() => {AppFunction.animateToPage(1)});
                     },
                   ),
                 ],
@@ -75,9 +71,7 @@ class _CategoriesViewState extends State<CategoriesView> {
               Expanded(
                 child: PageView(
                   onPageChanged: (index) {
-                    setState(() {
-                      AppFunction.animateToPage(index);
-                    });
+                    setState(() => {AppFunction.animateToPage(index)});
                   },
                   controller: AppConstant.pageController,
                   physics: BouncingScrollPhysics(),

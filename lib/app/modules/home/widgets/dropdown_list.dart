@@ -26,7 +26,7 @@ class DropdownList extends StatelessWidget {
       ),
       child: DropdownButton(
         onChanged: onChanged,
-        //onTap: () => FocusScope.of(context).unfocus(),
+        onTap: () => FocusScope.of(context).unfocus(),
         icon: const Icon(CupertinoIcons.chevron_down),
         iconEnabledColor: AppTheme.mainColor,
         isExpanded: true,

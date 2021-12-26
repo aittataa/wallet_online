@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:wallet_online/app/config/constants/app_constant.dart';
 import 'package:wallet_online/app/config/messages/app_message.dart';
 import 'package:wallet_online/app/config/themes/app_theme.dart';
 
@@ -16,6 +17,7 @@ class FooterBar extends StatelessWidget {
     return BottomNavigationBar(
       onTap: onTap,
       currentIndex: currentIndex,
+      elevation: AppConstant.elevation,
       type: BottomNavigationBarType.fixed,
       backgroundColor: AppTheme.primaryBackColor,
       selectedItemColor: AppTheme.mainColor,

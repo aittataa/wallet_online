@@ -16,14 +16,8 @@ class DataSources extends GetConnect {
 
   static const String _tbl_settings = "settings";
   static const String _currency = "currency";
-  static const String _tbl_settings_query = '''
-  CREATE TABLE $_tbl_settings(
-        $_id INTEGER PRIMARY KEY AUTOINCREMENT, 
-        $_currency TEXT NOT NULL
-  )''';
-  static const String _tbl_settings_data_query = '''
-    INSERT INTO $_tbl_settings ($_id, $_currency) VALUES (1, 'DH')
-  ''';
+  static const String _tbl_settings_query = '''CREATE TABLE $_tbl_settings($_id INTEGER PRIMARY KEY AUTOINCREMENT, $_currency TEXT NOT NULL)''';
+  static const String _tbl_settings_data_query = '''INSERT INTO $_tbl_settings ($_id, $_currency) VALUES (1, 'DH')''';
 
   static const String _tbl_category = "categories";
   static const String _color = "color";
@@ -57,13 +51,10 @@ class DataSources extends GetConnect {
       join(await getDatabasesPath(), _db_name),
       version: 1,
       onCreate: (db, version) async {
-        /// TODO : Tables
         await db.execute(_tbl_settings_query);
+        await db.execute(_tbl_settings_data_query);
         await db.execute(_tbl_category_query);
         await db.execute(_tbl_transaction_query);
-
-        /// TODO : Data
-        await db.execute(_tbl_settings_data_query);
       },
     );
   }

@@ -5,7 +5,6 @@ import 'package:wallet_online/app/config/messages/app_message.dart';
 import 'package:wallet_online/app/config/themes/app_theme.dart';
 import 'package:wallet_online/app/data/models/settings.dart';
 import 'package:wallet_online/app/modules/home/widgets/dropdown_list.dart';
-import 'package:wallet_online/app/modules/initial/views/initial_view.dart';
 import 'package:wallet_online/app/modules/settings/controllers/settings_controller.dart';
 import 'package:wallet_online/app/shared/add_button.dart';
 import 'package:wallet_online/app/shared/bounce_point.dart';
@@ -135,10 +134,8 @@ class _SettingsViewState extends State<SettingsView> {
                         final data = await controller.updateSettings(
                           Settings(id: 1, currency: selectedCurrency),
                         );
-                        if (data != null) {
-                          AppConstant.appCurrency = selectedCurrency;
-                          Get.offAll(() => InitialView(pageIndex: 3));
-                        }
+                        AppConstant.appCurrency = selectedCurrency;
+                        debugPrint(data);
                       },
                     ),
                   ),

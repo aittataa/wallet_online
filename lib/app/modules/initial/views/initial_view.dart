@@ -6,8 +6,7 @@ import 'package:wallet_online/app/modules/settings/views/settings_view.dart';
 import 'package:wallet_online/app/modules/statistic/views/statistic_view.dart';
 
 class InitialView extends StatefulWidget {
-  final int pageIndex;
-  const InitialView({Key? key, this.pageIndex = 0}) : super(key: key);
+  const InitialView({Key? key}) : super(key: key);
   @override
   State<InitialView> createState() => _InitialViewState();
 }
@@ -19,7 +18,7 @@ class _InitialViewState extends State<InitialView> {
   @override
   void initState() {
     super.initState();
-    pageIndex = widget.pageIndex;
+    pageIndex = 0;
     pageController = PageController(initialPage: pageIndex);
   }
 

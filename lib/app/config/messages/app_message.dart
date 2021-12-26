@@ -1,6 +1,5 @@
 class AppMessage {
   AppMessage._();
-  static const String noDataFound = "No Data Found";
 
   static const String appTitle = "Wallet Online";
   static const String incomes = "Incomes";
@@ -18,6 +17,11 @@ class AppMessage {
   static const String saveMessage = "Currency Update Successfully";
   static const String typeMessage = "Type Something...";
   static const String amount = "200";
+
+  /// TODO : App Error
+  static const String errorTitle = "Error";
+  static const String errorMessage_1 = "Please Type Some Category";
+  static const String errorMessage_2 = "Something Went Wrong";
 
   /// TODO : App Icon
   static const String appIcon = "assets/icons/app_icon.png";

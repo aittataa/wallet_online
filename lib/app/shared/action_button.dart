@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:wallet_online/app/config/constants/app_constant.dart';
 import 'package:wallet_online/app/config/themes/app_theme.dart';
 
 class ActionButton extends StatelessWidget {
@@ -17,6 +18,7 @@ class ActionButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return FloatingActionButton(
       onPressed: onPressed,
+      elevation: AppConstant.elevation,
       backgroundColor: AppTheme.mainColor,
       splashColor: AppTheme.transparentColor,
       foregroundColor: AppTheme.transparentColor,
