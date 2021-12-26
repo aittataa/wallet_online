@@ -152,4 +152,10 @@ class _SettingsViewState extends State<SettingsView> {
       }),
     );
   }
+
+  @override
+  void dispose() {
+    super.dispose();
+    Get.delete<SettingsController>();
+  }
 }

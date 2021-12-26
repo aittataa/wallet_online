@@ -72,7 +72,7 @@ class _CategoriesAddState extends State<CategoriesAdd> {
       ),
       content: SizedBox(
         width: AppConstant.screenWidth * 0.85,
-        height: 150,
+        height: 125,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [

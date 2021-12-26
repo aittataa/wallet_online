@@ -30,7 +30,7 @@ class HomeController extends GetxController {
 
   addTransaction(Transactions transaction) async {
     var data = _dataSources.insertTransaction(transaction);
-    // _loadTransactions;
+    _loadTransactions;
     return data;
   }
 

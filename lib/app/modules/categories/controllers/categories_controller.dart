@@ -21,19 +21,19 @@ class CategoriesController extends GetxController {
 
   addCategory(Categories category) async {
     var data = await _dataSources.insertCategory(category);
-    //_loadCategories;
+    _loadCategories;
     return data;
   }
 
   updateCategory(Categories category) async {
     var data = await _dataSources.updateCategory(category);
-    //_loadCategories;
+    _loadCategories;
     return data;
   }
 
   deleteCategory(int id) async {
     var data = await _dataSources.deleteCategory(id);
-    //_loadCategories;
+    _loadCategories;
     return data;
   }
 }

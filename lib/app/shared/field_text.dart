@@ -30,6 +30,7 @@ class FieldText extends StatelessWidget {
         fontWeight: FontWeight.w900,
       ),
       maxLines: maxLines,
+      scrollPadding: EdgeInsets.zero,
       decoration: InputDecoration(
         icon: state
             ? Icon(

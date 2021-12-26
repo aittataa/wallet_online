@@ -84,13 +84,11 @@ class _CategoriesViewState extends State<CategoriesView> {
                   children: [
                     CategoriesPage(
                       controller: controller,
-                      myList: myList.where((category) => category.state == 0).toList()
-                        ..sort((a, b) => b.id!.compareTo(a.id!)),
+                      myList: myList.where((category) => category.state == 0).toList()..sort((a, b) => b.id!.compareTo(a.id!)),
                     ),
                     CategoriesPage(
                       controller: controller,
-                      myList: myList.where((category) => category.state == 1).toList()
-                        ..sort((a, b) => b.id!.compareTo(a.id!)),
+                      myList: myList.where((category) => category.state == 1).toList()..sort((a, b) => b.id!.compareTo(a.id!)),
                     ),
                   ],
                 ),
@@ -100,5 +98,11 @@ class _CategoriesViewState extends State<CategoriesView> {
         }
       }),
     );
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    Get.delete<CategoriesController>();
   }
 }

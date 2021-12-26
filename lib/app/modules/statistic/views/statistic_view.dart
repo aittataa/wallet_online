@@ -71,17 +71,11 @@ class _StatisticViewState extends State<StatisticView> {
                   children: [
                     StatisticPage(
                       controller: controller,
-                      myList: myList
-                          .where((category) => category.state == 0 && category.total! > 0)
-                          .toList()
-                        ..sort((a, b) => b.total!.compareTo(a.total!)),
+                      myList: myList.where((category) => category.state == 0 && category.total! > 0).toList()..sort((a, b) => b.total!.compareTo(a.total!)),
                     ),
                     StatisticPage(
                       controller: controller,
-                      myList: myList
-                          .where((category) => category.state == 1 && category.total! > 0)
-                          .toList()
-                        ..sort((a, b) => b.total!.compareTo(a.total!)),
+                      myList: myList.where((category) => category.state == 1 && category.total! > 0).toList()..sort((a, b) => b.total!.compareTo(a.total!)),
                     ),
                   ],
                 ),
@@ -91,5 +85,11 @@ class _StatisticViewState extends State<StatisticView> {
         }
       }),
     );
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    Get.delete<StatisticController>();
   }
 }

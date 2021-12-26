@@ -13,21 +13,21 @@ class InitialView extends StatefulWidget {
 }
 
 class _InitialViewState extends State<InitialView> {
-  late PageController controller = PageController();
+  late PageController pageController = PageController();
   late int pageIndex;
 
   @override
   void initState() {
     super.initState();
     pageIndex = widget.pageIndex;
-    controller = PageController(initialPage: pageIndex);
+    pageController = PageController(initialPage: pageIndex);
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: PageView(
-        controller: controller,
+        controller: pageController,
         physics: NeverScrollableScrollPhysics(),
         children: [
           HomeView(),
@@ -38,10 +38,10 @@ class _InitialViewState extends State<InitialView> {
       ),
       bottomNavigationBar: FooterBar(
         currentIndex: pageIndex,
-        onTap: (index) {
+        onTap: (index) async {
           setState(() {
             pageIndex = index;
-            controller.jumpToPage(pageIndex);
+            pageController.jumpToPage(pageIndex);
           });
         },
       ),

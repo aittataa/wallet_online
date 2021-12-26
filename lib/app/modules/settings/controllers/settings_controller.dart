@@ -10,10 +10,10 @@ class SettingsController extends GetxController {
   @override
   void onInit() {
     super.onInit();
-    loadCategories;
+    _loadSettings;
   }
 
-  get loadCategories async {
+  get _loadSettings async {
     state.value = true;
     settings.value = await _dataSources.getSettings;
     state.value = false;
@@ -21,6 +21,7 @@ class SettingsController extends GetxController {
 
   updateSettings(Settings settings) async {
     var data = await _dataSources.updateSettings(settings);
+    _loadSettings;
     return data;
   }
 }

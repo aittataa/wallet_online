@@ -6,23 +6,8 @@ import 'package:wallet_online/app/data/models/settings.dart';
 import 'package:wallet_online/app/data/models/transactions.dart';
 
 class DataSources extends GetConnect {
-  // final WebSocketChannel channel = IOWebSocketChannel.connect(
-  //   Uri.parse('wss://echo.websocket.org'),
-  // );
-  //.connect(Uri.parse('ws://localhost:1234'));
-
   @override
-  void onInit() async {
-    // channel.stream.listen((message) {
-    //   channel.sink.add('received!');
-    //   channel.sink.close(status.goingAway);
-    // });
-
-    print("DataSources initialized");
-    // await getSettings;
-    // await getCategories;
-    // await getTransactions;
-  }
+  void onInit() async {}
 
   static const String _db_name = "wallet.db";
   static const String _id = "id";
@@ -86,13 +71,18 @@ class DataSources extends GetConnect {
   /// TODO : About Settings
   Future<List<Settings>> get getSettings async {
     final db = await _database;
-    final response = await db.query(_tbl_settings);
+    final List<Map<String, dynamic>> response = await db.query(_tbl_settings);
     return settingsFromMap(response);
   }
 
   Future updateSettings(Settings settings) async {
     final db = await _database;
-    var response = await db.update(_tbl_settings, settings.toMap(), where: "$_id = ?", whereArgs: [settings.id]);
+    final response = await db.update(
+      _tbl_settings,
+      settings.toMap(),
+      where: "$_id = ?",
+      whereArgs: [settings.id],
+    );
     return response;
   }
 
@@ -107,44 +97,63 @@ class DataSources extends GetConnect {
           GROUP BY $_tbl_category.$_id
           ORDER BY $_total DESC , $_id DESC
     ''';
-    final response = await db.rawQuery(query);
+    final List<Map<String, dynamic>> response = await db.rawQuery(query);
     return categoriesFromMap(response);
   }
 
   Future insertCategory(Categories category) async {
     final db = await _database;
-    var response = await db.insert(_tbl_category, category.toMap());
+    final response = await db.insert(
+      _tbl_category,
+      category.toMap(),
+    );
     return response;
   }
 
   Future updateCategory(Categories category) async {
     final db = await _database;
-    var response = await db.update(_tbl_category, category.toMap(), where: "$_id = ?", whereArgs: [category.id]);
+    final response = await db.update(
+      _tbl_category,
+      category.toMap(),
+      where: "$_id = ?",
+      whereArgs: [category.id],
+    );
     return response;
   }
 
   Future deleteCategory(int id) async {
     final db = await _database;
-    var response = await db.delete(_tbl_category, where: "$_id = ?", whereArgs: [id]);
+    final response = await db.delete(
+      _tbl_category,
+      where: "$_id = ?",
+      whereArgs: [id],
+    );
     return response;
   }
 
   /// TODO : About Transactions
   Future<List<Transactions>> get getTransactions async {
     final db = await _database;
-    var response = await db.query(_tbl_transaction, orderBy: "$_tbl_transaction.$_id DESC");
+    final List<Map<String, dynamic>> response = await db.query(
+      _tbl_transaction,
+      orderBy: "$_tbl_transaction.$_id DESC",
+    );
     return transactionsFromMap(response);
   }
 
   Future insertTransaction(Transactions transaction) async {
     final db = await _database;
-    var response = await db.insert(_tbl_transaction, transaction.toMap());
+    final response = await db.insert(_tbl_transaction, transaction.toMap());
     return response;
   }
 
   Future deleteTransaction(int id) async {
     final db = await _database;
-    var response = await db.delete(_tbl_transaction, where: "$_id = ?", whereArgs: [id]);
+    final response = await db.delete(
+      _tbl_transaction,
+      where: "$_id = ?",
+      whereArgs: [id],
+    );
     return response;
   }
 }
