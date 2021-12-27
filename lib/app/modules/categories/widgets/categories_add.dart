@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:wallet_online/app/config/constants/app_constant.dart';
 import 'package:wallet_online/app/config/functions/app_function.dart';
 import 'package:wallet_online/app/config/messages/app_message.dart';
@@ -55,8 +56,7 @@ class _CategoriesAddState extends State<CategoriesAdd> {
       backgroundColor: AppTheme.backgroundColor,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
       title: Container(
-        padding: const EdgeInsets.all(10),
-        alignment: Alignment.center,
+        padding: EdgeInsets.all(10),
         decoration: BoxDecoration(
           border: Border(
             bottom: BorderSide(color: AppTheme.mainColor, width: 2),
@@ -64,7 +64,8 @@ class _CategoriesAddState extends State<CategoriesAdd> {
         ),
         child: Text(
           state ? AppMessage.newIncome : AppMessage.newExpenses,
-          style: const TextStyle(
+          textAlign: TextAlign.center,
+          style: TextStyle(
             color: AppTheme.mainColor,
             fontWeight: FontWeight.w900,
           ),
@@ -87,8 +88,8 @@ class _CategoriesAddState extends State<CategoriesAdd> {
               onPressed: () async {
                 try {
                   if (_controller.text.trim().isNotEmpty) {
-                    String title = _controller.text.trim();
-
+                    final String title = _controller.text.trim();
+                    final int color = AppFunction.getRandomColor;
                     var data;
                     if (widget.status) {
                       data = await controller.updateCategory(
@@ -100,7 +101,6 @@ class _CategoriesAddState extends State<CategoriesAdd> {
                         ),
                       );
                     } else {
-                      int color = AppFunction.getRandomColor;
                       data = await controller.addCategory(
                         Categories(
                           title: title,
@@ -111,14 +111,18 @@ class _CategoriesAddState extends State<CategoriesAdd> {
                     }
                     setState(() {
                       print(data);
-                      Navigator.pop(context);
+                      Get.back();
+                      //AppFunction.animateToPage(index);
+                      // Navigator.pop(context);
                     });
                   } else {
-                    Navigator.pop(context);
+                    Get.back();
+                    //Navigator.pop(context);
                     AppFunction.snackBar(title: AppMessage.errorTitle, message: AppMessage.errorMessage_1);
                   }
                 } catch (e) {
-                  Navigator.pop(context);
+                  Get.back();
+                  //Navigator.pop(context);
                   AppFunction.snackBar(title: AppMessage.errorTitle, message: AppMessage.errorMessage_2);
                   throw Exception(AppMessage.errorMessage_2);
                 }

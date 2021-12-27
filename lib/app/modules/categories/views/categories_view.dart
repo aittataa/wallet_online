@@ -71,6 +71,7 @@ class _CategoriesViewState extends State<CategoriesView> {
               Expanded(
                 child: PageView(
                   onPageChanged: (index) {
+                    print(index);
                     setState(() => {AppFunction.animateToPage(index)});
                   },
                   controller: AppConstant.pageController,

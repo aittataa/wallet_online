@@ -43,7 +43,11 @@ class CategoryShape extends StatelessWidget {
         ),
         title: Text(
           "${category.title}",
-          style: TextStyle(color: AppTheme.primaryTextColor, fontWeight: FontWeight.w900),
+          overflow: TextOverflow.ellipsis,
+          style: TextStyle(
+            color: AppTheme.primaryTextColor,
+            fontWeight: FontWeight.w900,
+          ),
         ),
         trailing: SizedBox(
           width: 100,
