@@ -2,7 +2,8 @@ class AppMessage {
   AppMessage._();
 
   /// TODO : Test Ads
-  static const String bannerAds = "ca-app-pub-3940256099942544/6300978111";
+  static const String bannerAds = "";
+  //static const String bannerAds = "ca-app-pub-3940256099942544/6300978111";
   //static const String bannerAds = "ca-app-pub-6432329189323370/1972530444";
 
   static const String appTitle = "Wallet Online";
