@@ -22,3 +22,4 @@ flutter pub run flutter_launcher_icons:main
 flutter clean
 flutter build apk --release
 flutter build apk --release --target-platform android-arm
+flutter build appbundle --release --target-platform android-arm
