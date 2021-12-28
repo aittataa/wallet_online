@@ -7,6 +7,7 @@ environment:
 dependencies: 
   cupertino_icons: ^1.0.2
   get: 4.6.1
+  data_connection_checker: ^0.3.4
   google_mobile_ads: ^1.0.1
   animated_splash_screen: ^1.1.0
   flutter_spinkit: ^5.0.0
@@ -15,7 +16,6 @@ dependencies:
   intl: 0.17.0
   flutter:
     sdk: flutter
-  connectivity: ^3.0.6
 
 dev_dependencies:
   flutter_test:

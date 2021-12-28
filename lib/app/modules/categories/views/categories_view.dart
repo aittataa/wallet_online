@@ -41,7 +41,6 @@ class _CategoriesViewState extends State<CategoriesView> {
         ),
       ),
       body: Obx(() {
-        //AppFunction.animateToPage(AppConstant.pageIndex);
         final bool state = controller.state.value;
         if (state) {
           return BouncePoint();
