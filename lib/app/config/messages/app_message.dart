@@ -15,7 +15,6 @@ class AppMessage {
   static const String labelCategory = "Category";
   static const String labelSave = "Save";
   static const String labelAdd = "Add";
-  static const String saveMessage = "Currency Update Successfully";
   static const String typeMessage = "Type Something...";
   static const String amount = "200";
 
