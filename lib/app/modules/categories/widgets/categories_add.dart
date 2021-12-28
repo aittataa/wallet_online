@@ -112,12 +112,18 @@ class _CategoriesAddState extends State<CategoriesAdd> {
                     Navigator.pop(context);
                   } else {
                     Navigator.pop(context);
-                    AppFunction.snackBar(title: AppMessage.errorTitle, message: AppMessage.errorMessage_1);
+                    AppFunction.snackBar(
+                      title: AppMessage.errorTitle,
+                      message: AppMessage.errorMessage_2,
+                    );
                   }
                 } catch (e) {
                   Navigator.pop(context);
-                  AppFunction.snackBar(title: AppMessage.errorTitle, message: AppMessage.errorMessage_2);
-                  throw Exception(AppMessage.errorMessage_2);
+                  AppFunction.snackBar(
+                    title: AppMessage.errorTitle,
+                    message: AppMessage.errorMessage_3,
+                  );
+                  throw Exception(AppMessage.errorMessage_3);
                 }
               },
             )

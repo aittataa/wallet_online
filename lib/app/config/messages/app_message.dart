@@ -2,7 +2,8 @@ class AppMessage {
   AppMessage._();
 
   /// TODO : Test Ads
-  static const String bannerAds = "ca-app-pub-3940256099942544/6300978111";
+  //static const String bannerAds = "ca-app-pub-3940256099942544/6300978111";
+  static const String bannerAds = "ca-app-pub-6432329189323370/1972530444";
 
   static const String appTitle = "Wallet Online";
   static const String incomes = "Incomes";
@@ -23,8 +24,9 @@ class AppMessage {
 
   /// TODO : App Error
   static const String errorTitle = "Error";
-  static const String errorMessage_1 = "Please Type Some Category";
-  static const String errorMessage_2 = "Something Went Wrong";
+  static const String errorMessage_1 = "Please Add Some Category";
+  static const String errorMessage_2 = "Please Type Some Category";
+  static const String errorMessage_3 = "Something Went Wrong";
 
   /// TODO : App Icon
   static const String appLogo = "assets/icons/icon.png";
