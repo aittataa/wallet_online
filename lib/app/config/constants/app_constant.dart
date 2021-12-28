@@ -1,10 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:wallet_online/app/config/messages/app_message.dart';
 import 'package:wallet_online/app/config/themes/app_theme.dart';
 
 class AppConstant {
   AppConstant._();
+
+  /// TODO : Banner Ads
+  static BannerAd bannerAd = BannerAd(
+    adUnitId: AppMessage.bannerAds,
+    size: AdSize.banner,
+    request: AdRequest(),
+    listener: BannerAdListener(),
+  );
 
   /// TODO : Screen Controller
   static String appCurrency = AppMessage.currencyMAD;

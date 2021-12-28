@@ -16,8 +16,13 @@ class DataSources extends GetConnect {
 
   static const String _tbl_settings = "settings";
   static const String _currency = "currency";
-  static const String _tbl_settings_query = '''CREATE TABLE $_tbl_settings($_id INTEGER PRIMARY KEY AUTOINCREMENT, $_currency TEXT NOT NULL)''';
-  static const String _tbl_settings_data_query = '''INSERT INTO $_tbl_settings ($_id, $_currency) VALUES (1, 'DH')''';
+  static const String _tbl_settings_query = '''
+  CREATE TABLE $_tbl_settings(
+      $_id INTEGER PRIMARY KEY AUTOINCREMENT, 
+      $_currency TEXT NOT NULL
+  );''';
+  static const String _tbl_settings_data_query = '''
+  INSERT INTO $_tbl_settings ($_id, $_currency) VALUES (1, 'DH')''';
 
   static const String _tbl_category = "categories";
   static const String _color = "color";
@@ -73,6 +78,7 @@ class DataSources extends GetConnect {
       settings.toMap(),
       where: "$_id = ?",
       whereArgs: [settings.id],
+      conflictAlgorithm: ConflictAlgorithm.replace,
     );
     return response;
   }
@@ -97,6 +103,7 @@ class DataSources extends GetConnect {
     final response = await db.insert(
       _tbl_category,
       category.toMap(),
+      conflictAlgorithm: ConflictAlgorithm.replace,
     );
     return response;
   }
@@ -108,6 +115,7 @@ class DataSources extends GetConnect {
       category.toMap(),
       where: "$_id = ?",
       whereArgs: [category.id],
+      conflictAlgorithm: ConflictAlgorithm.replace,
     );
     return response;
   }
@@ -134,7 +142,11 @@ class DataSources extends GetConnect {
 
   Future insertTransaction(Transactions transaction) async {
     final db = await _database;
-    final response = await db.insert(_tbl_transaction, transaction.toMap());
+    final response = await db.insert(
+      _tbl_transaction,
+      transaction.toMap(),
+      conflictAlgorithm: ConflictAlgorithm.replace,
+    );
     return response;
   }
 
