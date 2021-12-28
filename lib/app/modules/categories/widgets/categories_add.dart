@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:wallet_online/app/config/constants/app_constant.dart';
 import 'package:wallet_online/app/config/functions/app_function.dart';
 import 'package:wallet_online/app/config/messages/app_message.dart';
@@ -109,20 +108,14 @@ class _CategoriesAddState extends State<CategoriesAdd> {
                         ),
                       );
                     }
-                    setState(() {
-                      print(data);
-                      Get.back();
-                      //AppFunction.animateToPage(index);
-                      // Navigator.pop(context);
-                    });
+                    print(data);
+                    Navigator.pop(context);
                   } else {
-                    Get.back();
-                    //Navigator.pop(context);
+                    Navigator.pop(context);
                     AppFunction.snackBar(title: AppMessage.errorTitle, message: AppMessage.errorMessage_1);
                   }
                 } catch (e) {
-                  Get.back();
-                  //Navigator.pop(context);
+                  Navigator.pop(context);
                   AppFunction.snackBar(title: AppMessage.errorTitle, message: AppMessage.errorMessage_2);
                   throw Exception(AppMessage.errorMessage_2);
                 }
