@@ -2,7 +2,7 @@
 
 Wallet Online.
 
-## Check this :
+## Screen Shots :
 
 
 ![item](https://user-images.githubusercontent.com/39503536/147507521-fc36dd31-777d-46a1-ab7a-9413950329c0.png)
