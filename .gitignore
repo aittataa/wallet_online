@@ -8,8 +8,7 @@
 .buildlog/
 .history
 .svn/
-.lib/app/config/messages/app_message.dart
-
+Details.txt
 # IntelliJ related
 *.iml
 *.ipr
