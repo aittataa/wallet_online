@@ -45,4 +45,4 @@ app.*.map.json
 /android/app/release
 /android/key.properties
 /android/app/wallet_online.jks
-Details.txt
+/Details.txt
