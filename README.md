@@ -4,7 +4,6 @@ Wallet Online.
 
 ## Screen Shots :
 
-
 ![item](https://user-images.githubusercontent.com/39503536/147507521-fc36dd31-777d-46a1-ab7a-9413950329c0.png)
 ![Screenshot_01](https://user-images.githubusercontent.com/39503536/147507541-218feba0-e3b8-4dbb-815d-f7a1834ed0b9.png)
 ![Screenshot_02](https://user-images.githubusercontent.com/39503536/147507548-de5d4cbc-d890-42ec-93b5-f1a09696e0a9.png)
