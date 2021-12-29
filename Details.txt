@@ -26,4 +26,11 @@ flutter build appbundle --release --target-platform android-arm
 flutter build appbundle
 
 ------------------ KeyStore
-keytool -genkey -v -keystore c:\Users\USER_NAME\upload-keystore.jks -storetype JKS -keyalg RSA -keysize 2048 -validity 10000 -alias upload
+keytool -genkey -v -keystore c:\Users\ABDERRAHIM\wallet_online.jks -storetype JKS -keyalg RSA -keysize 2048 -validity 100000 -alias wallet_online
+
+password : 224680
+first and last name : ABDERRAHIM AIT TATA
+organizational unit : IT Department
+organization : aittata-abderrahim.com
+City or Locality & State or Province : MARRAKECH
+country : MA
