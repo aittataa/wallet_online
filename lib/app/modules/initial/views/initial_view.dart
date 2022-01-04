@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:wallet_online/app/config/networks/network.dart';
 
 import '../../../modules/categories/views/categories_view.dart';
 import '../../../modules/home/views/home_view.dart';
@@ -15,10 +16,17 @@ class InitialView extends StatefulWidget {
 class _InitialViewState extends State<InitialView> {
   late PageController _pageController = PageController();
   late int _pageIndex;
+  late bool hasConnection = false;
+
+  get checkConnection async {
+    print(await Network.hasConnection);
+  }
 
   @override
   void initState() {
     super.initState();
+    checkConnection;
+    //print(hasConnection);
     _pageIndex = 0;
     _pageController = PageController(initialPage: _pageIndex);
   }
