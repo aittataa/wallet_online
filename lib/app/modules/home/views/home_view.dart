@@ -1,18 +1,18 @@
 import 'package:fl_chart/fl_chart.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:wallet_online/app/config/constants/app_constant.dart';
-import 'package:wallet_online/app/config/functions/app_function.dart';
-import 'package:wallet_online/app/config/messages/app_message.dart';
-import 'package:wallet_online/app/config/themes/app_theme.dart';
-import 'package:wallet_online/app/data/models/transactions.dart';
-import 'package:wallet_online/app/modules/home/controllers/home_controller.dart';
-import 'package:wallet_online/app/modules/home/widgets/transaction_add.dart';
-import 'package:wallet_online/app/modules/home/widgets/transaction_shape.dart';
-import 'package:wallet_online/app/shared/action_button.dart';
-import 'package:wallet_online/app/shared/bounce_point.dart';
-import 'package:wallet_online/app/shared/empty_box.dart';
+
+import '../../../config/constants/app_constant.dart';
+import '../../../config/functions/app_function.dart';
+import '../../../config/messages/app_message.dart';
+import '../../../config/themes/app_theme.dart';
+import '../../../data/models/transactions.dart';
+import '../../../shared/action_button.dart';
+import '../../../shared/bounce_point.dart';
+import '../../../shared/empty_box.dart';
+import '../controllers/home_controller.dart';
+import '../widgets/transaction_add.dart';
+import '../widgets/transaction_shape.dart';
 
 class HomeView extends StatefulWidget {
   const HomeView({Key? key}) : super(key: key);

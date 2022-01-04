@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:wallet_online/app/config/constants/app_constant.dart';
-import 'package:wallet_online/app/config/messages/app_message.dart';
-import 'package:wallet_online/app/config/themes/app_theme.dart';
-import 'package:wallet_online/app/data/models/settings.dart';
-import 'package:wallet_online/app/modules/home/widgets/dropdown_list.dart';
-import 'package:wallet_online/app/modules/settings/controllers/settings_controller.dart';
-import 'package:wallet_online/app/shared/add_button.dart';
-import 'package:wallet_online/app/shared/bounce_point.dart';
-import 'package:wallet_online/app/shared/empty_box.dart';
+
+import '../../../config/constants/app_constant.dart';
+import '../../../config/messages/app_message.dart';
+import '../../../config/themes/app_theme.dart';
+import '../../../data/models/settings.dart';
+import '../../../shared/add_button.dart';
+import '../../../shared/bounce_point.dart';
+import '../../../shared/dropdown_list.dart';
+import '../../../shared/empty_box.dart';
+import '../controllers/settings_controller.dart';
 
 class SettingsView extends StatefulWidget {
   const SettingsView({Key? key}) : super(key: key);

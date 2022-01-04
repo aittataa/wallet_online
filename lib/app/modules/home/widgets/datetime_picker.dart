@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
-import 'package:wallet_online/app/config/themes/app_theme.dart';
+
+import '../../../config/themes/app_theme.dart';
 
 class DateTimePicker extends StatelessWidget {
   final Function(DateTime) onDateTimeChanged;

@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:wallet_online/app/modules/categories/views/categories_view.dart';
-import 'package:wallet_online/app/modules/home/views/home_view.dart';
-import 'package:wallet_online/app/modules/initial/widgets/navigation_bar.dart';
-import 'package:wallet_online/app/modules/settings/views/settings_view.dart';
-import 'package:wallet_online/app/modules/statistic/views/statistic_view.dart';
+
+import '../../../modules/categories/views/categories_view.dart';
+import '../../../modules/home/views/home_view.dart';
+import '../../../modules/settings/views/settings_view.dart';
+import '../../../modules/statistic/views/statistic_view.dart';
+import '../widgets/navigation_bar.dart';
 
 class InitialView extends StatefulWidget {
   const InitialView({Key? key}) : super(key: key);

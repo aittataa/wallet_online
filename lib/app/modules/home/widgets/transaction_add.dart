@@ -1,13 +1,14 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:wallet_online/app/config/constants/app_constant.dart';
-import 'package:wallet_online/app/config/messages/app_message.dart';
-import 'package:wallet_online/app/config/themes/app_theme.dart';
-import 'package:wallet_online/app/data/models/categories.dart';
-import 'package:wallet_online/app/modules/home/controllers/home_controller.dart';
-import 'package:wallet_online/app/modules/home/widgets/transaction_form.dart';
-import 'package:wallet_online/app/shared/header_button.dart';
+
+import '../../../config/constants/app_constant.dart';
+import '../../../config/messages/app_message.dart';
+import '../../../config/themes/app_theme.dart';
+import '../../../data/models/categories.dart';
+import '../../../shared/header_button.dart';
+import '../controllers/home_controller.dart';
+import '../widgets/transaction_form.dart';
 
 class TransactionAdd extends StatefulWidget {
   final HomeController controller;

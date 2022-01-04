@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:wallet_online/app/config/functions/app_function.dart';
-import 'package:wallet_online/app/config/messages/app_message.dart';
-import 'package:wallet_online/app/config/themes/app_theme.dart';
-import 'package:wallet_online/app/routes/app_pages.dart';
 
+import 'app/config/functions/app_function.dart';
+import 'app/config/messages/app_message.dart';
+import 'app/config/themes/app_theme.dart';
+import 'app/routes/app_pages.dart';
 import 'app/shared/splash.dart';
 
 void main() {

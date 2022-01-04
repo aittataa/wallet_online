@@ -1,10 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:wallet_online/app/config/constants/app_constant.dart';
-import 'package:wallet_online/app/config/functions/app_function.dart';
-import 'package:wallet_online/app/config/themes/app_theme.dart';
-import 'package:wallet_online/app/data/models/transactions.dart';
-import 'package:wallet_online/app/modules/home/controllers/home_controller.dart';
+
+import '../../../config/constants/app_constant.dart';
+import '../../../config/functions/app_function.dart';
+import '../../../config/themes/app_theme.dart';
+import '../../../data/models/transactions.dart';
+import '../controllers/home_controller.dart';
 
 class TransactionShape extends StatelessWidget {
   final HomeController controller;

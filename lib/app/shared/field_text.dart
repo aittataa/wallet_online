@@ -1,7 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:wallet_online/app/config/constants/app_constant.dart';
-import 'package:wallet_online/app/config/themes/app_theme.dart';
+
+import '../config/constants/app_constant.dart';
+import '../config/themes/app_theme.dart';
 
 class FieldText extends StatelessWidget {
   final TextEditingController? controller;
