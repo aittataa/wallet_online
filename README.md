@@ -2,8 +2,7 @@
 
 Wallet Online.
 
-## Getting Started
-
+## Screen Shots :
 
 ![item](https://user-images.githubusercontent.com/39503536/147507521-fc36dd31-777d-46a1-ab7a-9413950329c0.png)
 ![Screenshot_01](https://user-images.githubusercontent.com/39503536/147507541-218feba0-e3b8-4dbb-815d-f7a1834ed0b9.png)
