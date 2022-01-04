@@ -14,32 +14,31 @@ class TransactionForm extends StatefulWidget {
   final HomeController controller;
   final int pageIndex;
   final List<Categories> myList;
-  const TransactionForm({
-    Key? key,
-    required this.controller,
-    required this.pageIndex,
-    required this.myList,
-  }) : super(key: key);
+  const TransactionForm({Key? key, required this.controller, required this.pageIndex, required this.myList}) : super(key: key);
   @override
-  State<TransactionForm> createState() => _TransactionFormState();
+  State<TransactionForm> createState() => _TransactionFormState(controller, pageIndex, myList);
 }
 
 class _TransactionFormState extends State<TransactionForm> {
+  final HomeController controller;
+  final int pageIndex;
+  final List<Categories> myList;
+  _TransactionFormState(this.controller, this.pageIndex, this.myList);
+
   final TextEditingController amountController = TextEditingController();
   final TextEditingController descriptionController = TextEditingController();
-  late HomeController controller;
-  late int pageIndex;
-  late List<Categories> myList;
   late String selectedCategory = "";
   late int selectedCategoryId = 0;
   late DateTime selectedDate = DateTime.now();
+
   @override
   void initState() {
     super.initState();
-    controller = widget.controller;
-    pageIndex = widget.pageIndex;
-    myList = widget.myList;
-    myList.isNotEmpty ? selectedCategory = myList.first.title! : selectedCategory = "Category";
+    if (myList.isNotEmpty) {
+      selectedCategory = myList.first.title!;
+    } else {
+      selectedCategory = "Category";
+    }
   }
 
   @override

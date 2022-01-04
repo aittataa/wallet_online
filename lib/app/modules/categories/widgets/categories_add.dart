@@ -1,44 +1,36 @@
 import 'package:flutter/material.dart';
-import 'package:wallet_online/app/config/constants/app_constant.dart';
-import 'package:wallet_online/app/config/functions/app_function.dart';
-import 'package:wallet_online/app/config/messages/app_message.dart';
-import 'package:wallet_online/app/config/themes/app_theme.dart';
-import 'package:wallet_online/app/data/models/categories.dart';
-import 'package:wallet_online/app/modules/categories/controllers/categories_controller.dart';
-import 'package:wallet_online/app/shared/add_button.dart';
-import 'package:wallet_online/app/shared/field_text.dart';
+
+import '../../../config/constants/app_constant.dart';
+import '../../../config/functions/app_function.dart';
+import '../../../config/messages/app_message.dart';
+import '../../../config/themes/app_theme.dart';
+import '../../../data/models/categories.dart';
+import '../../../shared/add_button.dart';
+import '../../../shared/field_text.dart';
+import '../controllers/categories_controller.dart';
 
 class CategoriesAdd extends StatefulWidget {
   final CategoriesController controller;
   final bool status;
   final int index;
   final Categories category;
-  CategoriesAdd({
-    Key? key,
-    required this.controller,
-    required this.index,
-    this.status = false,
-    required this.category,
-  }) : super(key: key);
-
+  const CategoriesAdd({Key? key, required this.controller, required this.index, this.status = false, required this.category}) : super(key: key);
   @override
-  State<CategoriesAdd> createState() => _CategoriesAddState();
+  State<CategoriesAdd> createState() => _CategoriesAddState(controller, index, category);
 }
 
 class _CategoriesAddState extends State<CategoriesAdd> {
+  final CategoriesController controller;
+  final int index;
+  final Categories category;
+  _CategoriesAddState(this.controller, this.index, this.category);
+
   final TextEditingController _controller = TextEditingController();
-  late CategoriesController controller;
-  late int index;
-  late bool state;
-  late Categories category;
+  late bool state = false;
   @override
   void initState() {
     super.initState();
-    controller = widget.controller;
-    index = widget.index;
     state = index == 0;
-    category = widget.category;
-
     if (widget.status) {
       _controller.text = category.title!;
     }
@@ -94,9 +86,9 @@ class _CategoriesAddState extends State<CategoriesAdd> {
                       data = await controller.updateCategory(
                         Categories(
                           title: title,
-                          id: widget.category.id,
-                          color: widget.category.color,
-                          state: widget.category.state,
+                          id: category.id,
+                          color: category.color,
+                          state: category.state,
                         ),
                       );
                     } else {

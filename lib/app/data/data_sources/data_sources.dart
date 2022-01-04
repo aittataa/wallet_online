@@ -1,9 +1,10 @@
 import 'package:get/get.dart';
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
-import 'package:wallet_online/app/data/models/categories.dart';
-import 'package:wallet_online/app/data/models/settings.dart';
-import 'package:wallet_online/app/data/models/transactions.dart';
+
+import '../models/categories.dart';
+import '../models/settings.dart';
+import '../models/transactions.dart';
 
 class DataSources extends GetConnect {
   @override

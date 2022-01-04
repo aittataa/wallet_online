@@ -1,11 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:wallet_online/app/config/constants/app_constant.dart';
-import 'package:wallet_online/app/config/functions/app_function.dart';
-import 'package:wallet_online/app/config/themes/app_theme.dart';
-import 'package:wallet_online/app/data/models/categories.dart';
-import 'package:wallet_online/app/modules/categories/controllers/categories_controller.dart';
-import 'package:wallet_online/app/modules/categories/widgets/categories_add.dart';
+
+import '../../../config/constants/app_constant.dart';
+import '../../../config/functions/app_function.dart';
+import '../../../config/themes/app_theme.dart';
+import '../../../data/models/categories.dart';
+import '../controllers/categories_controller.dart';
+import '../widgets/categories_add.dart';
 
 class CategoryShape extends StatelessWidget {
   final CategoriesController controller;

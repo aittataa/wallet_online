@@ -11,6 +11,7 @@ import 'package:wallet_online/app/shared/bounce_point.dart';
 import 'package:wallet_online/app/shared/empty_box.dart';
 
 class SettingsView extends StatefulWidget {
+  const SettingsView({Key? key}) : super(key: key);
   @override
   State<SettingsView> createState() => _SettingsViewState();
 }

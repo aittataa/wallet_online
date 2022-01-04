@@ -7,7 +7,6 @@ class BouncePoint extends StatelessWidget {
   final bool state;
   final double size;
   final Color? color;
-
   const BouncePoint({
     Key? key,
     this.state = true,

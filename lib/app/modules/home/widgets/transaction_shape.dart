@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:wallet_online/app/config/constants/app_constant.dart';
 import 'package:wallet_online/app/config/functions/app_function.dart';
 import 'package:wallet_online/app/config/themes/app_theme.dart';
@@ -33,8 +32,7 @@ class TransactionShape extends StatelessWidget {
         leading: SizedBox(
           width: MediaQuery.of(context).size.width * .25,
           child: Text(
-            (transaction.state == 0 ? "+" : "-") +
-                "${transaction.amount!.toStringAsFixed(2)} ${AppConstant.appCurrency}",
+            (transaction.state == 0 ? "+" : "-") + "${transaction.amount!.toStringAsFixed(2)} ${AppConstant.appCurrency}",
             overflow: TextOverflow.ellipsis,
             style: TextStyle(
               color: transaction.state == 0 ? AppTheme.incomeColor : AppTheme.expenseColor,

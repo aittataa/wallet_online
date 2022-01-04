@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:wallet_online/app/config/messages/app_message.dart';
-import 'package:wallet_online/app/config/themes/app_theme.dart';
+
+import '../messages/app_message.dart';
+import '../themes/app_theme.dart';
 
 class AppConstant {
   AppConstant._();

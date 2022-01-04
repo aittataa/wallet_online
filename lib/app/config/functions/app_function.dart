@@ -4,8 +4,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
-import 'package:wallet_online/app/config/constants/app_constant.dart';
-import 'package:wallet_online/app/config/themes/app_theme.dart';
+
+import '../constants/app_constant.dart';
+import '../themes/app_theme.dart';
 
 class AppFunction {
   AppFunction._();

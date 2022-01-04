@@ -1,18 +1,20 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:wallet_online/app/config/constants/app_constant.dart';
-import 'package:wallet_online/app/config/functions/app_function.dart';
-import 'package:wallet_online/app/config/messages/app_message.dart';
-import 'package:wallet_online/app/data/models/categories.dart';
-import 'package:wallet_online/app/modules/categories/controllers/categories_controller.dart';
-import 'package:wallet_online/app/modules/categories/widgets/categories_add.dart';
-import 'package:wallet_online/app/modules/categories/widgets/categories_page.dart';
-import 'package:wallet_online/app/shared/action_button.dart';
-import 'package:wallet_online/app/shared/bounce_point.dart';
-import 'package:wallet_online/app/shared/header_button.dart';
+
+import '../../../config/constants/app_constant.dart';
+import '../../../config/functions/app_function.dart';
+import '../../../config/messages/app_message.dart';
+import '../../../data/models/categories.dart';
+import '../../../shared/action_button.dart';
+import '../../../shared/bounce_point.dart';
+import '../../../shared/header_button.dart';
+import '../controllers/categories_controller.dart';
+import '../widgets/categories_add.dart';
+import '../widgets/categories_page.dart';
 
 class CategoriesView extends StatefulWidget {
+  const CategoriesView({Key? key}) : super(key: key);
   @override
   State<CategoriesView> createState() => _CategoriesViewState();
 }

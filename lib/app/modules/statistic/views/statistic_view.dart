@@ -11,6 +11,7 @@ import 'package:wallet_online/app/shared/bounce_point.dart';
 import 'package:wallet_online/app/shared/header_button.dart';
 
 class StatisticView extends StatefulWidget {
+  const StatisticView({Key? key}) : super(key: key);
   @override
   State<StatisticView> createState() => _StatisticViewState();
 }

@@ -12,19 +12,18 @@ import 'package:wallet_online/app/shared/header_button.dart';
 class TransactionAdd extends StatefulWidget {
   final HomeController controller;
   const TransactionAdd({Key? key, required this.controller}) : super(key: key);
-
   @override
-  State<TransactionAdd> createState() => _TransactionAddState();
+  State<TransactionAdd> createState() => _TransactionAddState(controller);
 }
 
 class _TransactionAddState extends State<TransactionAdd> {
-  late HomeController controller;
+  final HomeController controller;
+  _TransactionAddState(this.controller);
 
   @override
   void initState() {
     super.initState();
     AppConstant.pageController = PageController(initialPage: AppConstant.pageIndex);
-    controller = widget.controller;
   }
 
   @override

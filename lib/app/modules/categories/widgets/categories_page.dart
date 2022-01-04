@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:wallet_online/app/data/models/categories.dart';
-import 'package:wallet_online/app/modules/categories/controllers/categories_controller.dart';
-import 'package:wallet_online/app/modules/categories/widgets/category_shape.dart';
-import 'package:wallet_online/app/shared/empty_box.dart';
+
+import '../../../data/models/categories.dart';
+import '../../../shared/empty_box.dart';
+import '../controllers/categories_controller.dart';
+import '../widgets/category_shape.dart';
 
 class CategoriesPage extends StatefulWidget {
   final CategoriesController controller;
@@ -13,28 +14,31 @@ class CategoriesPage extends StatefulWidget {
     required this.myList,
   }) : super(key: key);
   @override
-  State<CategoriesPage> createState() => _CategoriesPageState();
+  State<CategoriesPage> createState() => _CategoriesPageState(controller, myList);
 }
 
 class _CategoriesPageState extends State<CategoriesPage> {
+  final CategoriesController controller;
+  final List<Categories> myList;
+  _CategoriesPageState(this.controller, this.myList);
   @override
   Widget build(BuildContext context) {
-    if (widget.myList.isNotEmpty) {
+    if (myList.isNotEmpty) {
       return ListView.builder(
         shrinkWrap: true,
         padding: const EdgeInsets.all(10),
         physics: const BouncingScrollPhysics(),
-        itemCount: widget.myList.length,
+        itemCount: myList.length,
         itemBuilder: (context, i) {
-          final Categories category = widget.myList[i];
+          final Categories category = myList[i];
           return CategoryShape(
-            controller: widget.controller,
+            controller: controller,
             category: category,
             onPressed: () async {
               final int id = category.id!;
-              var data = await widget.controller.deleteCategory(id);
+              var data = await controller.deleteCategory(id);
               setState(() {
-                widget.myList.remove(category);
+                myList.remove(category);
                 print(data);
               });
             },

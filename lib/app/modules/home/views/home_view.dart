@@ -15,6 +15,7 @@ import 'package:wallet_online/app/shared/bounce_point.dart';
 import 'package:wallet_online/app/shared/empty_box.dart';
 
 class HomeView extends StatefulWidget {
+  const HomeView({Key? key}) : super(key: key);
   @override
   State<HomeView> createState() => _HomeViewState();
 }
