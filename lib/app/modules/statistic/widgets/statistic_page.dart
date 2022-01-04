@@ -34,8 +34,7 @@ class StatisticPage extends StatelessWidget {
             ),
             child: PieChart(
               PieChartData(
-                sectionsSpace: 5,
-                centerSpaceRadius: 5,
+                sectionsSpace: 1,
                 borderData: FlBorderData(show: false),
                 sections: List.generate(myList.length, (i) {
                   final Categories category = myList[i];
