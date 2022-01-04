@@ -16,8 +16,14 @@ dependencies:
     sdk: flutter
 
 dev_dependencies:
+  flutter_launcher_icons: ^0.9.0
   flutter_test:
     sdk: flutter
+
+flutter_icons:
+  android: "app_icon_round"
+  ios: true
+  image_path: "assets/icons/app_icon_round.png"
 
 flutter:
   uses-material-design: true

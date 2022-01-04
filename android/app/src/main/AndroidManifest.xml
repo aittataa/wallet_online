@@ -2,7 +2,7 @@
     package="com.wallet_online.wallet_online">
    <application
         android:label="Wallet Online"
-        android:icon="@mipmap/app_icon">
+        android:icon="@mipmap/app_icon_round">
         <activity
             android:name=".MainActivity"
             android:launchMode="singleTop"
