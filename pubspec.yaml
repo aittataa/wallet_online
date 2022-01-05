@@ -21,8 +21,8 @@ dev_dependencies:
   flutter_test: 
     sdk: flutter
 
-flutter: 
-  assets: 
-    - assets/icons/
+flutter:
   uses-material-design: true
+  assets:
+    - assets/
 

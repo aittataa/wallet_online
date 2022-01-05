@@ -26,6 +26,7 @@ class _InitialViewState extends State<InitialView> {
   }
 
   final BannerAd bannerAd = BannerAd(
+    // adUnitId: BannerAd.testAdUnitId,
     adUnitId: AdUnits.bannerAd,
     size: AdSize.banner,
     request: AdRequest(),
