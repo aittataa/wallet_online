@@ -65,7 +65,6 @@ class _InitialViewState extends State<InitialView> {
               curve: AppConstant.curve,
               width: 300,
               height: 50,
-              color: Colors.red,
               child: AdWidget(ad: bannerAd),
             ),
         ],
