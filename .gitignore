@@ -40,10 +40,10 @@ app.*.symbols
 app.*.map.json
 
 # Android Studio will place build artifacts here
+/lib/app/config/app_ads.dart
 /android/app/debug
 /android/app/profile
 /android/app/release
 /android/key.properties
 /android/app/wallet_online.jks
-/lib/app/config/app_ads.dart
 /details.txt
