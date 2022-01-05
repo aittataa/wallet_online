@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import '../config/constants/app_constant.dart';
-import '../config/themes/app_theme.dart';
+import '../config/app_constant.dart';
+import '../config/app_theme.dart';
 
 class ActionButton extends StatelessWidget {
   final Function() onPressed;

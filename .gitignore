@@ -45,5 +45,5 @@ app.*.map.json
 /android/app/release
 /android/key.properties
 /android/app/wallet_online.jks
-/lib/app/config/ads/app_ads.dart
+/lib/app/config/app_ads.dart
 /details.txt

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
-import '../../../config/constants/app_constant.dart';
-import '../../../config/functions/app_function.dart';
-import '../../../config/messages/app_message.dart';
-import '../../../config/themes/app_theme.dart';
+import '../../../config/app_constant.dart';
+import '../../../config/app_function.dart';
+import '../../../config/app_message.dart';
+import '../../../config/app_theme.dart';
 import '../../../data/models/categories.dart';
 import '../../../shared/add_button.dart';
 import '../../../shared/field_text.dart';

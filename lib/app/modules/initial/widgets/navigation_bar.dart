@@ -1,9 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import '../../../config/constants/app_constant.dart';
-import '../../../config/messages/app_message.dart';
-import '../../../config/themes/app_theme.dart';
+import '../../../config/app_constant.dart';
+import '../../../config/app_message.dart';
+import '../../../config/app_theme.dart';
 
 class FooterBar extends StatelessWidget {
   final int currentIndex;

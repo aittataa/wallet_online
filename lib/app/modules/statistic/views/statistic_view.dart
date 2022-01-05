@@ -1,14 +1,15 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:wallet_online/app/config/constants/app_constant.dart';
-import 'package:wallet_online/app/config/functions/app_function.dart';
-import 'package:wallet_online/app/config/messages/app_message.dart';
-import 'package:wallet_online/app/data/models/categories.dart';
-import 'package:wallet_online/app/modules/statistic/controllers/statistic_controller.dart';
-import 'package:wallet_online/app/modules/statistic/widgets/statistic_page.dart';
-import 'package:wallet_online/app/shared/bounce_point.dart';
-import 'package:wallet_online/app/shared/header_button.dart';
+
+import '../../../config/app_constant.dart';
+import '../../../config/app_function.dart';
+import '../../../config/app_message.dart';
+import '../../../data/models/categories.dart';
+import '../../../shared/bounce_point.dart';
+import '../../../shared/header_button.dart';
+import '../controllers/statistic_controller.dart';
+import '../widgets/statistic_page.dart';
 
 class StatisticView extends StatefulWidget {
   const StatisticView({Key? key}) : super(key: key);

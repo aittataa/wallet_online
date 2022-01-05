@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 
-import '../config/themes/app_theme.dart';
+import '../config/app_theme.dart';
 
 class EmptyBox extends StatelessWidget {
   const EmptyBox({Key? key}) : super(key: key);

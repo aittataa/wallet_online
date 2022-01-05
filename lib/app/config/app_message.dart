@@ -10,8 +10,6 @@ class AppMessage {
   static const String newExpenses = "New Expenses";
   static const String typeNewIncome = "Type New Income...";
   static const String typeNewExpenses = "Type New Expenses...";
-  static const String addTransaction = "Add New Transaction";
-  static const String addCategory = "Add New Category";
   static const String labelCategory = "Category";
   static const String labelSave = "Save";
   static const String labelAdd = "Add";
@@ -25,9 +23,9 @@ class AppMessage {
   static const String errorMessage_3 = "Something Went Wrong";
 
   /// TODO : App Icon
-  static const String appLogo = "assets/icons/icon.png";
-  static const String appIcon = "assets/icons/app_icon.png";
-  static const String appIconRound = "assets/icons/app_icon_round.png";
+  static const String appLogo = "assets/icon.png";
+  static const String appIcon = "assets/app_icon.png";
+  static const String appIconRound = "assets/app_icon_round.png";
 
   /// TODO : Language
   static const String languageLabel = "Language";

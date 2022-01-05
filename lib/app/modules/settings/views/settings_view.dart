@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../../config/constants/app_constant.dart';
-import '../../../config/messages/app_message.dart';
-import '../../../config/themes/app_theme.dart';
+import '../../../config/app_constant.dart';
+import '../../../config/app_message.dart';
+import '../../../config/app_theme.dart';
 import '../../../data/models/settings.dart';
 import '../../../shared/add_button.dart';
 import '../../../shared/bounce_point.dart';
@@ -26,7 +26,6 @@ class _SettingsViewState extends State<SettingsView> {
   void initState() {
     super.initState();
     selectedCurrency = AppConstant.appCurrency;
-    selectedLanguage = AppMessage.languageEN;
   }
 
   @override
@@ -55,43 +54,6 @@ class _SettingsViewState extends State<SettingsView> {
                       image: DecorationImage(image: AssetImage(AppMessage.appLogo)),
                     ),
                   ),
-                  /*
-                  ListTile(
-                    dense: true,
-                    contentPadding: const EdgeInsets.symmetric(vertical: 5),
-                    minVerticalPadding: 0,
-                    leading: SizedBox(
-                      width: 100,
-                      child: Text(
-                        "${AppMessage.languageLabel} :",
-                        style: TextStyle(
-                          color: AppTheme.primaryTextColor,
-                          fontWeight: FontWeight.w900,
-                        ),
-                      ),
-                    ),
-                    title: DropdownList(
-                      hint: AppMessage.languageLabel,
-                      value: selectedLanguage,
-                      onChanged: (value) async {
-                        setState(() => selectedLanguage = value);
-                      },
-                      myList: List.generate(AppConstant.languageList.length, (index) {
-                        String language = AppConstant.languageList[index];
-                        return DropdownMenuItem(
-                          value: language,
-                          child: Text(
-                            language,
-                            style: const TextStyle(
-                              color: AppTheme.primaryTextColor,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                        );
-                      }),
-                    ),
-                  ),
-                  */
                   ListTile(
                     dense: true,
                     contentPadding: const EdgeInsets.symmetric(vertical: 5),

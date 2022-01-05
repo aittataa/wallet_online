@@ -1,11 +1,12 @@
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
-import 'package:wallet_online/app/config/constants/app_constant.dart';
-import 'package:wallet_online/app/config/themes/app_theme.dart';
-import 'package:wallet_online/app/data/models/categories.dart';
-import 'package:wallet_online/app/modules/statistic/controllers/statistic_controller.dart';
-import 'package:wallet_online/app/modules/statistic/widgets/statistic_shape.dart';
-import 'package:wallet_online/app/shared/empty_box.dart';
+
+import '../../../config/app_constant.dart';
+import '../../../config/app_theme.dart';
+import '../../../data/models/categories.dart';
+import '../../../shared/empty_box.dart';
+import '../controllers/statistic_controller.dart';
+import '../widgets/statistic_shape.dart';
 
 class StatisticPage extends StatelessWidget {
   final StatisticController controller;

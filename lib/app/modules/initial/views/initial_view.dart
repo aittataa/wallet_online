@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 
-import '../../../config/constants/app_constant.dart';
-import '../../../config/networks/network.dart';
+import '../../../config/app_ads.dart';
+import '../../../config/app_constant.dart';
+import '../../../config/app_network.dart';
 import '../../../modules/categories/views/categories_view.dart';
 import '../../../modules/home/views/home_view.dart';
 import '../../../modules/settings/views/settings_view.dart';
@@ -25,7 +26,7 @@ class _InitialViewState extends State<InitialView> {
   }
 
   final BannerAd bannerAd = BannerAd(
-    adUnitId: BannerAd.testAdUnitId,
+    adUnitId: AdUnits.bannerAd,
     size: AdSize.banner,
     request: AdRequest(),
     listener: BannerAdListener(),
