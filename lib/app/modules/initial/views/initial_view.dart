@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
+import 'package:wallet_online/app/config/app_ads.dart';
 
-import '../../../config/app_ads.dart';
 import '../../../config/app_constant.dart';
 import '../../../config/app_network.dart';
 import '../../../modules/categories/views/categories_view.dart';
@@ -64,7 +64,6 @@ class _InitialViewState extends State<InitialView> {
             AnimatedContainer(
               duration: AppConstant.durationAnimated,
               curve: AppConstant.curve,
-              width: 300,
               height: 50,
               child: AdWidget(ad: bannerAd),
             ),
