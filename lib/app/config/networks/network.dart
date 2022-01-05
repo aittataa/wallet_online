@@ -1,7 +1,7 @@
 import 'package:connectivity/connectivity.dart';
 
 class Network {
-  static Future<bool> get hasConnection async {
+  static get hasConnection async {
     var result = await (Connectivity().checkConnectivity());
     switch (result) {
       case ConnectivityResult.wifi:
