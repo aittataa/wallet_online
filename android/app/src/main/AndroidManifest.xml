@@ -5,7 +5,7 @@
 
    <application
         android:label="Wallet Online"
-        android:icon="@mipmap/app_icon_round">
+        android:icon="@mipmap/app_icon">
         <activity
             android:name=".MainActivity"
             android:launchMode="singleTop"
