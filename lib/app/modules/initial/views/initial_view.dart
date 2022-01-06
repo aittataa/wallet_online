@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
+import 'package:wallet_online/app/config/app_ads.dart';
 
 import '../../../config/app_constant.dart';
 import '../../../config/app_network.dart';
@@ -25,8 +26,8 @@ class _InitialViewState extends State<InitialView> {
   }
 
   final BannerAd bannerAd = BannerAd(
-    adUnitId: BannerAd.testAdUnitId,
-    // adUnitId: AdUnits.bannerAd,
+    // adUnitId: BannerAd.testAdUnitId,
+    adUnitId: AdUnits.bannerAd,
     size: AdSize.banner,
     request: AdRequest(),
     listener: BannerAdListener(),
