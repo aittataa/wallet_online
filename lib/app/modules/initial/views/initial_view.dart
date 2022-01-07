@@ -60,15 +60,14 @@ class _InitialViewState extends State<InitialView> {
               ],
             ),
           ),
-          //if (bannerAd.load().hashCode)
-          AnimatedContainer(
-            duration: AppConstant.durationAnimated,
-            curve: AppConstant.curve,
-            height: 50,
-            width: 300,
-            color: Colors.red,
-            child: AdWidget(ad: bannerAd),
-          ),
+          if (hasConnection)
+            AnimatedContainer(
+              duration: AppConstant.durationAnimated,
+              curve: AppConstant.curve,
+              height: 50,
+              width: 300,
+              child: AdWidget(ad: bannerAd),
+            ),
         ],
       ),
       bottomNavigationBar: FooterBar(
