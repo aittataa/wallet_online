@@ -1,6 +1,7 @@
 import 'package:get/get.dart';
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
+import 'package:wallet_online/app/config/app_function.dart';
 
 import '../models/categories.dart';
 import '../models/settings.dart';
@@ -36,6 +37,18 @@ class DataSources extends GetConnect {
       $_state BIT NOT NULL
   );''';
 
+  static String _tbl_category_data_query = '''
+  INSERT INTO $_tbl_category($_id, $_title, $_color, $_state)VALUES
+    (1, 'Others', '${AppFunction.getRandomColor}', 0),
+    (2, 'Salary', '${AppFunction.getRandomColor}', 0),
+    (3, 'Others', '${AppFunction.getRandomColor}', 1),
+    (4, 'Food', '${AppFunction.getRandomColor}', 1),
+    (5, 'Clothes', '${AppFunction.getRandomColor}', 1),
+    (6, 'Transportation', '${AppFunction.getRandomColor}', 1),
+    (7, 'Shopping', '${AppFunction.getRandomColor}', 1),
+    (8, 'Bills', '${AppFunction.getRandomColor}', 1)
+  ''';
+
   static const String _tbl_transaction = "transactions";
   static const String _description = "description";
   static const String _date = "date";
@@ -58,9 +71,11 @@ class DataSources extends GetConnect {
       version: 1,
       onCreate: (db, version) async {
         await db.execute(_tbl_settings_query);
-        await db.execute(_tbl_settings_data_query);
         await db.execute(_tbl_category_query);
         await db.execute(_tbl_transaction_query);
+        //
+        await db.execute(_tbl_settings_data_query);
+        await db.execute(_tbl_category_data_query);
       },
     );
   }
