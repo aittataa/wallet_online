@@ -1,6 +1,5 @@
 import 'package:get/get.dart';
 
-import '../config/app_constant.dart';
 import '../modules/categories/bindings/categories_binding.dart';
 import '../modules/categories/views/categories_view.dart';
 import '../modules/home/bindings/home_binding.dart';
@@ -24,41 +23,26 @@ class AppPages {
       name: _Paths.INITIAL,
       page: () => InitialView(),
       binding: InitialBinding(),
-      curve: AppConstant.curve,
-      transitionDuration: AppConstant.durationRoute,
-      transition: AppConstant.transitionRoute,
     ),
     GetPage(
       name: _Paths.HOME,
       page: () => HomeView(),
       binding: HomeBinding(),
-      curve: AppConstant.curve,
-      transitionDuration: AppConstant.durationRoute,
-      transition: AppConstant.transitionRoute,
     ),
     GetPage(
       name: _Paths.CATEGORIES,
       page: () => CategoriesView(),
       binding: CategoriesBinding(),
-      curve: AppConstant.curve,
-      transitionDuration: AppConstant.durationRoute,
-      transition: AppConstant.transitionRoute,
     ),
     GetPage(
       name: _Paths.STATISTIC,
       page: () => StatisticView(),
       binding: StatisticBinding(),
-      curve: AppConstant.curve,
-      transitionDuration: AppConstant.durationRoute,
-      transition: AppConstant.transitionRoute,
     ),
     GetPage(
       name: _Paths.SETTINGS,
       page: () => SettingsView(),
       binding: SettingsBinding(),
-      curve: AppConstant.curve,
-      transitionDuration: AppConstant.durationRoute,
-      transition: AppConstant.transitionRoute,
     ),
   ];
 }

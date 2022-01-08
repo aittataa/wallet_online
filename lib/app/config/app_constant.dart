@@ -30,15 +30,7 @@ class AppConstant {
   static const Duration duration = Duration(milliseconds: 1500);
   static const Duration durationPage = Duration(milliseconds: 500);
   static const Duration durationSwap = Duration(milliseconds: 1000);
-  static const Duration durationRoute = Duration(milliseconds: 100);
   static const Duration durationSplash = Duration(milliseconds: 1500);
-
-  /// TODO : Lists
-  // static const List<String> languageList = [
-  //   AppMessage.languageEN,
-  //   AppMessage.languageAR,
-  //   AppMessage.languageFR,
-  // ];
 
   static const List<String> currencyList = [
     AppMessage.currencyMAD,

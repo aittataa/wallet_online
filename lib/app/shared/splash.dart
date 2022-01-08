@@ -14,14 +14,7 @@ class Splash extends StatelessWidget {
     return AnimatedSplashScreen(
       splash: Column(
         children: [
-          Expanded(
-            flex: 2,
-            child: Image.asset(
-              AppMessage.appLogo,
-              width: 200,
-              height: 200,
-            ),
-          ),
+          Expanded(flex: 3, child: Image.asset(AppMessage.appLogo, width: 200, height: 200)),
           Expanded(child: BouncePoint(size: 60)),
         ],
       ),

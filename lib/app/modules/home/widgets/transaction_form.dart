@@ -33,13 +33,16 @@ class _TransactionFormState extends State<TransactionForm> {
 
   final TextEditingController amountController = TextEditingController();
   final TextEditingController descriptionController = TextEditingController();
-  late String selectedCategory = "";
-  late int selectedCategoryId = 0;
-  late DateTime selectedDate = DateTime.now();
+  late String selectedCategory;
+  late int selectedCategoryId;
+  late DateTime selectedDate;
 
   @override
   void initState() {
     super.initState();
+    selectedCategory = "";
+    selectedCategoryId = 0;
+    selectedDate = DateTime.now();
     if (myList.isNotEmpty) {
       selectedCategory = myList.first.title!;
     } else {
