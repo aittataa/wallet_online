@@ -67,7 +67,7 @@ class _TransactionAddState extends State<TransactionAdd> {
         ),
         content: SizedBox(
           width: AppConstant.screenWidth * 0.95,
-          height: 300,
+          height: 270,
           child: PageView(
             controller: AppConstant.pageController,
             physics: NeverScrollableScrollPhysics(),

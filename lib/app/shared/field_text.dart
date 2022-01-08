@@ -12,11 +12,11 @@ class FieldText extends StatelessWidget {
   final int maxLines;
   const FieldText({
     Key? key,
+    this.controller,
+    required this.hintText,
     this.index = 0,
     this.state = false,
-    required this.hintText,
     this.maxLines = 1,
-    this.controller,
   }) : super(key: key);
 
   @override
@@ -62,7 +62,7 @@ class FieldText extends StatelessWidget {
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10),
           borderSide: BorderSide(
-            width: 2.5,
+            width: 2,
             color: state
                 ? index == 0
                     ? AppTheme.incomeColor

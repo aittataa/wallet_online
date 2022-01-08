@@ -18,8 +18,8 @@ class DateTimePicker extends StatelessWidget {
         onDateTimeChanged: onDateTimeChanged,
         initialDateTime: DateTime.now(),
         mode: CupertinoDatePickerMode.date,
-        minimumYear: DateTime.now().year - 5,
-        maximumYear: DateTime.now().year + 5,
+        minimumYear: DateTime.now().year - 10,
+        maximumYear: DateTime.now().year + 10,
       ),
     );
   }

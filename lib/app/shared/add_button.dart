@@ -27,8 +27,11 @@ class AddButton extends StatelessWidget {
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
       padding: EdgeInsets.all(15),
       child: Text(
-        "$title",
-        style: TextStyle(color: AppTheme.secondaryTextColor, fontWeight: FontWeight.w900),
+        title,
+        style: TextStyle(
+          color: AppTheme.secondaryTextColor,
+          fontWeight: FontWeight.w900,
+        ),
       ),
     );
   }
