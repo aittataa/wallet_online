@@ -18,7 +18,7 @@ class AppConstant {
   static double screenWidth = Get.width;
   static double screenHeight = Get.height;
 
-  static const double elevation = 2.5;
+  static const double elevation = 1;
 
   /// TODO : Curves
   static const Curve curve = Curves.linearToEaseOut;
@@ -28,18 +28,17 @@ class AppConstant {
 
   /// TODO : Durations
   static const Duration duration = Duration(milliseconds: 1500);
-  static const Duration durationPage = Duration(milliseconds: 1000);
+  static const Duration durationPage = Duration(milliseconds: 500);
   static const Duration durationSwap = Duration(milliseconds: 1000);
   static const Duration durationRoute = Duration(milliseconds: 100);
   static const Duration durationSplash = Duration(milliseconds: 1500);
-  static const Duration durationAnimated = Duration(milliseconds: 500);
 
   /// TODO : Lists
-  static const List<String> languageList = [
-    AppMessage.languageEN,
-    AppMessage.languageAR,
-    AppMessage.languageFR,
-  ];
+  // static const List<String> languageList = [
+  //   AppMessage.languageEN,
+  //   AppMessage.languageAR,
+  //   AppMessage.languageFR,
+  // ];
 
   static const List<String> currencyList = [
     AppMessage.currencyMAD,

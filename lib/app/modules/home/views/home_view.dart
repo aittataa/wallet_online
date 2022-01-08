@@ -133,7 +133,7 @@ class _HomeViewState extends State<HomeView> {
                 ListView.builder(
                   shrinkWrap: true,
                   padding: const EdgeInsets.symmetric(vertical: 5),
-                  physics: const NeverScrollableScrollPhysics(),
+                  physics: const BouncingScrollPhysics(),
                   itemCount: myList.length,
                   itemBuilder: (context, i) {
                     final Transactions transaction = myList[i];

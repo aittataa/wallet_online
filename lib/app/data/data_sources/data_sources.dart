@@ -65,6 +65,20 @@ class DataSources extends GetConnect {
       $_categoryID INTEGER NOT NULL
   );''';
 
+  static const String _tbl_transaction_data_query = '''
+   INSERT INTO $_tbl_transaction ($_title, $_description, $_amount, $_categoryID, $_state) VALUES
+    ('Others', 'Others Stuff', 100, 3, 1),
+    ('Salary', 'Raise', 1000, 2, 0),
+    ('Clothes', '', 1000, 5, 1),
+    ('Food', 'Dinner', 100, 4, 1),
+    ('Shopping', '', 500, 7, 1),
+    ('Others', 'Gift', 1000, 1, 0),
+    ('Salary', '', 5000, 2, 0),
+    ('Bills', 'Wi-Fi', 250, 8, 1),
+    ('Food', 'Lunch', 100, 4, 1),
+    ('Transportation', '', 75, 6, 1)
+   ''';
+
   Future<Database> get _database async {
     return await openDatabase(
       join(await getDatabasesPath(), _db_name),
@@ -73,9 +87,11 @@ class DataSources extends GetConnect {
         await db.execute(_tbl_settings_query);
         await db.execute(_tbl_category_query);
         await db.execute(_tbl_transaction_query);
-        //
+
+        ///
         await db.execute(_tbl_settings_data_query);
         await db.execute(_tbl_category_data_query);
+        await db.execute(_tbl_transaction_data_query);
       },
     );
   }
