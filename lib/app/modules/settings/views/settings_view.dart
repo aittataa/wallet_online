@@ -100,7 +100,7 @@ class _SettingsViewState extends State<SettingsView> {
                         );
                         if (!(data == null)) {
                           AppConstant.appCurrency = selectedCurrency;
-                          AppFunction.messageBox(message: "Updated Successfully");
+                          AppFunction.messageBox(message: AppMessage.messageUpdate);
                         }
                       },
                     ),

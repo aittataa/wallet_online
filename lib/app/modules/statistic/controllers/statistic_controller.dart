@@ -1,8 +1,8 @@
 import 'package:get/get.dart';
-import 'package:wallet_online/app/data/models/transactions.dart';
 
 import '../../../data/data_sources/data_sources.dart';
 import '../../../data/models/categories.dart';
+import '../../../data/models/transactions.dart';
 
 class StatisticController extends GetxController {
   final DataSources _dataSources = Get.put(DataSources());
