@@ -19,8 +19,6 @@ class AppMessage {
   static const String amount = "200";
 
   /// TODO : App Error
-  // static const String errorMessage_1 = "Please Add Some Category";
-  // static const String errorMessage_2 = "Please Type Some Category";
   static const String errorTitle = "Error";
   static const String errorMessage_1 = "Something Went Wrong";
 
