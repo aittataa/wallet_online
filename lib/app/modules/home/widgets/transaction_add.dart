@@ -37,7 +37,7 @@ class _TransactionAddState extends State<TransactionAdd> {
         titlePadding: EdgeInsets.zero,
         actionsPadding: EdgeInsets.zero,
         buttonPadding: EdgeInsets.zero,
-        backgroundColor: AppTheme.backgroundColor,
+        backgroundColor: AppTheme.primaryBackColor,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
         title: Row(
           children: [

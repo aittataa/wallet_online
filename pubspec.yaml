@@ -12,15 +12,15 @@ dependencies:
   sqflite: 2.0.1
   fl_chart: 0.40.6
   intl: 0.17.0
-
-  flutter: 
+  flutter:
     sdk: flutter
 
-dev_dependencies:
-  flutter_test:
+dev_dependencies: 
+  flutter_test: 
     sdk: flutter
 
-flutter:
-  uses-material-design: true
-  assets:
+flutter: 
+  assets: 
     - assets/
+  uses-material-design: true
+

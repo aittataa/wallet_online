@@ -31,7 +31,9 @@ class AppConstant {
   static const Duration durationPage = Duration(milliseconds: 500);
   static const Duration durationSwap = Duration(milliseconds: 1000);
   static const Duration durationSplash = Duration(milliseconds: 1500);
+  static const Duration durationSnack = Duration(milliseconds: 1500);
 
+  /// TODO : Currency List
   static const List<String> currencyList = [
     AppMessage.currencyMAD,
     AppMessage.currencyUSD,

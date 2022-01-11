@@ -13,14 +13,15 @@ class AppMessage {
   static const String labelCategory = "Category";
   static const String labelSave = "Save";
   static const String labelAdd = "Add";
+  static const String labelUpdate = "Update";
   static const String typeMessage = "Type Something...";
   static const String amount = "200";
 
   /// TODO : App Error
+  // static const String errorMessage_1 = "Please Add Some Category";
+  // static const String errorMessage_2 = "Please Type Some Category";
   static const String errorTitle = "Error";
-  static const String errorMessage_1 = "Please Add Some Category";
-  static const String errorMessage_2 = "Please Type Some Category";
-  static const String errorMessage_3 = "Something Went Wrong";
+  static const String errorMessage_1 = "Something Went Wrong";
 
   /// TODO : App Icon
   static const String appLogo = "assets/icon.png";

@@ -91,7 +91,7 @@ class DataSources extends GetConnect {
         ///
         await db.execute(_tbl_settings_data_query);
         await db.execute(_tbl_category_data_query);
-        //await db.execute(_tbl_transaction_data_query);
+        await db.execute(_tbl_transaction_data_query);
       },
     );
   }
@@ -110,7 +110,6 @@ class DataSources extends GetConnect {
       settings.toMap(),
       where: "$_id = ?",
       whereArgs: [settings.id],
-      conflictAlgorithm: ConflictAlgorithm.replace,
     );
     return response;
   }
@@ -135,7 +134,6 @@ class DataSources extends GetConnect {
     final response = await db.insert(
       _tbl_category,
       category.toMap(),
-      conflictAlgorithm: ConflictAlgorithm.replace,
     );
     return response;
   }
@@ -147,7 +145,6 @@ class DataSources extends GetConnect {
       category.toMap(),
       where: "$_id = ?",
       whereArgs: [category.id],
-      conflictAlgorithm: ConflictAlgorithm.replace,
     );
     return response;
   }
@@ -177,7 +174,6 @@ class DataSources extends GetConnect {
     final response = await db.insert(
       _tbl_transaction,
       transaction.toMap(),
-      conflictAlgorithm: ConflictAlgorithm.replace,
     );
     return response;
   }

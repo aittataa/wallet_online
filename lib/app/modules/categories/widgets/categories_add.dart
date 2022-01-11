@@ -44,7 +44,7 @@ class _CategoriesAddState extends State<CategoriesAdd> {
       titlePadding: EdgeInsets.zero,
       buttonPadding: EdgeInsets.zero,
       actionsPadding: EdgeInsets.zero,
-      backgroundColor: AppTheme.backgroundColor,
+      backgroundColor: AppTheme.primaryBackColor,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
       title: Container(
         padding: EdgeInsets.all(10),
@@ -74,7 +74,7 @@ class _CategoriesAddState extends State<CategoriesAdd> {
               index: index,
             ),
             AddButton(
-              title: AppMessage.labelAdd,
+              title: widget.status ? AppMessage.labelUpdate : AppMessage.labelAdd,
               color: state ? AppTheme.incomeColor : AppTheme.expenseColor,
               onPressed: () async {
                 try {
@@ -100,22 +100,20 @@ class _CategoriesAddState extends State<CategoriesAdd> {
                         ),
                       );
                     }
-                    print(data);
-                    Navigator.pop(context);
+                    setState(() {
+                      print(data);
+                      Navigator.pop(context);
+                    });
                   } else {
                     Navigator.pop(context);
-                    AppFunction.snackBar(
-                      title: AppMessage.errorTitle,
-                      message: AppMessage.errorMessage_2,
-                    );
                   }
                 } catch (e) {
                   Navigator.pop(context);
                   AppFunction.snackBar(
                     title: AppMessage.errorTitle,
-                    message: AppMessage.errorMessage_3,
+                    message: AppMessage.errorMessage_1,
                   );
-                  throw Exception(AppMessage.errorMessage_3);
+                  throw Exception(AppMessage.errorMessage_1);
                 }
               },
             )

@@ -123,22 +123,20 @@ class _TransactionFormState extends State<TransactionForm> {
                     categoryID: selectedCategoryId,
                   );
                   var data = await controller.addTransaction(transaction);
-                  print(data);
-                  Navigator.pop(context);
+                  setState(() {
+                    print(data);
+                    Navigator.pop(context);
+                  });
                 } else {
                   Navigator.pop(context);
-                  AppFunction.snackBar(
-                    title: AppMessage.errorTitle,
-                    message: AppMessage.errorMessage_1,
-                  );
                 }
               } catch (e) {
                 Navigator.pop(context);
                 AppFunction.snackBar(
                   title: AppMessage.errorTitle,
-                  message: AppMessage.errorMessage_3,
+                  message: AppMessage.errorMessage_1,
                 );
-                throw Exception(AppMessage.errorMessage_3);
+                throw Exception(AppMessage.errorMessage_1);
               }
             },
           ),

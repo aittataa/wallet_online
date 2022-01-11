@@ -98,7 +98,7 @@ class _HomeViewState extends State<HomeView> {
                                   );
 
                                 default:
-                                  throw Exception(AppMessage.errorMessage_3);
+                                  throw Exception(AppMessage.errorMessage_1);
                               }
                             }),
                           ),

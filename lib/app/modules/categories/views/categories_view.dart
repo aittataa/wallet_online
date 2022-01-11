@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:wallet_online/app/modules/categories/widgets/categories_add.dart';
 
 import '../../../config/app_constant.dart';
 import '../../../config/app_function.dart';
@@ -10,7 +11,6 @@ import '../../../shared/action_button.dart';
 import '../../../shared/bounce_point.dart';
 import '../../../shared/header_button.dart';
 import '../controllers/categories_controller.dart';
-import '../widgets/categories_add.dart';
 import '../widgets/categories_page.dart';
 
 class CategoriesView extends StatefulWidget {

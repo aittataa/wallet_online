@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../../config/app_constant.dart';
+import '../../../config/app_function.dart';
 import '../../../config/app_message.dart';
 import '../../../config/app_theme.dart';
 import '../../../data/models/settings.dart';
@@ -97,8 +98,10 @@ class _SettingsViewState extends State<SettingsView> {
                         final data = await controller.updateSettings(
                           Settings(id: 1, currency: selectedCurrency),
                         );
-                        AppConstant.appCurrency = selectedCurrency;
-                        print(data);
+                        if (!(data == null)) {
+                          AppConstant.appCurrency = selectedCurrency;
+                          AppFunction.messageBox(message: "Updated Successfully");
+                        }
                       },
                     ),
                   ),
