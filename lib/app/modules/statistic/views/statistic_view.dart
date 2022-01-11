@@ -73,11 +73,11 @@ class _StatisticViewState extends State<StatisticView> {
                   children: [
                     StatisticPage(
                       controller: controller,
-                      myList: myList.where((category) => category.state == 0 && category.total! > 0).toList()..sort((a, b) => b.total!.compareTo(a.total!)),
+                      myList: AppFunction.filterList(myList, 0),
                     ),
                     StatisticPage(
                       controller: controller,
-                      myList: myList.where((category) => category.state == 1 && category.total! > 0).toList()..sort((a, b) => b.total!.compareTo(a.total!)),
+                      myList: AppFunction.filterList(myList, 1),
                     ),
                   ],
                 ),

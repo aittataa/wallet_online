@@ -14,7 +14,13 @@ class CategoriesAdd extends StatefulWidget {
   final bool status;
   final int index;
   final Categories category;
-  const CategoriesAdd({Key? key, required this.controller, required this.index, this.status = false, required this.category}) : super(key: key);
+  const CategoriesAdd({
+    Key? key,
+    required this.controller,
+    required this.index,
+    this.status = false,
+    required this.category,
+  }) : super(key: key);
   @override
   State<CategoriesAdd> createState() => _CategoriesAddState(controller, index, category);
 }

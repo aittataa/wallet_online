@@ -60,6 +60,10 @@ class AppFunction {
     return myList.where((category) => category.title == value).toList()[0].id;
   }
 
+  static filterList(List myList, int state) {
+    return myList.where((category) => category.state == state && category.total! > 0).toList()..sort((a, b) => b.total!.compareTo(a.total!));
+  }
+
   static snackBar({required String title, required String message}) {
     return Get.snackbar(
       "",
