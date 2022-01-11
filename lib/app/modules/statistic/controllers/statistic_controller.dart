@@ -5,8 +5,8 @@ import '../../../data/models/categories.dart';
 
 class StatisticController extends GetxController {
   final DataSources _dataSources = Get.put(DataSources());
-  var categories = <Categories>[].obs;
-  var state = false.obs;
+  final categories = <Categories>[].obs;
+  final state = false.obs;
 
   @override
   void onInit() {

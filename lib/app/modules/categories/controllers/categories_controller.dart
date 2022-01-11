@@ -5,8 +5,8 @@ import '../../../data/models/categories.dart';
 
 class CategoriesController extends GetxController {
   final DataSources _dataSources = Get.put(DataSources());
-  var categories = <Categories>[].obs;
-  var state = false.obs;
+  final categories = <Categories>[].obs;
+  final state = false.obs;
 
   @override
   void onInit() {
@@ -21,19 +21,20 @@ class CategoriesController extends GetxController {
   }
 
   addCategory(Categories category) async {
-    var data = await _dataSources.insertCategory(category);
+    final data = await _dataSources.insertCategory(category);
     _loadCategories;
     return data;
   }
 
   updateCategory(Categories category) async {
-    var data = await _dataSources.updateCategory(category);
+    final data = await _dataSources.updateCategory(category);
     _loadCategories;
     return data;
   }
 
   deleteCategory(int id) async {
-    var data = await _dataSources.deleteCategory(id);
+    final data = await _dataSources.deleteCategory(id);
+    _loadCategories;
     return data;
   }
 }

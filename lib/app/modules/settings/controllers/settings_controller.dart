@@ -5,8 +5,8 @@ import '../../../data/models/settings.dart';
 
 class SettingsController extends GetxController {
   final DataSources _dataSources = Get.put(DataSources());
-  var settings = <Settings>[].obs;
-  var state = false.obs;
+  final settings = <Settings>[].obs;
+  final state = false.obs;
 
   @override
   void onInit() {
@@ -21,7 +21,7 @@ class SettingsController extends GetxController {
   }
 
   updateSettings(Settings settings) async {
-    var data = await _dataSources.updateSettings(settings);
+    final data = await _dataSources.updateSettings(settings);
     return data;
   }
 }

@@ -123,13 +123,9 @@ class _TransactionFormState extends State<TransactionForm> {
                     categoryID: selectedCategoryId,
                   );
                   var data = await controller.addTransaction(transaction);
-                  setState(() {
-                    print(data);
-                    Navigator.pop(context);
-                  });
-                } else {
-                  Navigator.pop(context);
+                  print(!(data == null));
                 }
+                Navigator.pop(context);
               } catch (e) {
                 Navigator.pop(context);
                 AppFunction.snackBar(

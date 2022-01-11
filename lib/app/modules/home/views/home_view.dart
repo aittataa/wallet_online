@@ -144,8 +144,8 @@ class _HomeViewState extends State<HomeView> {
                         final int id = transaction.id!;
                         var data = await controller.deleteTransaction(id);
                         setState(() {
-                          print(myList.remove(transaction));
-                          print(data);
+                          myList.remove(transaction);
+                          print(!(data == null));
                         });
                       },
                     );

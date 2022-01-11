@@ -39,7 +39,7 @@ class _CategoriesPageState extends State<CategoriesPage> {
               var data = await controller.deleteCategory(id);
               setState(() {
                 myList.remove(category);
-                print(data);
+                print(!(data == null));
               });
             },
           );

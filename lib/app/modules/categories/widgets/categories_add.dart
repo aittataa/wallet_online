@@ -81,9 +81,8 @@ class _CategoriesAddState extends State<CategoriesAdd> {
                   if (_controller.text.trim().isNotEmpty) {
                     final String title = _controller.text.trim();
                     final int color = AppFunction.getRandomColor;
-                    var data;
                     if (widget.status) {
-                      data = await controller.updateCategory(
+                      var data = await controller.updateCategory(
                         Categories(
                           title: title,
                           id: category.id,
@@ -91,22 +90,19 @@ class _CategoriesAddState extends State<CategoriesAdd> {
                           state: category.state,
                         ),
                       );
+                      print(!(data == null));
                     } else {
-                      data = await controller.addCategory(
+                      var data = await controller.addCategory(
                         Categories(
                           title: title,
                           color: color,
                           state: index,
                         ),
                       );
+                      print(!(data == null));
                     }
-                    setState(() {
-                      print(data);
-                      Navigator.pop(context);
-                    });
-                  } else {
-                    Navigator.pop(context);
                   }
+                  Navigator.pop(context);
                 } catch (e) {
                   Navigator.pop(context);
                   AppFunction.snackBar(
