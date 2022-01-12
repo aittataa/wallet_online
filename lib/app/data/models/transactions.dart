@@ -4,20 +4,23 @@ transactionsFromMap(var map) {
 
 class Transactions {
   final int? id;
+  final double? amount;
+  final String? title;
   final String? description;
   final DateTime? date;
-  final double? amount;
-  final int? categoryID;
-  final String? title;
   final int? state;
+  final int? categoryID;
+  final double? total;
+
   Transactions({
     this.id,
+    this.amount,
+    this.title,
     this.description,
     this.date,
-    this.amount,
-    this.categoryID,
-    this.title,
     this.state,
+    this.categoryID,
+    this.total,
   });
 
   factory Transactions.fromMap(Map<String, dynamic> map) {
@@ -29,6 +32,7 @@ class Transactions {
       date: DateTime.parse(map['date']),
       state: map['state'],
       categoryID: map['category_id'],
+      total: map['total'],
     );
   }
 

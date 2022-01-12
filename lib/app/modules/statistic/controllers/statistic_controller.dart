@@ -14,11 +14,18 @@ class StatisticController extends GetxController {
   void onInit() {
     super.onInit();
     _loadStatistics;
+    // loadStatistics;
   }
 
   get _loadStatistics async {
     state.value = true;
     categories.value = await _dataSources.getCategories;
+    state.value = false;
+  }
+
+  get loadStatistics async {
+    state.value = true;
+    statistics.value = await _dataSources.getStatistics;
     state.value = false;
   }
 }

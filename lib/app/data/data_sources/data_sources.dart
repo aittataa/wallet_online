@@ -65,7 +65,6 @@ class DataSources extends GetConnect {
       $_categoryID INTEGER NOT NULL
   );''';
 
-  /*
   static const String _tbl_transaction_data_query = '''
    INSERT INTO $_tbl_transaction ($_title, $_description, $_amount, $_categoryID, $_state) VALUES
     ('Others', 'Others Stuff', 100, 3, 1),
@@ -79,7 +78,6 @@ class DataSources extends GetConnect {
     ('Food', 'Lunch', 100, 4, 1),
     ('Transportation', '', 75, 6, 1)
    ''';
-  */
 
   Future<Database> get _database async {
     return await openDatabase(
@@ -93,7 +91,7 @@ class DataSources extends GetConnect {
         ///
         await db.execute(_tbl_settings_data_query);
         await db.execute(_tbl_category_data_query);
-        //await db.execute(_tbl_transaction_data_query);
+        await db.execute(_tbl_transaction_data_query);
       },
     );
   }
@@ -123,8 +121,8 @@ class DataSources extends GetConnect {
           SELECT $_tbl_category.*, SUM($_amount) as $_total
           FROM $_tbl_category
           LEFT JOIN $_tbl_transaction
-          ON $_tbl_category.$_title = $_tbl_transaction.$_title
-          GROUP BY $_tbl_category.$_id
+          ON $_tbl_category.$_id = $_tbl_transaction.$_categoryID
+          GROUP BY $_tbl_category.$_id, $_tbl_category.$_title
           ORDER BY $_total DESC, $_id DESC
     ''';
     final List<Map<String, dynamic>> response = await db.rawQuery(query);
@@ -188,5 +186,19 @@ class DataSources extends GetConnect {
       whereArgs: [id],
     );
     return response;
+  }
+
+  /// TODO : About Statistics
+  Future<List<Transactions>> get getStatistics async {
+    final db = await _database;
+    final List<Map<String, dynamic>> response = await db.query(
+      _tbl_transaction,
+      distinct: true,
+      columns: [_title, _date, _state, "SUM($_amount) as $_total"],
+      groupBy: "$_title, $_categoryID",
+      orderBy: "$_total DESC",
+    );
+    print(response);
+    return transactionsFromMap(response);
   }
 }
