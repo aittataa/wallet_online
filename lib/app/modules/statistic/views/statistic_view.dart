@@ -63,13 +63,11 @@ class _StatisticViewState extends State<StatisticView> {
               ),
               Expanded(
                 child: PageView(
-                  onPageChanged: (index) {
-                    setState(() {
-                      AppFunction.animateToPage(index);
-                    });
-                  },
+                  // onPageChanged: (index) {
+                  //   setState(() => {AppFunction.animateToPage(index)});
+                  // },
                   controller: AppConstant.pageController,
-                  physics: BouncingScrollPhysics(),
+                  physics: NeverScrollableScrollPhysics(),
                   children: [
                     StatisticPage(
                       controller: controller,

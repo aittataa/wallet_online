@@ -38,12 +38,12 @@ class Transactions {
 
   Map<String, dynamic> toMap() {
     return {
-      "id": id,
-      "amount": amount,
+      //"id": id,
+      //"amount": amount,
       "title": title,
-      "description": description,
-      "date": date?.toIso8601String(),
-      "state": state,
+      //"description": description,
+      //"date": date?.toIso8601String(),
+      //"state": state,
       "category_id": categoryID,
     };
   }

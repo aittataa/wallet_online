@@ -178,6 +178,16 @@ class DataSources extends GetConnect {
     return response;
   }
 
+  Future updateTransaction(Transactions transaction) async {
+    final db = await _database;
+    final response = await db.rawQuery("sql");
+    // final response = await db.insert(
+    //   _tbl_transaction,
+    //   transaction.toMap(),
+    // );
+    return response;
+  }
+
   Future deleteTransaction(int id) async {
     final db = await _database;
     final response = await db.delete(
@@ -189,16 +199,16 @@ class DataSources extends GetConnect {
   }
 
   /// TODO : About Statistics
-  Future<List<Transactions>> get getStatistics async {
-    final db = await _database;
-    final List<Map<String, dynamic>> response = await db.query(
-      _tbl_transaction,
-      distinct: true,
-      columns: [_title, _date, _state, "SUM($_amount) as $_total"],
-      groupBy: "$_title, $_categoryID",
-      orderBy: "$_total DESC",
-    );
-    print(response);
-    return transactionsFromMap(response);
-  }
+  // Future<List<Transactions>> get getStatistics async {
+  //   final db = await _database;
+  //   final List<Map<String, dynamic>> response = await db.query(
+  //     _tbl_transaction,
+  //     distinct: true,
+  //     columns: [_title, _date, _state, "SUM($_amount) as $_total"],
+  //     groupBy: "$_title, $_categoryID",
+  //     orderBy: "$_total DESC",
+  //   );
+  //   print(response);
+  //   return transactionsFromMap(response);
+  // }
 }

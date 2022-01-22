@@ -2,12 +2,11 @@ import 'package:get/get.dart';
 
 import '../../../data/data_sources/data_sources.dart';
 import '../../../data/models/categories.dart';
-import '../../../data/models/transactions.dart';
 
 class StatisticController extends GetxController {
   final DataSources _dataSources = Get.put(DataSources());
   final categories = <Categories>[].obs;
-  final statistics = <Transactions>[].obs;
+  //final statistics = <Transactions>[].obs;
   final state = false.obs;
 
   @override
@@ -23,9 +22,9 @@ class StatisticController extends GetxController {
     state.value = false;
   }
 
-  get loadStatistics async {
-    state.value = true;
-    statistics.value = await _dataSources.getStatistics;
-    state.value = false;
-  }
+  // get loadStatistics async {
+  //   state.value = true;
+  //   statistics.value = await _dataSources.getStatistics;
+  //   state.value = false;
+  // }
 }

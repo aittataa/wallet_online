@@ -88,23 +88,17 @@ class _CategoriesAddState extends State<CategoriesAdd> {
                     final String title = _controller.text.trim();
                     final int color = AppFunction.getRandomColor;
                     if (widget.status) {
-                      var data = await controller.updateCategory(
-                        Categories(
-                          title: title,
-                          id: category.id,
-                          color: category.color,
-                          state: category.state,
-                        ),
+                      late Categories updatedCategory = Categories(
+                        title: title,
+                        //color: category.color,
+                        //state: category.state,
+                        id: category.id,
                       );
+                      var data = await controller.updateCategory(updatedCategory);
                       print(!(data == null));
                     } else {
-                      var data = await controller.addCategory(
-                        Categories(
-                          title: title,
-                          color: color,
-                          state: index,
-                        ),
-                      );
+                      final Categories insertedCategory = Categories(title: title, color: color, state: index);
+                      var data = await controller.addCategory(insertedCategory);
                       print(!(data == null));
                     }
                   }
