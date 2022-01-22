@@ -146,6 +146,13 @@ class DataSources extends GetConnect {
       where: "$_id = ?",
       whereArgs: [category.id],
     );
+    final data = updateTransaction(
+      Transactions(
+        title: category.title,
+        categoryID: category.id,
+      ),
+    );
+    print("its updated $data");
     return response;
   }
 
@@ -180,11 +187,12 @@ class DataSources extends GetConnect {
 
   Future updateTransaction(Transactions transaction) async {
     final db = await _database;
-    final response = await db.rawQuery("sql");
-    // final response = await db.insert(
-    //   _tbl_transaction,
-    //   transaction.toMap(),
-    // );
+    final response = await db.update(
+      _tbl_transaction,
+      transaction.toMap(),
+      where: "$_id = ?",
+      whereArgs: [transaction.categoryID],
+    );
     return response;
   }
 
@@ -197,18 +205,4 @@ class DataSources extends GetConnect {
     );
     return response;
   }
-
-  /// TODO : About Statistics
-  // Future<List<Transactions>> get getStatistics async {
-  //   final db = await _database;
-  //   final List<Map<String, dynamic>> response = await db.query(
-  //     _tbl_transaction,
-  //     distinct: true,
-  //     columns: [_title, _date, _state, "SUM($_amount) as $_total"],
-  //     groupBy: "$_title, $_categoryID",
-  //     orderBy: "$_total DESC",
-  //   );
-  //   print(response);
-  //   return transactionsFromMap(response);
-  // }
 }
