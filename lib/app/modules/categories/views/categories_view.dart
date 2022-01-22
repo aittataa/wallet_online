@@ -24,7 +24,7 @@ class _CategoriesViewState extends State<CategoriesView> {
   @override
   void initState() {
     super.initState();
-    AppConstant.pageController = PageController(initialPage: AppConstant.pageIndex);
+    //AppConstant.pageController = PageController(initialPage: AppConstant.pageIndex);
   }
 
   @override
@@ -72,11 +72,11 @@ class _CategoriesViewState extends State<CategoriesView> {
               ),
               Expanded(
                 child: PageView(
-                  onPageChanged: (index) {
-                    setState(() => {AppFunction.animateToPage(index)});
-                  },
-                  controller: AppConstant.pageController,
-                  physics: BouncingScrollPhysics(),
+                  // onPageChanged: (index) {
+                  //   setState(() => {AppFunction.animateToPage(index)});
+                  // },
+                  //controller: AppConstant.pageController,
+                  physics: NeverScrollableScrollPhysics(),
                   children: [
                     CategoriesPage(
                       controller: controller,

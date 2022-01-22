@@ -108,6 +108,7 @@ class _CategoriesAddState extends State<CategoriesAdd> {
                       print(!(data == null));
                     }
                   }
+                  print(AppConstant.pageIndex);
                   Navigator.pop(context);
                 } catch (e) {
                   Navigator.pop(context);
