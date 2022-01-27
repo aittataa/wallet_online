@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:wallet_online/app/shared/splash.dart';
 
 import 'app/config/app_function.dart';
 import 'app/config/app_message.dart';
 import 'app/config/app_theme.dart';
-import 'app/modules/initial/views/initial_view.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -21,7 +21,8 @@ class WalletOnline extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: AppMessage.appTitle,
       theme: AppTheme.themeData,
-      home: InitialView(),
+      //home: InitialView(),
+      home: Splash(),
     );
   }
 }
