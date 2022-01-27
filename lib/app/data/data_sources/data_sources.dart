@@ -36,7 +36,6 @@ class DataSources extends GetConnect {
       $_color INTEGER NOT NULL,
       $_state BIT NOT NULL
   );''';
-
   static String _tbl_category_data_query = '''
   INSERT INTO $_tbl_category($_id, $_title, $_color, $_state)VALUES
     (1, 'Others', '${AppFunction.getRandomColor}', 0),
@@ -64,7 +63,6 @@ class DataSources extends GetConnect {
       $_state BIT NOT NULL,
       $_categoryID INTEGER NOT NULL
   );''';
-
   static const String _tbl_transaction_data_query = '''
    INSERT INTO $_tbl_transaction ($_title, $_description, $_amount, $_categoryID, $_state) VALUES
     ('Others', 'Others Stuff', 100, 3, 1),
@@ -79,6 +77,7 @@ class DataSources extends GetConnect {
     ('Transportation', '', 75, 6, 1)
    ''';
 
+  /// TODO : About DataBase
   Future<Database> get _database async {
     return await openDatabase(
       join(await getDatabasesPath(), _db_name),

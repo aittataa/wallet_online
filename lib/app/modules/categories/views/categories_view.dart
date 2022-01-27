@@ -76,15 +76,15 @@ class _CategoriesViewState extends State<CategoriesView> {
                     setState(() => {AppFunction.animateToPage(index)});
                   },
                   controller: AppConstant.pageController,
-                  physics: NeverScrollableScrollPhysics(),
+                  physics: BouncingScrollPhysics(),
                   children: [
                     CategoriesPage(
                       controller: controller,
-                      myList: myList.where((category) => category.state == 0).toList()..sort((a, b) => b.id!.compareTo(a.id!)),
+                      myList: AppFunction.filterList(myList, 0),
                     ),
                     CategoriesPage(
                       controller: controller,
-                      myList: myList.where((category) => category.state == 1).toList()..sort((a, b) => b.id!.compareTo(a.id!)),
+                      myList: AppFunction.filterList(myList, 1),
                     ),
                   ],
                 ),

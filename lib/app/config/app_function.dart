@@ -17,7 +17,7 @@ class AppFunction {
       "",
       backgroundColor: AppTheme.mainColor,
       margin: const EdgeInsets.only(bottom: 64),
-      padding: const EdgeInsets.all(10),
+      padding: const EdgeInsets.only(top: 10, bottom: 5),
       maxWidth: 200,
       snackPosition: SnackPosition.BOTTOM,
       snackStyle: SnackStyle.FLOATING,
@@ -60,7 +60,7 @@ class AppFunction {
   }
 
   static filterList(List myList, int state) {
-    return myList.where((category) => category.state == state && category.total! > 0).toList()..sort((a, b) => b.total!.compareTo(a.total!));
+    return myList.where((category) => category.state == state).toList();
   }
 
   static snackBar({required String title, required String message}) {
