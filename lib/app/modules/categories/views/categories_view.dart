@@ -80,11 +80,11 @@ class _CategoriesViewState extends State<CategoriesView> {
                   children: [
                     CategoriesPage(
                       controller: controller,
-                      myList: AppFunction.filterList(myList, 0),
+                      myList: AppFunction.filterCategories(myList, 0),
                     ),
                     CategoriesPage(
                       controller: controller,
-                      myList: AppFunction.filterList(myList, 1),
+                      myList: AppFunction.filterCategories(myList, 1),
                     ),
                   ],
                 ),

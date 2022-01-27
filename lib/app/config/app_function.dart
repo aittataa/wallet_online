@@ -63,6 +63,14 @@ class AppFunction {
     return myList.where((category) => category.state == state).toList();
   }
 
+  static filterCategories(List myList, int state) {
+    return myList.where((category) => category.state == state).toList();
+  }
+
+  static filterStatistics(List myList, int state) {
+    return myList.where((category) => category.state == state && category.total > 0).toList();
+  }
+
   static snackBar({required String title, required String message}) {
     return Get.snackbar(
       "",

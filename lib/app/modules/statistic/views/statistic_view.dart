@@ -71,11 +71,11 @@ class _StatisticViewState extends State<StatisticView> {
                   children: [
                     StatisticPage(
                       controller: controller,
-                      myList: AppFunction.filterList(myList, 0),
+                      myList: AppFunction.filterStatistics(myList, 0),
                     ),
                     StatisticPage(
                       controller: controller,
-                      myList: AppFunction.filterList(myList, 1),
+                      myList: AppFunction.filterStatistics(myList, 1),
                     ),
                   ],
                 ),
