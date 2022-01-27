@@ -26,7 +26,19 @@ class Categories {
       total: map["total"] ?? 0,
     );
   }
-  Map<String, dynamic> toMap() {
-    return {"id": id, "title": title};
+  Map<String, dynamic> toInsert() {
+    return {
+      "id": id,
+      "title": title,
+      "color": color,
+      "state": state,
+    };
+  }
+
+  Map<String, dynamic> toUpdate() {
+    return {
+      "id": id,
+      "title": title,
+    };
   }
 }

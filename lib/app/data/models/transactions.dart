@@ -10,7 +10,6 @@ class Transactions {
   final DateTime? date;
   final int? state;
   final int? categoryID;
-  final double? total;
 
   Transactions({
     this.id,
@@ -20,7 +19,6 @@ class Transactions {
     this.date,
     this.state,
     this.categoryID,
-    this.total,
   });
 
   factory Transactions.fromMap(Map<String, dynamic> map) {
@@ -32,18 +30,24 @@ class Transactions {
       date: DateTime.parse(map['date']),
       state: map['state'],
       categoryID: map['category_id'],
-      total: map['total'],
     );
   }
 
-  Map<String, dynamic> toMap() {
+  Map<String, dynamic> toInsert() {
     return {
-      //"id": id,
-      //"amount": amount,
+      "id": id,
+      "amount": amount,
       "title": title,
-      //"description": description,
-      //"date": date?.toIso8601String(),
-      //"state": state,
+      "description": description,
+      "date": date?.toIso8601String(),
+      "state": state,
+      "category_id": categoryID,
+    };
+  }
+
+  Map<String, dynamic> toUpdate() {
+    return {
+      "title": title,
       "category_id": categoryID,
     };
   }

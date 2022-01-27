@@ -34,7 +34,7 @@ class _StatisticViewState extends State<StatisticView> {
         if (state) {
           return BouncePoint();
         } else {
-          final List<Categories> myList = controller.categories;
+          final List<Categories> myList = controller.statistics;
           return Column(
             children: [
               Row(
@@ -63,9 +63,9 @@ class _StatisticViewState extends State<StatisticView> {
               ),
               Expanded(
                 child: PageView(
-                  // onPageChanged: (index) {
-                  //   setState(() => {AppFunction.animateToPage(index)});
-                  // },
+                  onPageChanged: (index) {
+                    setState(() => {AppFunction.animateToPage(index)});
+                  },
                   controller: AppConstant.pageController,
                   physics: NeverScrollableScrollPhysics(),
                   children: [
