@@ -12,6 +12,7 @@ dependencies:
   sqflite: 2.0.2
   fl_chart: 0.45.0
   intl: 0.17.0
+  grouped_list: 4.2.0
   flutter:
     sdk: flutter
 

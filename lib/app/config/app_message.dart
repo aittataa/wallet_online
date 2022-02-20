@@ -17,6 +17,9 @@ class AppMessage {
   static const String messageUpdate = "Updated Successfully";
   static const String typeMessage = "Type Something...";
   static const String amount = "200";
+  static const String labelYesterday = "Yesterday";
+  static const String labelToday = "Today";
+  static const String labelTomorrow = "Tomorrow";
 
   /// TODO : App Error
   static const String errorTitle = "Error";

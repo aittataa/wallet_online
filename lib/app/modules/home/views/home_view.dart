@@ -1,6 +1,7 @@
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:grouped_list/grouped_list.dart';
 
 import '../../../config/app_constant.dart';
 import '../../../config/app_function.dart';
@@ -11,6 +12,7 @@ import '../../../shared/action_button.dart';
 import '../../../shared/bounce_point.dart';
 import '../../../shared/empty_box.dart';
 import '../controllers/home_controller.dart';
+import '../widgets/date_item.dart';
 import '../widgets/transaction_add.dart';
 import '../widgets/transaction_shape.dart';
 
@@ -33,7 +35,7 @@ class _HomeViewState extends State<HomeView> {
           builder: TransactionAdd(controller: controller),
         ),
       ),
-      body: Obx(() {
+      body: Builder(builder: (context) {
         final bool state = controller.state.value;
         if (state) {
           return BouncePoint();
@@ -47,6 +49,49 @@ class _HomeViewState extends State<HomeView> {
             final double expenses = AppFunction.loadCount(myList, 1);
             final balance = incomes - expenses;
             final balanceState = balance >= 0;
+            /*return GroupedListView<dynamic, DateTime>(
+              shrinkWrap: true,
+              padding: const EdgeInsets.symmetric(horizontal: 10),
+              physics: const BouncingScrollPhysics(),
+              elements: collections,
+              order: GroupedListOrder.DESC,
+              groupBy: (collection) {
+                return DateTime.utc(
+                  collection.date.year,
+                  collection.date.month,
+                  collection.date.day,
+                );
+              },
+              groupSeparatorBuilder: (DateTime date) {
+                if (date == DateTime.utc(DateTime.now().year, DateTime.now().month, DateTime.now().day - 1)) {
+                  return DateItem(label: AppMessage.labelYesterday, date: date);
+                } else if (date == DateTime.utc(DateTime.now().year, DateTime.now().month, DateTime.now().day)) {
+                  return DateItem(label: AppMessage.labelToday, date: date);
+                } else if (date == DateTime.utc(DateTime.now().year, DateTime.now().month, DateTime.now().day + 1)) {
+                  return DateItem(label: AppMessage.labelTomorrow, date: date);
+                } else {
+                  return DateItem(label: AppFunction.dateShape(date), date: date);
+                }
+              },
+              itemBuilder: (context, collection) {
+                return CollectionShape(
+                  controller: controller,
+                  collection: collection,
+                  onUpdate: () async {
+                    setState(() => {collection.updateStatus});
+                    final data = await controller.updateCollection(collection);
+                    print(data);
+                  },
+                  onDelete: () async {
+                    final int id = collection.id!;
+                    setState(() => {print(collections.remove(collection))});
+                    final data = await controller.deleteCollection(id);
+                    setState(() => {print(data)});
+                  },
+                );
+              },
+            );*/
+
             return ListView(
               shrinkWrap: true,
               padding: const EdgeInsets.all(10),
@@ -130,7 +175,63 @@ class _HomeViewState extends State<HomeView> {
                     ],
                   ),
                 ),
-                ListView.builder(
+                SizedBox(height: 5),
+                GroupedListView<dynamic, DateTime>(
+                  shrinkWrap: true,
+                  padding: const EdgeInsets.symmetric(horizontal: 10),
+                  physics: const NeverScrollableScrollPhysics(),
+                  elements: myList,
+                  order: GroupedListOrder.DESC,
+                  groupBy: (collection) {
+                    return DateTime.utc(
+                      collection.date.year,
+                      collection.date.month,
+                      collection.date.day,
+                    );
+                  },
+                  groupSeparatorBuilder: (DateTime date) {
+                    if (date == DateTime.utc(DateTime.now().year, DateTime.now().month, DateTime.now().day - 1)) {
+                      return DateItem(label: AppMessage.labelYesterday, date: date);
+                    } else if (date == DateTime.utc(DateTime.now().year, DateTime.now().month, DateTime.now().day)) {
+                      return DateItem(label: AppMessage.labelToday, date: date);
+                    } else if (date == DateTime.utc(DateTime.now().year, DateTime.now().month, DateTime.now().day + 1)) {
+                      return DateItem(label: AppMessage.labelTomorrow, date: date);
+                    } else {
+                      return DateItem(label: AppFunction.dateShape(date), date: date);
+                    }
+                  },
+                  itemBuilder: (context, transaction) {
+                    return TransactionShape(
+                      controller: controller,
+                      transaction: transaction,
+                      onPressed: () async {
+                        final int id = transaction.id!;
+                        var data = await controller.deleteTransaction(id);
+                        setState(() {
+                          myList.remove(transaction);
+                          print(!(data == null));
+                        });
+                      },
+                    );
+                    /*return CollectionShape(
+                  controller: controller,
+                  collection: collection,
+                  onUpdate: () async {
+                    setState(() => {collection.updateStatus});
+                    final data = await controller.updateCollection(collection);
+                    print(data);
+                  },
+                  onDelete: () async {
+                    final int id = collection.id!;
+                    setState(() => {print(collections.remove(collection))});
+                    final data = await controller.deleteCollection(id);
+                    setState(() => {print(data)});
+                  },
+                );*/
+                  },
+                ),
+
+                /* ListView.builder(
                   shrinkWrap: true,
                   padding: const EdgeInsets.symmetric(vertical: 5),
                   physics: const BouncingScrollPhysics(),
@@ -150,7 +251,7 @@ class _HomeViewState extends State<HomeView> {
                       },
                     );
                   },
-                ),
+                ),*/
               ],
             );
           }
