@@ -7,10 +7,10 @@ environment:
 dependencies: 
   cupertino_icons: 1.0.4
   get: 4.6.1
-  animated_splash_screen: 1.1.0
+  animated_splash_screen: 1.2.0
   flutter_spinkit: 5.1.0
-  sqflite: 2.0.1
-  fl_chart: 0.40.6
+  sqflite: 2.0.2
+  fl_chart: 0.45.0
   intl: 0.17.0
   flutter:
     sdk: flutter
