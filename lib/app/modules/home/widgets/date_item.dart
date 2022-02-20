@@ -17,14 +17,14 @@ class DateItem extends StatelessWidget {
     return Center(
       child: Container(
         width: 150,
-        //margin: EdgeInsets.all(5),
+        margin: EdgeInsets.symmetric(vertical: 5),
         padding: EdgeInsets.all(10),
         decoration: BoxDecoration(
           color: AppTheme.mainColor,
           borderRadius: BorderRadius.circular(25),
         ),
         child: Text(
-          "$label",
+          label,
           textAlign: TextAlign.center,
           style: TextStyle(
             color: AppTheme.secondaryTextColor,

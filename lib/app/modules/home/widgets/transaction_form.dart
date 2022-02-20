@@ -114,16 +114,19 @@ class _TransactionFormState extends State<TransactionForm> {
               try {
                 if (myList.isNotEmpty && amountController.text.isNotEmpty) {
                   selectedCategoryId = AppFunction.getCategoryID(selectedCategory, myList);
+                  final DateTime datetime = DateTime(selectedDate.year, selectedDate.month, selectedDate.day, DateTime.now().hour, DateTime.now().minute);
                   final Transactions transaction = Transactions(
                     amount: double.parse(amountController.text),
                     title: selectedCategory,
                     description: descriptionController.text.trim(),
-                    date: selectedDate,
+                    date: datetime,
                     state: pageIndex,
                     categoryID: selectedCategoryId,
                   );
                   var data = await controller.addTransaction(transaction);
-                  print(!(data == null));
+                  setState(() {
+                    print(!(data == null));
+                  });
                 }
                 Navigator.pop(context);
               } catch (e) {
