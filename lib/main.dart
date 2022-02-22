@@ -21,8 +21,8 @@ class WalletOnline extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: AppMessage.appTitle,
       theme: AppTheme.themeData,
-      home: InitialView(),
-      // home: Splash(),
+      // home: InitialView(),
+      home: Splash(),
     );
   }
 }
