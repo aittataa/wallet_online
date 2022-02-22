@@ -34,12 +34,12 @@ class _HomeViewState extends State<HomeView> {
           IconButton(
             onPressed: () async {
               Transactions transaction = Transactions(
-                amount: 1500,
+                amount: 100,
                 title: "My Transaction",
                 description: "",
-                state: 0,
-                categoryID: 1,
-                date: DateTime.now(),
+                state: 1,
+                categoryID: 5,
+                date: DateTime.utc(DateTime.now().year, DateTime.now().month, DateTime.now().day + 2),
               );
               var data = await controller.addTransaction(transaction);
               setState(() {});

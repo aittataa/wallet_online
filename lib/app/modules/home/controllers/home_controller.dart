@@ -25,7 +25,7 @@ class HomeController extends GetxController {
 
   Future<List<Transactions>> get loadTransactions async {
     final response = await _dataSources.getTransactions;
-    print(response);
+    //print(response);
     return response;
   }
 
