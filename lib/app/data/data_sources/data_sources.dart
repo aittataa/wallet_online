@@ -88,8 +88,6 @@ class DataSources extends GetConnect {
         await db.execute(_tbl_transaction_query);
 
         ///
-        ///
-        ///
         await db.execute(_tbl_settings_data_query);
         await db.execute(_tbl_category_data_query);
         await db.execute(_tbl_transaction_data_query);
