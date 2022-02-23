@@ -63,18 +63,18 @@ class DataSources extends GetConnect {
       $_state BIT NOT NULL,
       $_categoryID INTEGER NOT NULL
   );''';
-  static const String _tbl_transaction_data_query = '''
-   INSERT INTO $_tbl_transaction ($_title, $_description, $_amount, $_categoryID, $_state) VALUES
-    ('Others', 'Others Stuff', 100, 3, 1),
-    ('Salary', 'Raise', 1000, 2, 0),
-    ('Clothes', '', 1000, 5, 1),
-    ('Food', 'Dinner', 100, 4, 1),
-    ('Shopping', '', 500, 7, 1),
-    ('Others', 'Gift', 1000, 1, 0),
-    ('Salary', '', 5000, 2, 0),
-    ('Bills', 'Wi-Fi', 250, 8, 1),
-    ('Food', 'Lunch', 100, 4, 1),
-    ('Transportation', '', 75, 6, 1)
+  static String _tbl_transaction_data_query = '''
+   INSERT INTO $_tbl_transaction ($_date, $_title, $_description, $_amount, $_categoryID, $_state) VALUES
+    ('${DateTime.utc(DateTime.now().year, DateTime.now().month, DateTime.now().day + 1)}','Others', 'Others Stuff', 100, 3, 1),
+    ('${DateTime.utc(DateTime.now().year, DateTime.now().month, DateTime.now().day - 1)}','Salary', 'Raise', 1000, 2, 0),
+    ('${DateTime.utc(DateTime.now().year, DateTime.now().month, DateTime.now().day)}','Clothes', '', 1000, 5, 1),
+    ('${DateTime.utc(DateTime.now().year, DateTime.now().month, DateTime.now().day + 2)}','Food', 'Dinner', 100, 4, 1),
+    ('${DateTime.utc(DateTime.now().year, DateTime.now().month, DateTime.now().day - 2)}','Shopping', '', 500, 7, 1),
+    ('${DateTime.utc(DateTime.now().year, DateTime.now().month, DateTime.now().day + 3)}','Others', 'Gift', 1000, 1, 0),
+    ('${DateTime.utc(DateTime.now().year, DateTime.now().month, DateTime.now().day - 3)}','Salary', '', 5000, 2, 0),
+    ('${DateTime.utc(DateTime.now().year, DateTime.now().month, DateTime.now().day)}','Bills', 'Wi-Fi', 250, 8, 1),
+    ('${DateTime.utc(DateTime.now().year, DateTime.now().month, DateTime.now().day + 4)}','Food', 'Lunch', 100, 4, 1),
+    ('${DateTime.utc(DateTime.now().year, DateTime.now().month, DateTime.now().day - 4)}','Transportation', '', 75, 6, 1)
    ''';
 
   /// TODO : About DataBase
