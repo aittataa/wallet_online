@@ -19,33 +19,33 @@ class DataSources extends GetConnect {
   static const String _tbl_settings = "settings";
   static const String _currency = "currency";
   static const String _tbl_settings_query = '''
-  CREATE TABLE $_tbl_settings(
-      $_id INTEGER PRIMARY KEY AUTOINCREMENT, 
-      $_currency TEXT NOT NULL
+    CREATE TABLE $_tbl_settings(
+        $_id INTEGER PRIMARY KEY AUTOINCREMENT, 
+        $_currency TEXT NOT NULL
   );''';
   static const String _tbl_settings_data_query = '''
-  INSERT INTO $_tbl_settings ($_id, $_currency) VALUES (1, 'DH')''';
+    INSERT INTO $_tbl_settings ($_id, $_currency) VALUES (1, 'DH')''';
 
   static const String _tbl_category = "categories";
   static const String _color = "color";
   static const String _total = "total";
   static const String _tbl_category_query = '''
-  CREATE TABLE $_tbl_category(
-      $_id INTEGER PRIMARY KEY AUTOINCREMENT,
-      $_title TEXT NOT NULL,
-      $_color INTEGER NOT NULL,
-      $_state BIT NOT NULL
+    CREATE TABLE $_tbl_category(
+        $_id INTEGER PRIMARY KEY AUTOINCREMENT,
+        $_title TEXT NOT NULL,
+        $_color INTEGER NOT NULL,
+        $_state BIT NOT NULL
   );''';
   static String _tbl_category_data_query = '''
-  INSERT INTO $_tbl_category($_id, $_title, $_color, $_state)VALUES
-    (1, 'Others', '${AppFunction.getRandomColor}', 0),
-    (2, 'Salary', '${AppFunction.getRandomColor}', 0),
-    (3, 'Others', '${AppFunction.getRandomColor}', 1),
-    (4, 'Food', '${AppFunction.getRandomColor}', 1),
-    (5, 'Clothes', '${AppFunction.getRandomColor}', 1),
-    (6, 'Transportation', '${AppFunction.getRandomColor}', 1),
-    (7, 'Shopping', '${AppFunction.getRandomColor}', 1),
-    (8, 'Bills', '${AppFunction.getRandomColor}', 1)
+    INSERT INTO $_tbl_category($_id, $_title, $_color, $_state)VALUES
+      (1, 'Others', '${AppFunction.getRandomColor}', 0),
+      (2, 'Salary', '${AppFunction.getRandomColor}', 0),
+      (3, 'Others', '${AppFunction.getRandomColor}', 1),
+      (4, 'Food', '${AppFunction.getRandomColor}', 1),
+      (5, 'Clothes', '${AppFunction.getRandomColor}', 1),
+      (6, 'Transportation', '${AppFunction.getRandomColor}', 1),
+      (7, 'Shopping', '${AppFunction.getRandomColor}', 1),
+      (8, 'Bills', '${AppFunction.getRandomColor}', 1)
   ''';
 
   static const String _tbl_transaction = "transactions";
@@ -54,14 +54,14 @@ class DataSources extends GetConnect {
   static const String _amount = "amount";
   static const String _categoryID = "category_id";
   static const String _tbl_transaction_query = '''
-  CREATE TABLE $_tbl_transaction(
-      $_id INTEGER PRIMARY KEY AUTOINCREMENT,
-      $_amount DOUBLE NOT NULL,
-      $_title TEXT,
-      $_description TEXT,
-      $_date DATETIME DEFAULT CURRENT_TIMESTAMP,
-      $_state BIT NOT NULL,
-      $_categoryID INTEGER NOT NULL
+    CREATE TABLE $_tbl_transaction(
+        $_id INTEGER PRIMARY KEY AUTOINCREMENT,
+        $_amount DOUBLE NOT NULL,
+        $_title TEXT,
+        $_description TEXT,
+        $_date DATETIME DEFAULT CURRENT_TIMESTAMP,
+        $_state BIT NOT NULL,
+        $_categoryID INTEGER NOT NULL
   );''';
   static String _tbl_transaction_data_query = '''
    INSERT INTO $_tbl_transaction ($_date, $_title, $_description, $_amount, $_categoryID, $_state) VALUES

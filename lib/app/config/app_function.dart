@@ -110,10 +110,12 @@ class AppFunction {
       SystemUiOverlayStyle(
         systemNavigationBarColor: AppTheme.primaryBackColor,
         systemNavigationBarDividerColor: AppTheme.primaryBackColor,
-        systemNavigationBarIconBrightness: Brightness.dark,
+        // systemNavigationBarIconBrightness: Brightness.dark,
+        systemNavigationBarContrastEnforced: true,
         statusBarColor: AppTheme.transparentColor,
-        statusBarIconBrightness: Brightness.light,
-        statusBarBrightness: Brightness.light,
+        // statusBarIconBrightness: Brightness.light,
+        // statusBarBrightness: Brightness.light,
+        systemStatusBarContrastEnforced: true,
       ),
     );
   }
