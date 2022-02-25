@@ -11,15 +11,15 @@ class EmptyBox extends StatelessWidget {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Center(
-          child: Image.asset(
-            AppMessage.appLogo,
-            color: AppTheme.mainColor.withOpacity(.75),
-            width: 100,
-            height: 100,
-          ),
-        ),
-        SizedBox(height: 10),
+        // Center(
+        //   child: Image.asset(
+        //     AppMessage.appLogo,
+        //     color: AppTheme.mainColor.withOpacity(.75),
+        //     width: 100,
+        //     height: 100,
+        //   ),
+        // ),
+        // SizedBox(height: 10),
         Text(
           AppMessage.noDataFound,
           style: TextStyle(
