@@ -20,6 +20,7 @@ class AppMessage {
   static const String labelYesterday = "Yesterday";
   static const String labelToday = "Today";
   static const String labelTomorrow = "Tomorrow";
+  static const String noDataFound = "No Data Found";
 
   /// TODO : App Error
   static const String errorTitle = "Error";

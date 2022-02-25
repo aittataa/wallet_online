@@ -30,24 +30,6 @@ class _HomeViewState extends State<HomeView> {
     return Scaffold(
       appBar: AppBar(
         title: Text(AppMessage.appTitle),
-        actions: [
-          IconButton(
-            onPressed: () async {
-              Transactions transaction = Transactions(
-                amount: 100,
-                title: "My Transaction",
-                description: "",
-                state: 1,
-                categoryID: 5,
-                date: DateTime.utc(DateTime.now().year, DateTime.now().month, DateTime.now().day + 2),
-              );
-              var data = await controller.addTransaction(transaction);
-              setState(() {});
-              print(data);
-            },
-            icon: Icon(Icons.add),
-          ),
-        ],
       ),
       floatingActionButton: ActionButton(
         onPressed: () => AppFunction.lunchNew(
