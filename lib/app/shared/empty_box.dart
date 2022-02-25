@@ -8,26 +8,14 @@ class EmptyBox extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        // Center(
-        //   child: Image.asset(
-        //     AppMessage.appLogo,
-        //     color: AppTheme.mainColor.withOpacity(.75),
-        //     width: 100,
-        //     height: 100,
-        //   ),
-        // ),
-        // SizedBox(height: 10),
-        Text(
-          AppMessage.noDataFound,
-          style: TextStyle(
-            color: AppTheme.primaryTextColor.withOpacity(.5),
-            fontWeight: FontWeight.bold,
-          ),
+    return Center(
+      child: Text(
+        AppMessage.noDataFound,
+        style: TextStyle(
+          color: AppTheme.primaryTextColor.withOpacity(.5),
+          fontWeight: FontWeight.bold,
         ),
-      ],
+      ),
     );
   }
 }
