@@ -14,6 +14,7 @@ class HomeController extends GetxController {
   void onInit() {
     super.onInit();
     _loadCategories;
+    _loadTransactions;
   }
 
   get _loadCategories async {
