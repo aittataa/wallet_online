@@ -22,11 +22,6 @@ class HomeController extends GetxController {
     state.value = false;
   }
 
-  // Future<List<Transactions>> get loadTransactions async {
-  //   final response = await _dataSources.getTransactions;
-  //   return response;
-  // }
-
   get _loadTransactions async {
     state.value = true;
     transactions.value = await _dataSources.getTransactions;
