@@ -14,7 +14,6 @@ class HomeController extends GetxController {
   void onInit() {
     super.onInit();
     _loadCategories;
-    loadTransactions;
   }
 
   get _loadCategories async {
@@ -23,11 +22,10 @@ class HomeController extends GetxController {
     state.value = false;
   }
 
-  Future<List<Transactions>> get loadTransactions async {
-    final response = await _dataSources.getTransactions;
-    //print(response);
-    return response;
-  }
+  // Future<List<Transactions>> get loadTransactions async {
+  //   final response = await _dataSources.getTransactions;
+  //   return response;
+  // }
 
   get _loadTransactions async {
     state.value = true;
@@ -37,14 +35,12 @@ class HomeController extends GetxController {
 
   addTransaction(Transactions transaction) async {
     final data = _dataSources.insertTransaction(transaction);
-    loadTransactions;
     _loadTransactions;
     return data;
   }
 
   deleteTransaction(int id) async {
     final data = await _dataSources.deleteTransaction(id);
-    loadTransactions;
     _loadTransactions;
     return data;
   }
