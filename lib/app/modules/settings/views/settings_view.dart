@@ -26,9 +26,8 @@ class _SettingsViewState extends State<SettingsView> {
   @override
   void initState() {
     super.initState();
-    selectedCurrency = Currencies.MAD.name;
-    // selectedCurrency = AppConstant.appCurrency;
-    selectedLanguage = AppMessage.languageEN;
+    selectedCurrency = AppConstant.appCurrency;
+    selectedLanguage = Languages.English.name;
   }
 
   @override
@@ -41,12 +40,14 @@ class _SettingsViewState extends State<SettingsView> {
           return BouncePoint();
         } else {
           final List<Settings> myList = controller.settings;
+
           final bool isNotEmpty = myList.isNotEmpty;
           if (isNotEmpty) {
             return Padding(
               padding: const EdgeInsets.all(10),
               child: Column(
                 children: [
+                  /// TODO : Logo
                   Container(
                     width: 150,
                     height: 250,
@@ -56,6 +57,8 @@ class _SettingsViewState extends State<SettingsView> {
                       image: DecorationImage(image: AssetImage(AppMessage.appLogo)),
                     ),
                   ),
+
+                  /// TODO : Currencies
                   ListTile(
                     dense: true,
                     contentPadding: const EdgeInsets.symmetric(vertical: 5),
@@ -66,22 +69,22 @@ class _SettingsViewState extends State<SettingsView> {
                         "${AppMessage.currencyLabel} : ",
                         style: TextStyle(
                           color: AppTheme.primaryTextColor,
-                          fontWeight: FontWeight.bold,
+                          fontWeight: FontWeight.w900,
                         ),
                       ),
                     ),
                     title: DropdownList(
-                      hint: "${AppMessage.currencyLabel}",
+                      hint: AppMessage.currencyLabel,
                       value: selectedCurrency,
                       onChanged: (value) async {
                         setState(() => selectedCurrency = value);
                       },
-                      myList: List.generate(Currencies.values.length, (index) {
-                        String currency = Currencies.values[index].name;
+                      myList: List.generate(AppConstant.currencyList.length, (index) {
+                        String currency = AppConstant.currencyList[index];
                         return DropdownMenuItem(
                           value: currency,
                           child: Text(
-                            "$currency",
+                            currency,
                             style: TextStyle(
                               color: AppTheme.primaryTextColor,
                               fontWeight: FontWeight.bold,
@@ -91,7 +94,9 @@ class _SettingsViewState extends State<SettingsView> {
                       }),
                     ),
                   ),
-                  /*ListTile(
+
+                  /// TODO : Currencies
+                  ListTile(
                     dense: true,
                     contentPadding: const EdgeInsets.symmetric(vertical: 5),
                     minVerticalPadding: 0,
@@ -101,7 +106,7 @@ class _SettingsViewState extends State<SettingsView> {
                         "${AppMessage.languageLabel} : ",
                         style: TextStyle(
                           color: AppTheme.primaryTextColor,
-                          fontWeight: FontWeight.w900,
+                          fontWeight: FontWeight.bold,
                         ),
                       ),
                     ),
@@ -111,8 +116,8 @@ class _SettingsViewState extends State<SettingsView> {
                       onChanged: (value) async {
                         setState(() => selectedLanguage = value);
                       },
-                      myList: List.generate(AppConstant.languageList.length, (index) {
-                        String language = AppConstant.languageList[index];
+                      myList: List.generate(Languages.values.length, (i) {
+                        String language = Languages.values[i].name;
                         return DropdownMenuItem(
                           value: language,
                           child: Text(
@@ -125,7 +130,9 @@ class _SettingsViewState extends State<SettingsView> {
                         );
                       }),
                     ),
-                  ),*/
+                  ),
+
+                  /// TODO : Save Button
                   ListTile(
                     title: AddButton(
                       title: AppMessage.labelSave,

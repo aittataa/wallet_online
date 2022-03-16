@@ -5,7 +5,7 @@ import 'app_message.dart';
 import 'app_theme.dart';
 
 enum Currencies { MAD, USD, EUR }
-enum languages { English, Arabic, French }
+enum Languages { English, Arabic, French }
 
 class AppConstant {
   AppConstant._();
