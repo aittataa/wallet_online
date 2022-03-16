@@ -4,6 +4,9 @@ import 'package:get/get.dart';
 import 'app_message.dart';
 import 'app_theme.dart';
 
+enum Currencies { MAD, USD, EUR }
+enum languages { English, Arabic, French }
+
 class AppConstant {
   AppConstant._();
 
@@ -38,6 +41,12 @@ class AppConstant {
     AppMessage.currencyMAD,
     AppMessage.currencyUSD,
     AppMessage.currencyEUR,
+  ];
+
+  static const List<String> languageList = [
+    AppMessage.languageEN,
+    AppMessage.languageAR,
+    AppMessage.languageFR,
   ];
 
   /// TODO : BoxShadow

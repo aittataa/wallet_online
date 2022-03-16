@@ -106,16 +106,19 @@ class AppFunction {
 
   static get configureDependencies {
     SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
+    SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersive, overlays: [
+      /*SystemUiOverlay.top, SystemUiOverlay.bottom*/
+    ]);
     SystemChrome.setSystemUIOverlayStyle(
       SystemUiOverlayStyle(
         systemNavigationBarColor: AppTheme.primaryBackColor,
         systemNavigationBarDividerColor: AppTheme.primaryBackColor,
-        // systemNavigationBarIconBrightness: Brightness.dark,
-        systemNavigationBarContrastEnforced: true,
+        systemNavigationBarIconBrightness: Brightness.dark,
+        // systemNavigationBarContrastEnforced: true,
         statusBarColor: AppTheme.transparentColor,
         // statusBarIconBrightness: Brightness.light,
         // statusBarBrightness: Brightness.light,
-        systemStatusBarContrastEnforced: true,
+        // systemStatusBarContrastEnforced: true,
       ),
     );
   }

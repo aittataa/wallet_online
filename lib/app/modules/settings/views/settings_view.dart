@@ -26,7 +26,9 @@ class _SettingsViewState extends State<SettingsView> {
   @override
   void initState() {
     super.initState();
-    selectedCurrency = AppConstant.appCurrency;
+    selectedCurrency = Currencies.MAD.name;
+    // selectedCurrency = AppConstant.appCurrency;
+    selectedLanguage = AppMessage.languageEN;
   }
 
   @override
@@ -39,7 +41,6 @@ class _SettingsViewState extends State<SettingsView> {
           return BouncePoint();
         } else {
           final List<Settings> myList = controller.settings;
-
           final bool isNotEmpty = myList.isNotEmpty;
           if (isNotEmpty) {
             return Padding(
@@ -65,22 +66,22 @@ class _SettingsViewState extends State<SettingsView> {
                         "${AppMessage.currencyLabel} : ",
                         style: TextStyle(
                           color: AppTheme.primaryTextColor,
-                          fontWeight: FontWeight.w900,
+                          fontWeight: FontWeight.bold,
                         ),
                       ),
                     ),
                     title: DropdownList(
-                      hint: AppMessage.currencyLabel,
+                      hint: "${AppMessage.currencyLabel}",
                       value: selectedCurrency,
                       onChanged: (value) async {
                         setState(() => selectedCurrency = value);
                       },
-                      myList: List.generate(AppConstant.currencyList.length, (index) {
-                        String currency = AppConstant.currencyList[index];
+                      myList: List.generate(Currencies.values.length, (index) {
+                        String currency = Currencies.values[index].name;
                         return DropdownMenuItem(
                           value: currency,
                           child: Text(
-                            currency,
+                            "$currency",
                             style: TextStyle(
                               color: AppTheme.primaryTextColor,
                               fontWeight: FontWeight.bold,
@@ -90,6 +91,41 @@ class _SettingsViewState extends State<SettingsView> {
                       }),
                     ),
                   ),
+                  /*ListTile(
+                    dense: true,
+                    contentPadding: const EdgeInsets.symmetric(vertical: 5),
+                    minVerticalPadding: 0,
+                    leading: SizedBox(
+                      width: 100,
+                      child: Text(
+                        "${AppMessage.languageLabel} : ",
+                        style: TextStyle(
+                          color: AppTheme.primaryTextColor,
+                          fontWeight: FontWeight.w900,
+                        ),
+                      ),
+                    ),
+                    title: DropdownList(
+                      hint: AppMessage.languageLabel,
+                      value: selectedLanguage,
+                      onChanged: (value) async {
+                        setState(() => selectedLanguage = value);
+                      },
+                      myList: List.generate(AppConstant.languageList.length, (index) {
+                        String language = AppConstant.languageList[index];
+                        return DropdownMenuItem(
+                          value: language,
+                          child: Text(
+                            "$language",
+                            style: TextStyle(
+                              color: AppTheme.primaryTextColor,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        );
+                      }),
+                    ),
+                  ),*/
                   ListTile(
                     title: AddButton(
                       title: AppMessage.labelSave,
