@@ -106,9 +106,7 @@ class AppFunction {
 
   static get configureDependencies {
     SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
-    SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersive, overlays: [
-      /*SystemUiOverlay.top, SystemUiOverlay.bottom*/
-    ]);
+    SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersive, overlays: []);
     SystemChrome.setSystemUIOverlayStyle(
       SystemUiOverlayStyle(
         systemNavigationBarColor: AppTheme.primaryBackColor,
