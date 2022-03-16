@@ -35,11 +35,11 @@ class StatisticShape extends StatelessWidget {
         ),
         title: Text(
           "${category.title}",
-          style: TextStyle(color: AppTheme.primaryTextColor, fontWeight: FontWeight.w900),
+          style: TextStyle(color: AppTheme.primaryTextColor, fontWeight: FontWeight.bold),
         ),
         trailing: Text(
           "${category.total!.toStringAsFixed(2)} ${AppConstant.appCurrency}",
-          style: TextStyle(color: AppTheme.primaryTextColor, fontWeight: FontWeight.w900),
+          style: TextStyle(color: AppTheme.primaryTextColor, fontWeight: FontWeight.bold),
         ),
       ),
     );

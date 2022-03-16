@@ -33,9 +33,10 @@ class AppMessage {
 
   /// TODO : Language
   static const String languageLabel = "Language";
-  static const String languageEN = "English";
-  static const String languageAR = "Arabic";
-  static const String languageFR = "French";
+
+  // static const String languageEN = "English";
+  // static const String languageAR = "Arabic";
+  // static const String languageFR = "French";
 
   /// TODO : Currency
   static const String currencyLabel = "Currency";

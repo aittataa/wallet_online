@@ -69,7 +69,7 @@ class _SettingsViewState extends State<SettingsView> {
                         "${AppMessage.currencyLabel} : ",
                         style: TextStyle(
                           color: AppTheme.primaryTextColor,
-                          fontWeight: FontWeight.w900,
+                          fontWeight: FontWeight.bold,
                         ),
                       ),
                     ),

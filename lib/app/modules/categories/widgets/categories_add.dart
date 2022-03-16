@@ -64,7 +64,7 @@ class _CategoriesAddState extends State<CategoriesAdd> {
           textAlign: TextAlign.center,
           style: TextStyle(
             color: AppTheme.mainColor,
-            fontWeight: FontWeight.w900,
+            fontWeight: FontWeight.bold,
           ),
         ),
       ),

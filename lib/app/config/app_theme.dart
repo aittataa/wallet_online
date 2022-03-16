@@ -32,7 +32,7 @@ class AppTheme {
         backgroundColor: AppTheme.mainColor,
         titleTextStyle: TextStyle(
           color: AppTheme.secondaryTextColor,
-          fontWeight: FontWeight.w900,
+          fontWeight: FontWeight.bold,
           fontSize: 20,
         ),
       ),

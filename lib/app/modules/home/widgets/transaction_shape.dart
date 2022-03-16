@@ -37,7 +37,7 @@ class TransactionShape extends StatelessWidget {
             overflow: TextOverflow.ellipsis,
             style: TextStyle(
               color: transaction.state == 0 ? AppTheme.incomeColor : AppTheme.expenseColor,
-              fontWeight: FontWeight.w900,
+              fontWeight: FontWeight.bold,
             ),
           ),
         ),
@@ -48,7 +48,7 @@ class TransactionShape extends StatelessWidget {
               overflow: TextOverflow.ellipsis,
               style: const TextStyle(
                 color: AppTheme.primaryTextColor,
-                fontWeight: FontWeight.w900,
+                fontWeight: FontWeight.bold,
               ),
             ),
             if (transaction.description!.isNotEmpty)

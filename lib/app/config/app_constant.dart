@@ -43,11 +43,11 @@ class AppConstant {
     AppMessage.currencyEUR,
   ];
 
-  static const List<String> languageList = [
-    AppMessage.languageEN,
-    AppMessage.languageAR,
-    AppMessage.languageFR,
-  ];
+  // static const List<String> languageList = [
+  //   AppMessage.languageEN,
+  //   AppMessage.languageAR,
+  //   AppMessage.languageFR,
+  // ];
 
   /// TODO : BoxShadow
   static BoxShadow boxShadow = BoxShadow(

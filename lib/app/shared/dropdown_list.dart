@@ -39,7 +39,7 @@ class DropdownList extends StatelessWidget {
           "$hint",
           style: const TextStyle(
             color: AppTheme.primaryIconColor,
-            fontWeight: FontWeight.w900,
+            fontWeight: FontWeight.bold,
           ),
         ),
       ),

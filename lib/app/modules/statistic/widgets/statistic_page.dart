@@ -47,7 +47,7 @@ class StatisticPage extends StatelessWidget {
                     title: "${category.total!.toStringAsFixed(2)} ${AppConstant.appCurrency}",
                     titleStyle: const TextStyle(
                       color: AppTheme.primaryTextColor,
-                      fontWeight: FontWeight.w900,
+                      fontWeight: FontWeight.bold,
                       fontSize: 12,
                     ),
                   );

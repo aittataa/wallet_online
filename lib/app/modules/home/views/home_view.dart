@@ -78,7 +78,7 @@ class _HomeViewState extends State<HomeView> {
                                     title: "${incomes.toStringAsFixed(2)} ${AppConstant.appCurrency}",
                                     titleStyle: const TextStyle(
                                       color: AppTheme.primaryTextColor,
-                                      fontWeight: FontWeight.w900,
+                                      fontWeight: FontWeight.bold,
                                     ),
                                   );
                                 case 1:
@@ -91,7 +91,7 @@ class _HomeViewState extends State<HomeView> {
                                     title: "${expenses.toStringAsFixed(2)} ${AppConstant.appCurrency}",
                                     titleStyle: const TextStyle(
                                       color: AppTheme.primaryTextColor,
-                                      fontWeight: FontWeight.w900,
+                                      fontWeight: FontWeight.bold,
                                     ),
                                   );
 
@@ -119,7 +119,7 @@ class _HomeViewState extends State<HomeView> {
                               "${balance.toStringAsFixed(2)} ${AppConstant.appCurrency}",
                               style: TextStyle(
                                 color: balanceState ? AppTheme.incomeColor : AppTheme.expenseColor,
-                                fontWeight: FontWeight.w900,
+                                fontWeight: FontWeight.bold,
                               ),
                             ),
                           ],

@@ -28,7 +28,7 @@ class FieldText extends StatelessWidget {
       cursorColor: AppTheme.primaryIconColor,
       style: TextStyle(
         color: AppTheme.primaryTextColor.withOpacity(.75),
-        fontWeight: FontWeight.w900,
+        fontWeight: FontWeight.bold,
       ),
       maxLines: maxLines,
       autocorrect: true,

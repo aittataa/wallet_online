@@ -23,7 +23,7 @@ class FooterBar extends StatelessWidget {
       backgroundColor: AppTheme.primaryBackColor,
       selectedItemColor: AppTheme.mainColor,
       unselectedItemColor: AppTheme.primaryIconColor.withOpacity(.5),
-      selectedLabelStyle: TextStyle(fontWeight: FontWeight.w900),
+      selectedLabelStyle: TextStyle(fontWeight: FontWeight.bold),
       showUnselectedLabels: false,
       items: [
         BottomNavigationBarItem(

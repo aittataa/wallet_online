@@ -30,7 +30,7 @@ class AddButton extends StatelessWidget {
         title,
         style: TextStyle(
           color: AppTheme.secondaryTextColor,
-          fontWeight: FontWeight.w900,
+          fontWeight: FontWeight.bold,
         ),
       ),
     );

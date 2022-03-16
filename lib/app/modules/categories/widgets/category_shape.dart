@@ -47,7 +47,7 @@ class CategoryShape extends StatelessWidget {
           overflow: TextOverflow.ellipsis,
           style: TextStyle(
             color: AppTheme.primaryTextColor,
-            fontWeight: FontWeight.w900,
+            fontWeight: FontWeight.bold,
           ),
         ),
         trailing: SizedBox(

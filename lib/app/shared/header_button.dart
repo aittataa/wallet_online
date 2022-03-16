@@ -44,7 +44,7 @@ class HeaderButton extends StatelessWidget {
               "$title",
               style: TextStyle(
                 color: AppTheme.primaryTextColor.withOpacity(.75),
-                fontWeight: FontWeight.w900,
+                fontWeight: FontWeight.bold,
               ),
             ),
           ],

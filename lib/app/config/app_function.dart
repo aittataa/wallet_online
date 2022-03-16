@@ -29,7 +29,7 @@ class AppFunction {
         textAlign: TextAlign.center,
         style: TextStyle(
           color: AppTheme.secondaryTextColor,
-          fontWeight: FontWeight.w900,
+          fontWeight: FontWeight.bold,
         ),
       ),
     );
@@ -82,7 +82,7 @@ class AppFunction {
         title,
         style: TextStyle(
           color: AppTheme.secondaryTextColor,
-          fontWeight: FontWeight.w900,
+          fontWeight: FontWeight.bold,
         ),
       ),
       messageText: Text(
