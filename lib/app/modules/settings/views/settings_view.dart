@@ -26,7 +26,8 @@ class _SettingsViewState extends State<SettingsView> {
   @override
   void initState() {
     super.initState();
-    selectedCurrency = AppConstant.appCurrency;
+    // selectedCurrency = AppConstant.appCurrency;
+    selectedCurrency = Currencies.mad.name;
     selectedLanguage = Languages.English.name;
   }
 
@@ -59,6 +60,41 @@ class _SettingsViewState extends State<SettingsView> {
                   ),
 
                   /// TODO : Currencies
+                  // ListTile(
+                  //   dense: true,
+                  //   contentPadding: const EdgeInsets.symmetric(vertical: 5),
+                  //   minVerticalPadding: 0,
+                  //   leading: SizedBox(
+                  //     width: 100,
+                  //     child: Text(
+                  //       "${AppMessage.currencyLabel} : ",
+                  //       style: TextStyle(
+                  //         color: AppTheme.primaryTextColor,
+                  //         fontWeight: FontWeight.bold,
+                  //       ),
+                  //     ),
+                  //   ),
+                  //   title: DropdownList(
+                  //     hint: AppMessage.currencyLabel,
+                  //     value: selectedCurrency,
+                  //     onChanged: (value) async {
+                  //       setState(() => selectedCurrency = value);
+                  //     },
+                  //     myList: List.generate(AppConstant.currencyList.length, (i) {
+                  //       final String currency = AppConstant.currencyList[i];
+                  //       return DropdownMenuItem(
+                  //         value: currency,
+                  //         child: Text(
+                  //           "$currency",
+                  //           style: TextStyle(
+                  //             color: AppTheme.primaryTextColor,
+                  //             fontWeight: FontWeight.bold,
+                  //           ),
+                  //         ),
+                  //       );
+                  //     }),
+                  //   ),
+                  // ),
                   ListTile(
                     dense: true,
                     contentPadding: const EdgeInsets.symmetric(vertical: 5),
@@ -79,12 +115,12 @@ class _SettingsViewState extends State<SettingsView> {
                       onChanged: (value) async {
                         setState(() => selectedCurrency = value);
                       },
-                      myList: List.generate(AppConstant.currencyList.length, (index) {
-                        String currency = AppConstant.currencyList[index];
+                      myList: List.generate(Currencies.values.length, (i) {
+                        final String currency = Currencies.values[i].name;
                         return DropdownMenuItem(
                           value: currency,
                           child: Text(
-                            currency,
+                            "$currency",
                             style: TextStyle(
                               color: AppTheme.primaryTextColor,
                               fontWeight: FontWeight.bold,
@@ -117,7 +153,7 @@ class _SettingsViewState extends State<SettingsView> {
                         setState(() => selectedLanguage = value);
                       },
                       myList: List.generate(Languages.values.length, (i) {
-                        String language = Languages.values[i].name;
+                        final String language = Languages.values[i].name;
                         return DropdownMenuItem(
                           value: language,
                           child: Text(

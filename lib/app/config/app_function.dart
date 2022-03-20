@@ -25,7 +25,7 @@ class AppFunction {
       duration: AppConstant.durationSnack,
       messageText: const SizedBox(),
       titleText: Text(
-        message,
+        "$message",
         textAlign: TextAlign.center,
         style: TextStyle(
           color: AppTheme.secondaryTextColor,
@@ -106,7 +106,7 @@ class AppFunction {
 
   static get configureDependencies {
     SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
-    SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersive, overlays: []);
+    SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersive, overlays: [SystemUiOverlay.top]);
     SystemChrome.setSystemUIOverlayStyle(
       SystemUiOverlayStyle(
         systemNavigationBarColor: AppTheme.primaryBackColor,
