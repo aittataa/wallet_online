@@ -6,8 +6,8 @@ import 'app_theme.dart';
 enum Currencies { mad, usd, eur }
 enum Languages { English, Arabic, French }
 
-const currencies = {
-  Currencies.mad: "DH",
+const Map<Currencies, String> currencies = {
+  // Currencies.mad: "DH",
   Currencies.usd: r"$",
   Currencies.eur: "€",
 };
