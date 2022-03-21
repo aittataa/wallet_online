@@ -8,7 +8,7 @@ enum Languages { English, Arabic, French }
 
 const Map<Currencies, String> currencies = {
   // Currencies.mad: "DH",
-  Currencies.usd: r"$",
+  // Currencies.usd: r"$",
   Currencies.eur: "€",
 };
 
