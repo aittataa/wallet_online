@@ -3,20 +3,20 @@ import 'package:get/get.dart';
 
 import 'app_theme.dart';
 
-enum Currencies { mad, usd, eur }
+enum Currencies { MAD, USD, EUR }
 enum Languages { English, Arabic, French }
 
 const Map<Currencies, String> currencies = {
-  Currencies.mad: "DH",
-  Currencies.usd: r"$",
-  Currencies.eur: "€",
+  Currencies.MAD: "DH",
+  Currencies.USD: r"$",
+  Currencies.EUR: "€",
 };
 
 class AppConstant {
   AppConstant._();
 
   /// TODO : Screen Controller
-  static String appCurrency = Currencies.mad.name;
+  static String appCurrency = Currencies.MAD.name;
 
   /// TODO : Screen Controller
   static PageController pageController = PageController();

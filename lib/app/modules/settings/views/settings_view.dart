@@ -27,7 +27,7 @@ class _SettingsViewState extends State<SettingsView> {
   void initState() {
     super.initState();
     // selectedCurrency = AppConstant.appCurrency;
-    selectedCurrency = Currencies.mad.name;
+    selectedCurrency = Currencies.MAD.name;
     selectedLanguage = Languages.English.name;
   }
 
