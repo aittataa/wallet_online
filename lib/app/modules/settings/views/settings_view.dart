@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../../config/app_constant.dart';
+import '../../../config/app_enum.dart';
 import '../../../config/app_function.dart';
 import '../../../config/app_message.dart';
 import '../../../config/app_theme.dart';
@@ -27,8 +28,9 @@ class _SettingsViewState extends State<SettingsView> {
   void initState() {
     super.initState();
     // selectedCurrency = AppConstant.appCurrency;
-    selectedCurrency = Currencies.MAD.name;
-    selectedLanguage = Languages.English.name;
+    // selectedLanguage = Languages.English.name;
+    selectedCurrency = AppEnum.currencies.values.first;
+    selectedLanguage = AppEnum.languages.values.first;
   }
 
   @override
@@ -44,7 +46,7 @@ class _SettingsViewState extends State<SettingsView> {
 
           final bool isNotEmpty = myList.isNotEmpty;
           if (isNotEmpty) {
-            return Padding(
+            return SingleChildScrollView(
               padding: const EdgeInsets.all(10),
               child: Column(
                 children: [
@@ -116,7 +118,9 @@ class _SettingsViewState extends State<SettingsView> {
                         setState(() => selectedCurrency = value);
                       },
                       myList: List.generate(Currencies.values.length, (i) {
-                        final String currency = Currencies.values[i].name;
+                        // final String currency = Currencies.values[i].name;
+                        final Currencies index = Currencies.values[i];
+                        final String? currency = AppEnum.currencies[index];
                         return DropdownMenuItem(
                           value: currency,
                           child: Text(
@@ -131,7 +135,7 @@ class _SettingsViewState extends State<SettingsView> {
                     ),
                   ),
 
-                  /// TODO : Currencies
+                  /// TODO : Languages
                   ListTile(
                     dense: true,
                     contentPadding: const EdgeInsets.symmetric(vertical: 5),
@@ -153,7 +157,9 @@ class _SettingsViewState extends State<SettingsView> {
                         setState(() => selectedLanguage = value);
                       },
                       myList: List.generate(Languages.values.length, (i) {
-                        final String language = Languages.values[i].name;
+                        // final String language = Languages.values[i].name;
+                        final Languages index = Languages.values[i];
+                        final String? language = AppEnum.languages[index];
                         return DropdownMenuItem(
                           value: language,
                           child: Text(

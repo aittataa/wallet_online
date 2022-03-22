@@ -4,7 +4,7 @@ description: Wallet Online.
 environment:
   sdk: '>=2.15.0 <3.0.0'
 
-dependencies: 
+dependencies:
   cupertino_icons: 1.0.4
   get: 4.6.1
   animated_splash_screen: 1.2.0
@@ -13,6 +13,7 @@ dependencies:
   fl_chart: 0.45.0
   intl: 0.17.0
   grouped_list: 4.2.0
+  flutter_speed_dial: 5.0.0+1
   flutter:
     sdk: flutter
 
@@ -21,7 +22,7 @@ dev_dependencies:
     sdk: flutter
 
 flutter:
-  uses-material-design: true
   assets:
     - assets/
+  uses-material-design: true
 

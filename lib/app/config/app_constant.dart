@@ -1,16 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import 'app_enum.dart';
 import 'app_theme.dart';
 
-enum Currencies { MAD, USD, EUR }
-enum Languages { English, Arabic, French }
+// enum Currencies { MAD, USD, EUR }
+// enum Languages { English, Arabic, French }
 
-const Map<Currencies, String> currencies = {
-  Currencies.MAD: "DH",
-  Currencies.USD: r"$",
-  Currencies.EUR: "€",
-};
+// const Map<Currencies, String> currencies = {
+//   Currencies.MAD: "DH",
+//   Currencies.USD: r"$",
+//   Currencies.EUR: "€",
+// };
 
 class AppConstant {
   AppConstant._();

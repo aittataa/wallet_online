@@ -6,8 +6,8 @@ import '../../../config/app_constant.dart';
 import '../../../config/app_function.dart';
 import '../../../config/app_message.dart';
 import '../../../data/models/categories.dart';
-import '../../../shared/action_button.dart';
 import '../../../shared/bounce_point.dart';
+import '../../../shared/floating_button.dart';
 import '../../../shared/header_button.dart';
 import '../controllers/categories_controller.dart';
 import '../widgets/categories_add.dart';
@@ -31,7 +31,7 @@ class _CategoriesViewState extends State<CategoriesView> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text(AppMessage.labelCategories)),
-      floatingActionButton: ActionButton(
+      floatingActionButton: FloatingButton(
         onPressed: () => AppFunction.lunchNew(
           context,
           builder: CategoriesAdd(
