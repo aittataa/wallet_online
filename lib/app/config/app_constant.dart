@@ -8,7 +8,7 @@ class AppConstant {
   AppConstant._();
 
   /// TODO : Screen Controller
-  static String appCurrency = AppEnum.currencies[Currencies.USD]!;
+  static String appCurrency = AppEnum.currencies[Currencies.USD.name]!;
 
   /// TODO : Screen Controller
   static PageController pageController = PageController();

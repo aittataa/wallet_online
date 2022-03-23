@@ -23,7 +23,7 @@ class _SettingsViewState extends State<SettingsView> {
 
   // late String selectedCurrency;
   late String selectedLanguage;
-  late Currencies currency;
+  late String currency;
 
   @override
   void initState() {
@@ -31,7 +31,7 @@ class _SettingsViewState extends State<SettingsView> {
     // selectedCurrency = AppConstant.appCurrency;
     // selectedLanguage = Languages.English.name;
     // selectedCurrency = AppEnum.currencies.values.first;
-    currency = Currencies.MAD;
+    currency = AppConstant.appCurrency;
     selectedLanguage = AppEnum.languages.values.first;
   }
 
@@ -148,7 +148,7 @@ class _SettingsViewState extends State<SettingsView> {
                         Settings(id: 1, currency: currency.toString()),
                       );
                       if (!(data == null)) {
-                        AppConstant.appCurrency = AppEnum.currencies[currency.name]!;
+                        AppConstant.appCurrency = AppEnum.currencies[currency];
                         AppFunction.messageBox(message: AppMessage.messageUpdate);
                       }
                     },

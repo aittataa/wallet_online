@@ -2,10 +2,10 @@ enum Currencies { MAD, USD, EUR }
 enum Languages { English, Arabic, French }
 
 class AppEnum {
-  static Map<Currencies, String> currencies = {
-    Currencies.MAD: "DH",
-    Currencies.USD: r"$",
-    Currencies.EUR: "€",
+  static Map<String, String> currencies = {
+    Currencies.MAD.name: "DH",
+    Currencies.USD.name: r"$",
+    Currencies.EUR.name: "€",
   };
 
   static Map<Languages, String> languages = {
