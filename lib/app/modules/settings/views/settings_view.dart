@@ -23,6 +23,7 @@ class _SettingsViewState extends State<SettingsView> {
   final SettingsController controller = Get.put(SettingsController());
   late String selectedCurrency;
   late String selectedLanguage;
+  late Currencies currencies;
 
   @override
   void initState() {
@@ -30,6 +31,7 @@ class _SettingsViewState extends State<SettingsView> {
     // selectedCurrency = AppConstant.appCurrency;
     // selectedLanguage = Languages.English.name;
     selectedCurrency = AppEnum.currencies.values.first;
+    currencies = Currencies.MAD;
     selectedLanguage = AppEnum.languages.values.first;
   }
 
@@ -43,7 +45,6 @@ class _SettingsViewState extends State<SettingsView> {
           return BouncePoint();
         } else {
           final List<Settings> myList = controller.settings;
-
           final bool isNotEmpty = myList.isNotEmpty;
           if (isNotEmpty) {
             return SingleChildScrollView(
@@ -62,41 +63,6 @@ class _SettingsViewState extends State<SettingsView> {
                   ),
 
                   /// TODO : Currencies
-                  // ListTile(
-                  //   dense: true,
-                  //   contentPadding: const EdgeInsets.symmetric(vertical: 5),
-                  //   minVerticalPadding: 0,
-                  //   leading: SizedBox(
-                  //     width: 100,
-                  //     child: Text(
-                  //       "${AppMessage.currencyLabel} : ",
-                  //       style: TextStyle(
-                  //         color: AppTheme.primaryTextColor,
-                  //         fontWeight: FontWeight.bold,
-                  //       ),
-                  //     ),
-                  //   ),
-                  //   title: DropdownList(
-                  //     hint: AppMessage.currencyLabel,
-                  //     value: selectedCurrency,
-                  //     onChanged: (value) async {
-                  //       setState(() => selectedCurrency = value);
-                  //     },
-                  //     myList: List.generate(AppConstant.currencyList.length, (i) {
-                  //       final String currency = AppConstant.currencyList[i];
-                  //       return DropdownMenuItem(
-                  //         value: currency,
-                  //         child: Text(
-                  //           "$currency",
-                  //           style: TextStyle(
-                  //             color: AppTheme.primaryTextColor,
-                  //             fontWeight: FontWeight.bold,
-                  //           ),
-                  //         ),
-                  //       );
-                  //     }),
-                  //   ),
-                  // ),
                   ListTile(
                     dense: true,
                     contentPadding: const EdgeInsets.symmetric(vertical: 5),
@@ -113,16 +79,16 @@ class _SettingsViewState extends State<SettingsView> {
                     ),
                     title: DropdownList(
                       hint: AppMessage.currencyLabel,
-                      value: selectedCurrency,
+                      value: currencies,
                       onChanged: (value) async {
-                        setState(() => selectedCurrency = value);
+                        print(currencies.name);
+                        setState(() => currencies = value);
                       },
                       myList: List.generate(Currencies.values.length, (i) {
-                        // final String currency = Currencies.values[i].name;
                         final Currencies index = Currencies.values[i];
                         final String? currency = AppEnum.currencies[index];
                         return DropdownMenuItem(
-                          value: currency,
+                          value: index,
                           child: Text(
                             "$currency",
                             style: TextStyle(
@@ -136,7 +102,7 @@ class _SettingsViewState extends State<SettingsView> {
                   ),
 
                   /// TODO : Languages
-                  ListTile(
+                  /*ListTile(
                     dense: true,
                     contentPadding: const EdgeInsets.symmetric(vertical: 5),
                     minVerticalPadding: 0,
@@ -172,7 +138,7 @@ class _SettingsViewState extends State<SettingsView> {
                         );
                       }),
                     ),
-                  ),
+                  ),*/
 
                   /// TODO : Save Button
                   ListTile(
