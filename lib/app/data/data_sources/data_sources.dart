@@ -1,6 +1,9 @@
+// ignore_for_file: non_constant_identifier_names
+
 import 'package:get/get.dart';
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
+import 'package:wallet_online/app/config/app_enum.dart';
 
 import '../../config/app_function.dart';
 import '../models/categories.dart';
@@ -23,8 +26,8 @@ class DataSources extends GetConnect {
         $_id INTEGER PRIMARY KEY AUTOINCREMENT, 
         $_currency TEXT NOT NULL
   );''';
-  static const String _tbl_settings_data_query = '''
-    INSERT INTO $_tbl_settings ($_id, $_currency) VALUES (1, 'DH')''';
+  static String _tbl_settings_data_query = '''
+    INSERT INTO $_tbl_settings ($_id, $_currency) VALUES (1, '${Currencies.MAD.toString()}')''';
 
   static const String _tbl_category = "categories";
   static const String _color = "color";
@@ -96,10 +99,10 @@ class DataSources extends GetConnect {
   }
 
   /// TODO : About Settings
-  Future<List<Settings>> get getSettings async {
+  Future<Settings> get getSettings async {
     final db = await _database;
     final List<Map<String, dynamic>> response = await db.query(_tbl_settings);
-    return settingsFromMap(response);
+    return Settings.fromMap(response.first);
   }
 
   Future updateSettings(Settings settings) async {
