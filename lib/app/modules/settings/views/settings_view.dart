@@ -84,7 +84,7 @@ class _SettingsViewState extends State<SettingsView> {
                     },
                     myList: List.generate(Currencies.values.length, (i) {
                       final Currencies index = Currencies.values[i];
-                      final String? currency = AppEnum.currencies[index];
+                      final String? currency = AppEnum.currencies[index.name];
                       return DropdownMenuItem(
                         value: index,
                         child: Text(
@@ -145,10 +145,10 @@ class _SettingsViewState extends State<SettingsView> {
                     color: AppTheme.mainColor,
                     onPressed: () async {
                       final data = await controller.updateSettings(
-                        Settings(id: 1, currency: currency.toString()),
+                        Settings(id: 1, currency: currency),
                       );
                       if (!(data == null)) {
-                        AppConstant.appCurrency = AppEnum.currencies[currency];
+                        AppConstant.appCurrency = AppEnum.currencies[currency]!;
                         AppFunction.messageBox(message: AppMessage.messageUpdate);
                       }
                     },
