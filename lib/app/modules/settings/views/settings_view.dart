@@ -32,7 +32,7 @@ class _SettingsViewState extends State<SettingsView> {
     // selectedLanguage = Languages.English.name;
     // selectedCurrency = AppEnum.currencies.values.first;
     currency = AppConstant.appCurrency;
-    //selectedLanguage = AppEnum.languages.values.first;
+    selectedLanguage = AppEnum.languages.values.first;
   }
 
   @override
