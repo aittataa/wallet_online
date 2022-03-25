@@ -46,8 +46,8 @@ class _SettingsViewState extends State<SettingsView> {
           return BouncePoint();
         } else {
           final Settings appSettings = controller.settings.value;
-          currency = appSettings.currency!;
-          AppConstant.appCurrency = AppEnum.currencies[currency]!;
+          // currency = appSettings.currency!;
+          // AppConstant.appCurrency = AppEnum.currencies[currency]!;
           return SingleChildScrollView(
             padding: const EdgeInsets.all(10),
             child: Column(
