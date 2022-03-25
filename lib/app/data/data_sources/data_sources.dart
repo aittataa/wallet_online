@@ -27,7 +27,7 @@ class DataSources extends GetConnect {
         $_currency TEXT NOT NULL
   );''';
   static String _tbl_settings_data_query = '''
-    INSERT INTO $_tbl_settings ($_id, $_currency) VALUES (1, '${Currencies.MAD.toString()}')''';
+    INSERT INTO $_tbl_settings ($_id, $_currency) VALUES (1, '${Currencies.MAD.name}')''';
 
   static const String _tbl_category = "categories";
   static const String _color = "color";

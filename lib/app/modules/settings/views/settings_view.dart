@@ -31,7 +31,8 @@ class _SettingsViewState extends State<SettingsView> {
     // selectedCurrency = AppConstant.appCurrency;
     // selectedLanguage = Languages.English.name;
     // selectedCurrency = AppEnum.currencies.values.first;
-    currency = AppConstant.appCurrency;
+    // currency = AppConstant.appCurrency;
+    // currency = Currencies.MAD.name;
     //selectedLanguage = AppEnum.languages.values.first;
   }
 
@@ -45,7 +46,8 @@ class _SettingsViewState extends State<SettingsView> {
           return BouncePoint();
         } else {
           final Settings appSettings = controller.settings.value;
-          print(appSettings.currency);
+          currency = appSettings.currency!;
+          AppConstant.appCurrency = AppEnum.currencies[currency]!;
           return SingleChildScrollView(
             padding: const EdgeInsets.all(10),
             child: Column(
@@ -77,14 +79,15 @@ class _SettingsViewState extends State<SettingsView> {
                     ),
                   ),
                   title: DropdownList(
-                    hint: AppMessage.currencyLabel,
+                    hint: "${AppMessage.currencyLabel}",
                     value: currency,
                     onChanged: (value) {
+                      print(value);
                       setState(() => currency = value);
                     },
                     myList: List.generate(Currencies.values.length, (i) {
-                      final Currencies index = Currencies.values[i];
-                      final String? currency = AppEnum.currencies[index.name];
+                      final String index = Currencies.values[i].name;
+                      final String? currency = AppEnum.currencies[index];
                       return DropdownMenuItem(
                         value: index,
                         child: Text(
