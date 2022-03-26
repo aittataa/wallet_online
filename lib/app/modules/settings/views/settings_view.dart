@@ -45,7 +45,7 @@ class _SettingsViewState extends State<SettingsView> {
         if (state) {
           return BouncePoint();
         } else {
-          final Settings appSettings = controller.settings.value;
+          // final Settings appSettings = controller.settings.value;
           //currency = appSettings.currency!;
           //AppConstant.appCurrency = AppEnum.currencies[currency]!;
           return SingleChildScrollView(
