@@ -2,19 +2,28 @@ import 'package:get/get.dart';
 
 import '../../../data/data_sources/data_sources.dart';
 import '../../../data/models/categories.dart';
+import '../../../data/models/settings.dart';
 import '../../../data/models/transactions.dart';
 
 class HomeController extends GetxController {
   final DataSources _dataSources = Get.put(DataSources());
-  final transactions = <Transactions>[].obs;
+  final settings = Settings().obs;
   final categories = <Categories>[].obs;
+  final transactions = <Transactions>[].obs;
   final state = false.obs;
 
   @override
   void onInit() {
     super.onInit();
+    _loadSettings;
     _loadCategories;
     _loadTransactions;
+  }
+
+  get _loadSettings async {
+    state.value = true;
+    settings.value = await _dataSources.getSettings;
+    state.value = false;
   }
 
   get _loadCategories async {

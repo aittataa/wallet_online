@@ -21,19 +21,9 @@ class SettingsView extends StatefulWidget {
 class _SettingsViewState extends State<SettingsView> {
   final SettingsController controller = Get.put(SettingsController());
 
-  // late String selectedCurrency;
-  late String selectedLanguage;
-  late String currency;
-
   @override
   void initState() {
     super.initState();
-    // selectedCurrency = AppConstant.appCurrency;
-    // selectedLanguage = Languages.English.name;
-    // selectedCurrency = AppEnum.currencies.values.first;
-    // currency = AppConstant.appCurrency;
-    // currency = Currencies.MAD.name;
-    //selectedLanguage = AppEnum.languages.values.first;
   }
 
   @override
@@ -45,9 +35,8 @@ class _SettingsViewState extends State<SettingsView> {
         if (state) {
           return BouncePoint();
         } else {
-          // final Settings appSettings = controller.settings.value;
-          //currency = appSettings.currency!;
-          //AppConstant.appCurrency = AppEnum.currencies[currency]!;
+          final Settings appSettings = controller.settings.value;
+          AppConstant.appCurrency = AppEnum.currencies[appSettings.currency]!;
           return SingleChildScrollView(
             padding: const EdgeInsets.all(10),
             child: Column(
@@ -80,10 +69,10 @@ class _SettingsViewState extends State<SettingsView> {
                   ),
                   title: DropdownList(
                     hint: "${AppMessage.currencyLabel}",
-                    value: currency,
+                    value: AppConstant.currency,
                     onChanged: (value) {
                       print(value);
-                      setState(() => currency = value);
+                      setState(() => AppConstant.currency = value);
                     },
                     myList: List.generate(Currencies.values.length, (i) {
                       final String index = Currencies.values[i].name;
@@ -147,11 +136,12 @@ class _SettingsViewState extends State<SettingsView> {
                     title: AppMessage.labelSave,
                     color: AppTheme.mainColor,
                     onPressed: () async {
+                      // print(controller.settings.value.currency);
                       final data = await controller.updateSettings(
-                        Settings(id: 1, currency: currency),
+                        Settings(id: 1, currency: AppConstant.currency),
                       );
                       if (!(data == null)) {
-                        AppConstant.appCurrency = AppEnum.currencies[currency]!;
+                        AppConstant.appCurrency = AppEnum.currencies[AppConstant.currency]!;
                         AppFunction.messageBox(message: AppMessage.messageUpdate);
                       }
                     },

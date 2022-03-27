@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:wallet_online/app/modules/initial/controllers/initial_controller.dart';
 
 import '../../../modules/categories/views/categories_view.dart';
 import '../../../modules/home/views/home_view.dart';
@@ -8,11 +10,13 @@ import '../widgets/navigation_bar.dart';
 
 class InitialView extends StatefulWidget {
   const InitialView({Key? key}) : super(key: key);
+
   @override
   State<InitialView> createState() => _InitialViewState();
 }
 
 class _InitialViewState extends State<InitialView> {
+  final InitialController controller = Get.put(InitialController());
   late PageController _pageController = PageController();
   late int _pageIndex;
 

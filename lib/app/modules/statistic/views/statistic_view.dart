@@ -3,9 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../../config/app_constant.dart';
+import '../../../config/app_enum.dart';
 import '../../../config/app_function.dart';
 import '../../../config/app_message.dart';
 import '../../../data/models/categories.dart';
+import '../../../data/models/settings.dart';
 import '../../../shared/bounce_point.dart';
 import '../../../shared/header_button.dart';
 import '../controllers/statistic_controller.dart';
@@ -34,6 +36,8 @@ class _StatisticViewState extends State<StatisticView> {
         if (state) {
           return BouncePoint();
         } else {
+          final Settings appSettings = controller.settings.value;
+          AppConstant.appCurrency = AppEnum.currencies[appSettings.currency]!;
           final List<Categories> myList = controller.statistics;
           return Column(
             children: [

@@ -2,24 +2,27 @@ import 'package:get/get.dart';
 
 import '../../../data/data_sources/data_sources.dart';
 import '../../../data/models/categories.dart';
+import '../../../data/models/settings.dart';
 
 class StatisticController extends GetxController {
   final DataSources _dataSources = Get.put(DataSources());
-  //final categories = <Categories>[].obs;
   final statistics = <Categories>[].obs;
+  final settings = Settings().obs;
+
   final state = false.obs;
 
   @override
   void onInit() {
     super.onInit();
+    _loadSettings;
     _loadStatistics;
   }
 
-  // get _loadStatistics async {
-  //   state.value = true;
-  //   categories.value = await _dataSources.getCategories;
-  //   state.value = false;
-  // }
+  get _loadSettings async {
+    state.value = true;
+    settings.value = await _dataSources.getSettings;
+    state.value = false;
+  }
 
   get _loadStatistics async {
     state.value = true;
