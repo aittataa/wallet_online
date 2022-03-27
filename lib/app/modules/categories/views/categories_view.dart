@@ -21,6 +21,8 @@ class CategoriesView extends StatefulWidget {
 
 class _CategoriesViewState extends State<CategoriesView> {
   final CategoriesController controller = Get.put(CategoriesController());
+  late bool visible = true;
+
   @override
   void initState() {
     super.initState();
@@ -29,9 +31,11 @@ class _CategoriesViewState extends State<CategoriesView> {
 
   @override
   Widget build(BuildContext context) {
+    visible = MediaQuery.of(context).viewInsets.bottom == 0;
     return Scaffold(
       appBar: AppBar(title: Text(AppMessage.labelCategories)),
       floatingActionButton: FloatingButton(
+        visible: visible,
         onPressed: () => AppFunction.lunchNew(
           context,
           builder: CategoriesAdd(

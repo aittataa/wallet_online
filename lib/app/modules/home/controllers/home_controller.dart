@@ -38,6 +38,10 @@ class HomeController extends GetxController {
     state.value = false;
   }
 
+  get loadTransactions async {
+    return await _dataSources.getTransactions;
+  }
+
   addTransaction(Transactions transaction) async {
     final data = _dataSources.insertTransaction(transaction);
     _loadTransactions;

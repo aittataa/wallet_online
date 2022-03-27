@@ -19,6 +19,7 @@ class _InitialViewState extends State<InitialView> {
   final InitialController controller = Get.put(InitialController());
   late PageController _pageController = PageController();
   late int _pageIndex;
+  late bool visible = true;
 
   @override
   void initState() {
@@ -29,6 +30,7 @@ class _InitialViewState extends State<InitialView> {
 
   @override
   Widget build(BuildContext context) {
+    visible = MediaQuery.of(context).viewInsets.bottom == 0;
     return Scaffold(
       resizeToAvoidBottomInset: false,
       body: PageView(
@@ -41,14 +43,17 @@ class _InitialViewState extends State<InitialView> {
           SettingsView(),
         ],
       ),
-      bottomNavigationBar: FooterBar(
-        currentIndex: _pageIndex,
-        onTap: (index) async {
-          setState(() {
-            _pageIndex = index;
-            _pageController.jumpToPage(_pageIndex);
-          });
-        },
+      bottomNavigationBar: Visibility(
+        visible: visible,
+        child: FooterBar(
+          currentIndex: _pageIndex,
+          onTap: (index) async {
+            setState(() {
+              _pageIndex = index;
+              _pageController.jumpToPage(_pageIndex);
+            });
+          },
+        ),
       ),
     );
   }
