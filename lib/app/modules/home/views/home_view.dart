@@ -2,6 +2,7 @@ import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:get/get.dart';
+import 'package:grouped_list/grouped_list.dart';
 
 import '../../../config/app_constant.dart';
 import '../../../config/app_enum.dart';
@@ -14,6 +15,7 @@ import '../../../shared/bounce_point.dart';
 import '../../../shared/empty_box.dart';
 import '../../../shared/floating_button.dart';
 import '../controllers/home_controller.dart';
+import '../widgets/date_item.dart';
 import '../widgets/transaction_add.dart';
 import '../widgets/transaction_shape.dart';
 
@@ -30,9 +32,7 @@ class _HomeViewState extends State<HomeView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(AppMessage.appTitle),
-      ),
+      appBar: AppBar(title: Text(AppMessage.appTitle)),
       floatingActionButton: FloatingButton(
         visible: visible,
         onPressed: () {
@@ -42,7 +42,7 @@ class _HomeViewState extends State<HomeView> {
           );
         },
       ),
-      body: Obx(() {
+      body: Builder(builder: (_) {
         final bool state = controller.state.value;
         if (!state) {
           final Settings appSettings = controller.settings.value;
@@ -143,8 +143,45 @@ class _HomeViewState extends State<HomeView> {
                       ],
                     ),
                   ),
-                  //SizedBox(height: 5),
-                  ListView.builder(
+                  SizedBox(height: 5),
+                  GroupedListView<dynamic, DateTime>(
+                    shrinkWrap: true,
+                    physics: const NeverScrollableScrollPhysics(),
+                    elements: myList,
+                    order: GroupedListOrder.DESC,
+                    groupComparator: (a, b) => a.compareTo(b),
+                    itemComparator: (a, b) => a.date.compareTo(b.date),
+                    groupBy: (transaction) {
+                      final DateTime datetime = transaction.date;
+                      return DateTime.utc(datetime.year, datetime.month, datetime.day);
+                    },
+                    groupSeparatorBuilder: (DateTime date) {
+                      if (date.isAtSameMomentAs(DateTime.utc(DateTime.now().year, DateTime.now().month, DateTime.now().day - 1))) {
+                        return DateItem(label: AppMessage.labelYesterday, date: date);
+                      } else if (date.isAtSameMomentAs(DateTime.utc(DateTime.now().year, DateTime.now().month, DateTime.now().day))) {
+                        return DateItem(label: AppMessage.labelToday, date: date);
+                      } else if (date.isAtSameMomentAs(DateTime.utc(DateTime.now().year, DateTime.now().month, DateTime.now().day + 1))) {
+                        return DateItem(label: AppMessage.labelTomorrow, date: date);
+                      } else {
+                        return DateItem(label: AppFunction.dateShape(date), date: date);
+                      }
+                    },
+                    itemBuilder: (context, transaction) {
+                      return TransactionShape(
+                        controller: controller,
+                        transaction: transaction,
+                        onPressed: () async {
+                          final int id = transaction.id!;
+                          var data = await controller.deleteTransaction(id);
+                          setState(() {
+                            myList.remove(transaction);
+                            print(!(data == null));
+                          });
+                        },
+                      );
+                    },
+                  ),
+                  /*ListView.builder(
                     shrinkWrap: true,
                     padding: const EdgeInsets.symmetric(vertical: 5),
                     physics: const NeverScrollableScrollPhysics(),
@@ -164,7 +201,7 @@ class _HomeViewState extends State<HomeView> {
                         },
                       );
                     },
-                  ),
+                  ),*/
                 ],
               ),
             );
