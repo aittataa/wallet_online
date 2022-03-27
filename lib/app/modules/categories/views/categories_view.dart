@@ -46,57 +46,58 @@ class _CategoriesViewState extends State<CategoriesView> {
           ),
         ),
       ),
-      body: Obx(() {
-        final bool state = controller.state.value;
-        if (state) {
-          return BouncePoint();
-        } else {
-          final List<Categories> myList = controller.categories;
-          return Column(
-            children: [
-              Row(
-                children: [
-                  HeaderButton(
-                    title: AppMessage.incomes,
-                    icon: CupertinoIcons.square_arrow_down_fill,
-                    state: AppConstant.pageIndex == 0,
-                    onPressed: () {
-                      setState(() => {AppFunction.animateToPage(0)});
-                    },
-                  ),
-                  HeaderButton(
-                    title: AppMessage.expenses,
-                    icon: CupertinoIcons.square_arrow_up_fill,
-                    state: AppConstant.pageIndex == 1,
-                    onPressed: () {
-                      setState(() => {AppFunction.animateToPage(1)});
-                    },
-                  ),
-                ],
-              ),
-              Expanded(
-                child: PageView(
-                  onPageChanged: (index) {
-                    setState(() => {AppFunction.animateToPage(index)});
-                  },
-                  controller: AppConstant.pageController,
-                  physics: BouncingScrollPhysics(),
+      body: FutureBuilder<List<Categories>>(
+        future: controller.loadCategories,
+        builder: (_, snapshot) {
+          if (snapshot.hasData) {
+            final List<Categories> myList = snapshot.data!;
+            return Column(
+              children: [
+                Row(
                   children: [
-                    CategoriesPage(
-                      controller: controller,
-                      myList: AppFunction.filterCategories(myList, 0),
+                    HeaderButton(
+                      title: AppMessage.incomes,
+                      icon: CupertinoIcons.square_arrow_down_fill,
+                      state: AppConstant.pageIndex == 0,
+                      onPressed: () {
+                        setState(() => {AppFunction.animateToPage(0)});
+                      },
                     ),
-                    CategoriesPage(
-                      controller: controller,
-                      myList: AppFunction.filterCategories(myList, 1),
+                    HeaderButton(
+                      title: AppMessage.expenses,
+                      icon: CupertinoIcons.square_arrow_up_fill,
+                      state: AppConstant.pageIndex == 1,
+                      onPressed: () {
+                        setState(() => {AppFunction.animateToPage(1)});
+                      },
                     ),
                   ],
                 ),
-              ),
-            ],
-          );
-        }
-      }),
+                Expanded(
+                  child: PageView(
+                    onPageChanged: (index) {
+                      setState(() => {AppFunction.animateToPage(index)});
+                    },
+                    controller: AppConstant.pageController,
+                    physics: BouncingScrollPhysics(),
+                    children: [
+                      CategoriesPage(
+                        controller: controller,
+                        myList: AppFunction.filterCategories(myList, 0),
+                      ),
+                      CategoriesPage(
+                        controller: controller,
+                        myList: AppFunction.filterCategories(myList, 1),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            );
+          }
+          return const BouncePoint();
+        },
+      ),
     );
   }
 

@@ -37,20 +37,17 @@ class _HomeViewState extends State<HomeView> {
       floatingActionButton: FloatingButton(
         visible: visible,
         onPressed: () {
-          AppFunction.lunchNew(
-            context,
-            builder: TransactionAdd(controller: controller),
-          );
+          AppFunction.lunchNew(context, builder: TransactionAdd(controller: controller));
         },
       ),
-      body: FutureBuilder(
+      body: FutureBuilder<List<Transactions>>(
         future: controller.loadTransactions,
         builder: (_, snapshot) {
           if (snapshot.hasData) {
             final Settings appSettings = controller.settings.value;
             AppConstant.currency = appSettings.currency!;
             AppConstant.appCurrency = AppEnum.currencies[appSettings.currency]!;
-            final List<Transactions> myList = controller.transactions;
+            final List<Transactions> myList = snapshot.data!;
             final bool isNotEmpty = myList.isNotEmpty;
             if (isNotEmpty) {
               final double incomes = AppFunction.loadCount(myList, 0);
@@ -183,27 +180,6 @@ class _HomeViewState extends State<HomeView> {
                         );
                       },
                     ),
-                    /*ListView.builder(
-                    shrinkWrap: true,
-                    padding: const EdgeInsets.symmetric(vertical: 5),
-                    physics: const NeverScrollableScrollPhysics(),
-                    itemCount: myList.length,
-                    itemBuilder: (context, i) {
-                      final Transactions transaction = myList[i];
-                      return TransactionShape(
-                        controller: controller,
-                        transaction: transaction,
-                        onPressed: () async {
-                          final int id = transaction.id!;
-                          var data = await controller.deleteTransaction(id);
-                          setState(() {
-                            myList.remove(transaction);
-                            print(!(data == null));
-                          });
-                        },
-                      );
-                    },
-                  ),*/
                   ],
                 ),
               );
@@ -223,3 +199,24 @@ class _HomeViewState extends State<HomeView> {
     Get.delete<HomeController>();
   }
 }
+/*ListView.builder(
+shrinkWrap: true,
+padding: const EdgeInsets.symmetric(vertical: 5),
+physics: const NeverScrollableScrollPhysics(),
+itemCount: myList.length,
+itemBuilder: (context, i) {
+  final Transactions transaction = myList[i];
+  return TransactionShape(
+    controller: controller,
+    transaction: transaction,
+    onPressed: () async {
+      final int id = transaction.id!;
+      var data = await controller.deleteTransaction(id);
+      setState(() {
+        myList.remove(transaction);
+        print(!(data == null));
+      });
+    },
+  );
+},
+),*/

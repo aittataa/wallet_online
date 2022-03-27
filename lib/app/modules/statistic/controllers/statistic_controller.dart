@@ -29,4 +29,8 @@ class StatisticController extends GetxController {
     statistics.value = await _dataSources.getStatistics;
     state.value = false;
   }
+
+  Future<List<Categories>> get loadStatistics async {
+    return await _dataSources.getStatistics;
+  }
 }

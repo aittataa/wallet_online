@@ -8,16 +8,12 @@ import '../../../data/models/transactions.dart';
 class HomeController extends GetxController {
   final DataSources _dataSources = Get.put(DataSources());
   final settings = Settings().obs;
-  final categories = <Categories>[].obs;
-  final transactions = <Transactions>[].obs;
   final state = false.obs;
 
   @override
   void onInit() {
     super.onInit();
     _loadSettings;
-    _loadCategories;
-    _loadTransactions;
   }
 
   get _loadSettings async {
@@ -26,31 +22,19 @@ class HomeController extends GetxController {
     state.value = false;
   }
 
-  get _loadCategories async {
-    state.value = true;
-    categories.value = await _dataSources.getCategories;
-    state.value = false;
+  Future<List<Categories>> get loadCategories async {
+    return await _dataSources.getCategories;
   }
 
-  get _loadTransactions async {
-    state.value = true;
-    transactions.value = await _dataSources.getTransactions;
-    state.value = false;
-  }
-
-  get loadTransactions async {
+  Future<List<Transactions>> get loadTransactions async {
     return await _dataSources.getTransactions;
   }
 
   addTransaction(Transactions transaction) async {
-    final data = _dataSources.insertTransaction(transaction);
-    _loadTransactions;
-    return data;
+    return await _dataSources.insertTransaction(transaction);
   }
 
   deleteTransaction(int id) async {
-    final data = await _dataSources.deleteTransaction(id);
-    _loadTransactions;
-    return data;
+    return await _dataSources.deleteTransaction(id);
   }
 }
