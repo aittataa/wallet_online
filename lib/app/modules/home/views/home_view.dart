@@ -199,24 +199,3 @@ class _HomeViewState extends State<HomeView> {
     Get.delete<HomeController>();
   }
 }
-/*ListView.builder(
-shrinkWrap: true,
-padding: const EdgeInsets.symmetric(vertical: 5),
-physics: const NeverScrollableScrollPhysics(),
-itemCount: myList.length,
-itemBuilder: (context, i) {
-  final Transactions transaction = myList[i];
-  return TransactionShape(
-    controller: controller,
-    transaction: transaction,
-    onPressed: () async {
-      final int id = transaction.id!;
-      var data = await controller.deleteTransaction(id);
-      setState(() {
-        myList.remove(transaction);
-        print(!(data == null));
-      });
-    },
-  );
-},
-),*/

@@ -21,6 +21,7 @@ class StatisticView extends StatefulWidget {
 
 class _StatisticViewState extends State<StatisticView> {
   final StatisticController controller = Get.put(StatisticController());
+
   @override
   void initState() {
     super.initState();
@@ -32,62 +33,63 @@ class _StatisticViewState extends State<StatisticView> {
     return Scaffold(
       appBar: AppBar(title: Text(AppMessage.labelStatistic)),
       body: FutureBuilder<List<Categories>>(
-          future: controller.loadStatistics,
-          builder: (_, snapshot) {
-            if (snapshot.hasData) {
-              final Settings appSettings = controller.settings.value;
-              AppConstant.appCurrency = AppEnum.currencies[appSettings.currency]!;
-              final List<Categories> myList = snapshot.data!;
-              return Column(
-                children: [
-                  Row(
+        future: controller.loadStatistics,
+        builder: (_, snapshot) {
+          if (snapshot.hasData) {
+            final Settings appSettings = controller.settings.value;
+            AppConstant.appCurrency = AppEnum.currencies[appSettings.currency]!;
+            final List<Categories> myList = snapshot.data!;
+            return Column(
+              children: [
+                Row(
+                  children: [
+                    HeaderButton(
+                      title: AppMessage.incomes,
+                      icon: CupertinoIcons.square_arrow_down_fill,
+                      state: AppConstant.pageIndex == 0,
+                      onPressed: () {
+                        setState(() {
+                          AppFunction.animateToPage(0);
+                        });
+                      },
+                    ),
+                    HeaderButton(
+                      title: AppMessage.expenses,
+                      icon: CupertinoIcons.square_arrow_up_fill,
+                      state: AppConstant.pageIndex == 1,
+                      onPressed: () {
+                        setState(() {
+                          AppFunction.animateToPage(1);
+                        });
+                      },
+                    ),
+                  ],
+                ),
+                Expanded(
+                  child: PageView(
+                    onPageChanged: (index) {
+                      setState(() => {AppFunction.animateToPage(index)});
+                    },
+                    controller: AppConstant.pageController,
+                    physics: BouncingScrollPhysics(),
                     children: [
-                      HeaderButton(
-                        title: AppMessage.incomes,
-                        icon: CupertinoIcons.square_arrow_down_fill,
-                        state: AppConstant.pageIndex == 0,
-                        onPressed: () {
-                          setState(() {
-                            AppFunction.animateToPage(0);
-                          });
-                        },
+                      StatisticPage(
+                        controller: controller,
+                        myList: AppFunction.filterStatistics(myList, 0),
                       ),
-                      HeaderButton(
-                        title: AppMessage.expenses,
-                        icon: CupertinoIcons.square_arrow_up_fill,
-                        state: AppConstant.pageIndex == 1,
-                        onPressed: () {
-                          setState(() {
-                            AppFunction.animateToPage(1);
-                          });
-                        },
+                      StatisticPage(
+                        controller: controller,
+                        myList: AppFunction.filterStatistics(myList, 1),
                       ),
                     ],
                   ),
-                  Expanded(
-                    child: PageView(
-                      onPageChanged: (index) {
-                        setState(() => {AppFunction.animateToPage(index)});
-                      },
-                      controller: AppConstant.pageController,
-                      physics: BouncingScrollPhysics(),
-                      children: [
-                        StatisticPage(
-                          controller: controller,
-                          myList: AppFunction.filterStatistics(myList, 0),
-                        ),
-                        StatisticPage(
-                          controller: controller,
-                          myList: AppFunction.filterStatistics(myList, 1),
-                        ),
-                      ],
-                    ),
-                  ),
-                ],
-              );
-            }
-            return const BouncePoint();
-          }),
+                ),
+              ],
+            );
+          }
+          return const BouncePoint();
+        },
+      ),
     );
   }
 

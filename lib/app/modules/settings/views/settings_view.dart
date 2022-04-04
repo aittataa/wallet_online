@@ -22,11 +22,6 @@ class _SettingsViewState extends State<SettingsView> {
   final SettingsController controller = Get.put(SettingsController());
 
   @override
-  void initState() {
-    super.initState();
-  }
-
-  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text(AppMessage.labelSettings)),
