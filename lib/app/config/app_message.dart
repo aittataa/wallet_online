@@ -33,6 +33,7 @@ class AppMessage {
   static const String labelTomorrow = "Tomorrow";
   static const String noDataFound = "No Data Found";
 
+  ///
   /// TODO : App Error
   static const String errorTitle = "Error";
   static const String errorMessage_1 = "Something Went Wrong";
