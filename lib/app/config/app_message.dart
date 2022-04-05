@@ -1,6 +1,17 @@
 class AppMessage {
   AppMessage._();
 
+  /// TODO : App Icon
+  static const String appLogo = "assets/icon.png";
+  static const String appIcon = "assets/app_icon.png";
+  static const String appIconRound = "assets/app_icon_round.png";
+
+  /// TODO : Label Navigation
+  static const String labelHome = "Home";
+  static const String labelCategories = "Categories";
+  static const String labelStatistic = "Statistic";
+  static const String labelSettings = "Settings";
+
   /// TODO : App Texts
   static const String appTitle = "Wallet Online";
   static const String incomes = "Incomes";
@@ -26,14 +37,8 @@ class AppMessage {
   static const String errorTitle = "Error";
   static const String errorMessage_1 = "Something Went Wrong";
 
-  /// TODO : App Icon
-  static const String appLogo = "assets/icon.png";
-  static const String appIcon = "assets/app_icon.png";
-  static const String appIconRound = "assets/app_icon_round.png";
-
   /// TODO : Language
-  static const String languageLabel = "Language";
-
+  //static const String languageLabel = "Language";
   // static const String languageEN = "English";
   // static const String languageAR = "Arabic";
   // static const String languageFR = "French";
@@ -43,10 +48,4 @@ class AppMessage {
   static const String currencyMAD = "DH";
   static const String currencyUSD = r"$";
   static const String currencyEUR = "€";
-
-  /// TODO : Label Navigation
-  static const String labelHome = "Home";
-  static const String labelCategories = "Categories";
-  static const String labelStatistic = "Statistic";
-  static const String labelSettings = "Settings";
 }
