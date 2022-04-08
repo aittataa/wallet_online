@@ -1,7 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:wallet_online/app/config/app_message.dart';
+import 'package:get/get.dart';
 import 'package:wallet_online/app/config/app_theme.dart';
+import 'package:wallet_online/app/config/app_translation.dart';
 
 class EmptyBox extends StatelessWidget {
   const EmptyBox({Key? key}) : super(key: key);
@@ -10,7 +11,7 @@ class EmptyBox extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
       child: Text(
-        AppMessage.noDataFound,
+        AppKey.noDataFound.name.tr,
         style: TextStyle(
           color: AppTheme.primaryTextColor.withOpacity(.5),
           fontWeight: FontWeight.bold,

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:get/get.dart';
 import 'package:grouped_list/grouped_list.dart';
+import 'package:wallet_online/app/config/app_translation.dart';
 
 import '../../../config/app_constant.dart';
 import '../../../config/app_enum.dart';
@@ -114,7 +115,7 @@ class _HomeViewState extends State<HomeView> {
                                     );
 
                                   default:
-                                    throw Exception(AppMessage.errorMessage_1);
+                                    throw Exception(AppMessage.errorMessage);
                                 }
                               }),
                             ),
@@ -123,7 +124,7 @@ class _HomeViewState extends State<HomeView> {
                           ),
                           ListTile(
                             title: Text(
-                              "${AppMessage.balance}",
+                              AppKey.balance.name.tr,
                               textAlign: TextAlign.center,
                               style: TextStyle(
                                 color: AppTheme.primaryTextColor,
@@ -156,11 +157,11 @@ class _HomeViewState extends State<HomeView> {
                       },
                       groupSeparatorBuilder: (DateTime date) {
                         if (date.isAtSameMomentAs(DateTime.utc(DateTime.now().year, DateTime.now().month, DateTime.now().day - 1))) {
-                          return DateItem(label: AppMessage.labelYesterday, date: date);
+                          return DateItem(label: AppKey.labelYesterday.name.tr, date: date);
                         } else if (date.isAtSameMomentAs(DateTime.utc(DateTime.now().year, DateTime.now().month, DateTime.now().day))) {
-                          return DateItem(label: AppMessage.labelToday, date: date);
+                          return DateItem(label: AppKey.labelToday.name.tr, date: date);
                         } else if (date.isAtSameMomentAs(DateTime.utc(DateTime.now().year, DateTime.now().month, DateTime.now().day + 1))) {
-                          return DateItem(label: AppMessage.labelTomorrow, date: date);
+                          return DateItem(label: AppKey.labelTomorrow.name.tr, date: date);
                         } else {
                           return DateItem(label: AppFunction.dateShape(date), date: date);
                         }

@@ -1,9 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:wallet_online/app/config/app_translation.dart';
 import 'package:wallet_online/app/shared/empty_box.dart';
 
 import '../../../config/app_constant.dart';
-import '../../../config/app_message.dart';
 import '../../../config/app_theme.dart';
 import '../../../data/models/categories.dart';
 import '../../../shared/header_button.dart';
@@ -45,7 +46,7 @@ class _TransactionAddState extends State<TransactionAdd> {
               title: Row(
                 children: [
                   HeaderButton(
-                    title: AppMessage.incomes,
+                    title: AppKey.incomes.name.tr,
                     icon: CupertinoIcons.square_arrow_down_fill,
                     state: AppConstant.pageIndex == 0,
                     onPressed: () {
@@ -56,7 +57,7 @@ class _TransactionAddState extends State<TransactionAdd> {
                     },
                   ),
                   HeaderButton(
-                    title: AppMessage.expenses,
+                    title: AppKey.expenses.name.tr,
                     icon: CupertinoIcons.square_arrow_up_fill,
                     state: AppConstant.pageIndex == 1,
                     onPressed: () {

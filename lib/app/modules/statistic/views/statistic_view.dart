@@ -1,11 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:wallet_online/app/config/app_translation.dart';
 
 import '../../../config/app_constant.dart';
 import '../../../config/app_enum.dart';
 import '../../../config/app_function.dart';
-import '../../../config/app_message.dart';
 import '../../../data/models/categories.dart';
 import '../../../data/models/settings.dart';
 import '../../../shared/bounce_point.dart';
@@ -31,7 +31,7 @@ class _StatisticViewState extends State<StatisticView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text(AppMessage.labelStatistic)),
+      appBar: AppBar(title: Text(AppKey.labelStatistic.name.tr)),
       body: FutureBuilder<List<Categories>>(
         future: controller.loadStatistics,
         builder: (_, snapshot) {
@@ -44,7 +44,7 @@ class _StatisticViewState extends State<StatisticView> {
                 Row(
                   children: [
                     HeaderButton(
-                      title: AppMessage.incomes,
+                      title: AppKey.incomes.name.tr,
                       icon: CupertinoIcons.square_arrow_down_fill,
                       state: AppConstant.pageIndex == 0,
                       onPressed: () {
@@ -54,7 +54,7 @@ class _StatisticViewState extends State<StatisticView> {
                       },
                     ),
                     HeaderButton(
-                      title: AppMessage.expenses,
+                      title: AppKey.expenses.name.tr,
                       icon: CupertinoIcons.square_arrow_up_fill,
                       state: AppConstant.pageIndex == 1,
                       onPressed: () {

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:wallet_online/app/config/app_translation.dart';
 
 import '../../../config/app_constant.dart';
 import '../../../config/app_enum.dart';
@@ -24,7 +25,7 @@ class _SettingsViewState extends State<SettingsView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text(AppMessage.labelSettings)),
+      appBar: AppBar(title: Text(AppKey.labelSettings.name.tr)),
       body: Obx(() {
         final bool state = controller.state.value;
         if (state) {
@@ -55,7 +56,7 @@ class _SettingsViewState extends State<SettingsView> {
                   leading: SizedBox(
                     width: 100,
                     child: Text(
-                      "${AppMessage.currencyLabel} : ",
+                      AppKey.currencyLabel.name.tr,
                       style: TextStyle(
                         color: AppTheme.primaryTextColor,
                         fontWeight: FontWeight.bold,
@@ -63,7 +64,7 @@ class _SettingsViewState extends State<SettingsView> {
                     ),
                   ),
                   title: DropdownList(
-                    hint: "${AppMessage.currencyLabel}",
+                    hint: AppKey.currencyLabel.name.tr,
                     value: AppConstant.currency,
                     onChanged: (value) {
                       print(value);
@@ -128,16 +129,15 @@ class _SettingsViewState extends State<SettingsView> {
                 /// TODO : Save Button
                 ListTile(
                   title: AddButton(
-                    title: AppMessage.labelSave,
+                    title: AppKey.labelSave.name.tr,
                     color: AppTheme.mainColor,
                     onPressed: () async {
-                      // print(controller.settings.value.currency);
                       final data = await controller.updateSettings(
                         Settings(id: 1, currency: AppConstant.currency),
                       );
                       if (!(data == null)) {
                         AppConstant.appCurrency = AppEnum.currencies[AppConstant.currency]!;
-                        AppFunction.messageBox(message: AppMessage.messageUpdate);
+                        AppFunction.messageBox(message: AppKey.messageUpdate.name.tr);
                       }
                     },
                   ),

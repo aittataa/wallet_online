@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:wallet_online/app/config/app_translation.dart';
 
 import '../../../config/app_function.dart';
 import '../../../config/app_message.dart';
@@ -74,7 +76,7 @@ class _TransactionFormState extends State<TransactionForm> {
                     setState(() => {selectedCategory = value});
                     selectedCategoryId = AppFunction.getCategoryID(selectedCategory, myList);
                   },
-                  hint: AppMessage.labelCategory,
+                  hint: AppKey.labelCategory.name.tr,
                   value: selectedCategory,
                   myList: List.generate(widget.myList.length, (index) {
                     final Categories category = widget.myList[index];
@@ -102,13 +104,13 @@ class _TransactionFormState extends State<TransactionForm> {
           SizedBox(height: 5),
           FieldText(
             controller: descriptionController,
-            hintText: AppMessage.typeMessage,
+            hintText: AppKey.typeMessage.name.tr,
             index: pageIndex,
             maxLines: 3,
           ),
           SizedBox(height: 5),
           AddButton(
-            title: AppMessage.labelAdd,
+            title: AppKey.labelAdd.name.tr,
             color: pageIndex == 0 ? AppTheme.incomeColor : AppTheme.expenseColor,
             onPressed: () async {
               try {
@@ -133,9 +135,9 @@ class _TransactionFormState extends State<TransactionForm> {
                 Navigator.pop(context);
                 AppFunction.snackBar(
                   title: AppMessage.errorTitle,
-                  message: AppMessage.errorMessage_1,
+                  message: AppMessage.errorMessage,
                 );
-                throw Exception(AppMessage.errorMessage_1);
+                throw Exception(AppMessage.errorMessage);
               }
             },
           ),

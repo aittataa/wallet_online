@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:wallet_online/app/config/app_translation.dart';
 
 import '../../../config/app_constant.dart';
 import '../../../config/app_function.dart';
@@ -60,7 +62,7 @@ class _CategoriesAddState extends State<CategoriesAdd> {
           ),
         ),
         child: Text(
-          state ? AppMessage.newIncome : AppMessage.newExpenses,
+          state ? AppKey.newIncome.name.tr : AppKey.newExpenses.name.tr,
           textAlign: TextAlign.center,
           style: TextStyle(
             color: AppTheme.mainColor,
@@ -76,11 +78,11 @@ class _CategoriesAddState extends State<CategoriesAdd> {
           children: [
             FieldText(
               controller: _controller,
-              hintText: state ? AppMessage.typeNewIncome : AppMessage.typeNewExpenses,
+              hintText: state ? AppKey.typeNewIncome.name.tr : AppKey.typeNewExpenses.name.tr,
               index: index,
             ),
             AddButton(
-              title: widget.status ? AppMessage.labelUpdate : AppMessage.labelAdd,
+              title: widget.status ? AppKey.labelUpdate.name.tr : AppKey.labelAdd.name.tr,
               color: state ? AppTheme.incomeColor : AppTheme.expenseColor,
               onPressed: () async {
                 try {
@@ -103,9 +105,9 @@ class _CategoriesAddState extends State<CategoriesAdd> {
                   Navigator.pop(context);
                   AppFunction.snackBar(
                     title: AppMessage.errorTitle,
-                    message: AppMessage.errorMessage_1,
+                    message: AppMessage.errorMessage,
                   );
-                  throw Exception(AppMessage.errorMessage_1);
+                  throw Exception(AppMessage.errorMessage);
                 }
               },
             )

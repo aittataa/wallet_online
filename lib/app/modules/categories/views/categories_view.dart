@@ -4,7 +4,7 @@ import 'package:get/get.dart';
 
 import '../../../config/app_constant.dart';
 import '../../../config/app_function.dart';
-import '../../../config/app_message.dart';
+import '../../../config/app_translation.dart';
 import '../../../data/models/categories.dart';
 import '../../../shared/bounce_point.dart';
 import '../../../shared/floating_button.dart';
@@ -33,7 +33,7 @@ class _CategoriesViewState extends State<CategoriesView> {
   Widget build(BuildContext context) {
     visible = MediaQuery.of(context).viewInsets.bottom == 0;
     return Scaffold(
-      appBar: AppBar(title: Text(AppMessage.labelCategories)),
+      appBar: AppBar(title: Text(AppKey.labelCategories.name.tr)),
       floatingActionButton: FloatingButton(
         visible: visible,
         onPressed: () => AppFunction.lunchNew(
@@ -56,7 +56,7 @@ class _CategoriesViewState extends State<CategoriesView> {
                 Row(
                   children: [
                     HeaderButton(
-                      title: AppMessage.incomes,
+                      title: AppKey.incomes.name.tr,
                       icon: CupertinoIcons.square_arrow_down_fill,
                       state: AppConstant.pageIndex == 0,
                       onPressed: () {
@@ -64,7 +64,7 @@ class _CategoriesViewState extends State<CategoriesView> {
                       },
                     ),
                     HeaderButton(
-                      title: AppMessage.expenses,
+                      title: AppKey.expenses.name.tr,
                       icon: CupertinoIcons.square_arrow_up_fill,
                       state: AppConstant.pageIndex == 1,
                       onPressed: () {

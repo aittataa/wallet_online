@@ -1,13 +1,15 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:wallet_online/app/config/app_translation.dart';
 
 import '../../../config/app_constant.dart';
-import '../../../config/app_message.dart';
 import '../../../config/app_theme.dart';
 
 class FooterBar extends StatelessWidget {
   final int currentIndex;
   final Function(int)? onTap;
+
   const FooterBar({
     Key? key,
     required this.currentIndex,
@@ -27,22 +29,22 @@ class FooterBar extends StatelessWidget {
       showUnselectedLabels: false,
       items: [
         BottomNavigationBarItem(
-          label: AppMessage.labelHome,
+          label: AppKey.labelHome.name.tr,
           icon: Icon(CupertinoIcons.house_alt),
           activeIcon: Icon(CupertinoIcons.house_alt_fill),
         ),
         BottomNavigationBarItem(
-          label: AppMessage.labelCategories,
+          label: AppKey.labelCategories.name.tr,
           icon: Icon(CupertinoIcons.layers_alt),
           activeIcon: Icon(CupertinoIcons.layers_alt_fill),
         ),
         BottomNavigationBarItem(
-          label: AppMessage.labelStatistic,
+          label: AppKey.labelStatistic.name.tr,
           icon: Icon(CupertinoIcons.chart_pie),
           activeIcon: Icon(CupertinoIcons.chart_pie_fill),
         ),
         BottomNavigationBarItem(
-          label: AppMessage.labelSettings,
+          label: AppKey.labelSettings.name.tr,
           icon: Icon(CupertinoIcons.gear),
           activeIcon: Icon(CupertinoIcons.gear_solid),
         ),
