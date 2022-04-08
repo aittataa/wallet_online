@@ -33,7 +33,7 @@ class AppTranslation extends Translations {
         AppKey.errorMessage.name: "Something Went Wrong",
       },
       AppLanguage.fr_FR.name: {
-        AppKey.appTitle.name: "Portefeuille",
+        AppKey.appTitle.name: "Mon Portefeuille",
         AppKey.labelHome.name: "Main",
         AppKey.labelCategories.name: "Catégories",
         AppKey.labelStatistic.name: "Statistique",

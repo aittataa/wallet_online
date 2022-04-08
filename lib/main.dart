@@ -24,8 +24,8 @@ class WalletOnline extends StatelessWidget {
       title: AppKey.appTitle.name.tr,
       theme: AppTheme.themeData,
       translations: AppTranslation(),
-      locale: Locale(AppLanguage.fr.name),
-      // locale: Locale(AppLanguage.en.name),
+      // locale: Locale(AppLanguage.fr.name),
+      locale: Locale(AppLanguage.en.name),
       // home: InitialView(),
       home: Splash(),
     );

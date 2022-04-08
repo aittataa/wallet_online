@@ -2,6 +2,7 @@ import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:page_transition/page_transition.dart';
+import 'package:wallet_online/app/config/app_translation.dart';
 
 import '../config/app_constant.dart';
 import '../config/app_message.dart';
@@ -14,7 +15,7 @@ class Splash extends StatelessWidget {
   Widget build(BuildContext context) {
     return AnimatedSplashScreen.withScreenFunction(
       screenFunction: () async {
-        Get.updateLocale(Locale("fr"));
+        Get.updateLocale(Locale(AppLanguage.en.name));
         return InitialView();
       },
       splash: Column(

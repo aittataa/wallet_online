@@ -53,7 +53,7 @@ class AppFunction {
 
   static int get getRandomColor => Color(Random().nextInt(0xFFFFFFFF)).withAlpha(0xFF).value;
 
-  static String dateShape(DateTime date) => DateFormat('MMM dd, yyyy', "fr").format(date);
+  static String dateShape(DateTime date) => DateFormat('MMM dd, yyyy').format(date);
 
   static String datetimeShape(DateTime date) => DateFormat('MMM dd, yyyy - HH:MM').format(date);
 
