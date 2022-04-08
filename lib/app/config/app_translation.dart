@@ -52,9 +52,6 @@ class AppTranslation extends Translations {
         AppKey.noDataFound.name: "No Data Found",
         AppKey.currencyLabel.name: "Currency",
       },
-      /*AppLanguage.fr_FR.name: {
-
-      },*/
     };
   }
 }

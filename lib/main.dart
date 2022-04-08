@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'app/config/app_function.dart';
 import 'app/config/app_message.dart';
 import 'app/config/app_theme.dart';
+import 'app/config/app_translation.dart';
 import 'app/shared/splash.dart';
 
 void main() {
@@ -21,6 +22,8 @@ class WalletOnline extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: AppMessage.appTitle,
       theme: AppTheme.themeData,
+      translations: AppTranslation(),
+      locale: Locale("en"),
       // home: InitialView(),
       home: Splash(),
     );

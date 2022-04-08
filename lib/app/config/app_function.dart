@@ -55,6 +55,8 @@ class AppFunction {
 
   static String dateShape(DateTime date) => DateFormat('MMM dd, yyyy').format(date);
 
+  static String datetimeShape(DateTime date) => DateFormat('MMM dd, yyyy - HH:MM').format(date);
+
   static int getCategoryID(String value, List myList) {
     return myList.where((category) => category.title == value).toList()[0].id;
   }
@@ -109,8 +111,8 @@ class AppFunction {
     //SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersive, overlays: [SystemUiOverlay.top]);
     SystemChrome.setSystemUIOverlayStyle(
       SystemUiOverlayStyle(
-        systemNavigationBarColor: AppTheme.primaryBackColor,
-        systemNavigationBarDividerColor: AppTheme.primaryBackColor,
+        systemNavigationBarColor: AppTheme.transparentColor,
+        // systemNavigationBarDividerColor: AppTheme.transparentColor,
         systemNavigationBarIconBrightness: Brightness.dark,
         systemNavigationBarContrastEnforced: true,
         statusBarColor: AppTheme.transparentColor,
