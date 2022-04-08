@@ -3,7 +3,6 @@ import 'package:get/get.dart';
 import 'package:wallet_online/app/config/app_translation.dart';
 
 import '../../../config/app_function.dart';
-import '../../../config/app_message.dart';
 import '../../../config/app_theme.dart';
 import '../../../data/models/categories.dart';
 import '../../../data/models/transactions.dart';
@@ -64,7 +63,7 @@ class _TransactionFormState extends State<TransactionForm> {
               Expanded(
                 child: FieldText(
                   controller: amountController,
-                  hintText: AppMessage.amount,
+                  hintText: AppKey.amount.name.tr,
                   index: pageIndex,
                   state: true,
                 ),
@@ -134,10 +133,10 @@ class _TransactionFormState extends State<TransactionForm> {
               } catch (e) {
                 Navigator.pop(context);
                 AppFunction.snackBar(
-                  title: AppMessage.errorTitle,
-                  message: AppMessage.errorMessage,
+                  title: AppKey.errorTitle.name.tr,
+                  message: AppKey.errorMessage.name.tr,
                 );
-                throw Exception(AppMessage.errorMessage);
+                throw Exception(AppKey.errorMessage.name.tr);
               }
             },
           ),

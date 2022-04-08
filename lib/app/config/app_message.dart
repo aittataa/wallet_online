@@ -13,7 +13,7 @@ class AppMessage {
   // static const String labelSettings = "Settings";
 
   /// TODO : App Texts
-  static const String appTitle = "Wallet Online";
+  // static const String appTitle = "Wallet Online";
 
   // static const String balance = "Balance";
   // static const String incomes = "Incomes";
@@ -26,21 +26,21 @@ class AppMessage {
   // static const String labelSave = "Save";
   // static const String labelAdd = "Add";
   // static const String labelUpdate = "Update";
-  // static const String messageUpdate = "Updated Successfully";
-  // static const String typeMessage = "Type Something...";
-  // static const String labelYesterday = "Yesterday";
-  // static const String labelToday = "Today";
-  // static const String labelTomorrow = "Tomorrow";
-  // static const String noDataFound = "No Data Found";
-  // static const String currencyLabel = "Currency";
-  static const String amount = "200";
+// static const String messageUpdate = "Updated Successfully";
+// static const String typeMessage = "Type Something...";
+// static const String labelYesterday = "Yesterday";
+// static const String labelToday = "Today";
+// static const String labelTomorrow = "Tomorrow";
+// static const String noDataFound = "No Data Found";
+// static const String currencyLabel = "Currency";
+// static const String amount = "200";
 
   /// TODO : App Error
-  static const String errorTitle = "Error";
-  static const String errorMessage = "Something Went Wrong";
+// static const String errorTitle = "Error";
+// static const String errorMessage = "Something Went Wrong";
 
   /// TODO : Language
-//static const String languageLabel = "Language";
+// static const String languageLabel = "Language";
 // static const String languageEN = "English";
 // static const String languageAR = "Arabic";
   /// TODO : Currency

@@ -8,7 +8,6 @@ import 'package:wallet_online/app/config/app_translation.dart';
 import '../../../config/app_constant.dart';
 import '../../../config/app_enum.dart';
 import '../../../config/app_function.dart';
-import '../../../config/app_message.dart';
 import '../../../config/app_theme.dart';
 import '../../../data/models/settings.dart';
 import '../../../data/models/transactions.dart';
@@ -34,7 +33,7 @@ class _HomeViewState extends State<HomeView> {
   Widget build(BuildContext context) {
     visible = MediaQuery.of(context).viewInsets.bottom == 0;
     return Scaffold(
-      appBar: AppBar(title: Text(AppMessage.appTitle)),
+      appBar: AppBar(title: Text(AppKey.appTitle.name.tr)),
       floatingActionButton: FloatingButton(
         visible: visible,
         onPressed: () {
@@ -115,7 +114,7 @@ class _HomeViewState extends State<HomeView> {
                                     );
 
                                   default:
-                                    throw Exception(AppMessage.errorMessage);
+                                    throw Exception(AppKey.errorMessage.name.tr);
                                 }
                               }),
                             ),

@@ -4,7 +4,6 @@ import 'package:wallet_online/app/config/app_translation.dart';
 
 import '../../../config/app_constant.dart';
 import '../../../config/app_function.dart';
-import '../../../config/app_message.dart';
 import '../../../config/app_theme.dart';
 import '../../../data/models/categories.dart';
 import '../../../shared/add_button.dart';
@@ -104,10 +103,10 @@ class _CategoriesAddState extends State<CategoriesAdd> {
                 } catch (e) {
                   Navigator.pop(context);
                   AppFunction.snackBar(
-                    title: AppMessage.errorTitle,
-                    message: AppMessage.errorMessage,
+                    title: AppKey.errorTitle.name.tr,
+                    message: AppKey.errorMessage.name.tr,
                   );
-                  throw Exception(AppMessage.errorMessage);
+                  throw Exception(AppKey.errorMessage.name.tr);
                 }
               },
             )

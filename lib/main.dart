@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:intl/date_symbol_data_local.dart';
 
 import 'app/config/app_function.dart';
-import 'app/config/app_message.dart';
 import 'app/config/app_theme.dart';
 import 'app/config/app_translation.dart';
 import 'app/shared/splash.dart';
@@ -10,6 +10,7 @@ import 'app/shared/splash.dart';
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
   AppFunction.configureDependencies;
+  initializeDateFormatting();
   runApp(const WalletOnline());
 }
 
@@ -20,10 +21,11 @@ class WalletOnline extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      title: AppMessage.appTitle,
+      title: AppKey.appTitle.name.tr,
       theme: AppTheme.themeData,
       translations: AppTranslation(),
-      locale: Locale("en"),
+      locale: Locale(AppLanguage.fr.name),
+      // locale: Locale(AppLanguage.en.name),
       // home: InitialView(),
       home: Splash(),
     );
