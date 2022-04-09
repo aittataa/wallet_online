@@ -1,3 +1,5 @@
+import 'package:wallet_online/app/data/models/categories.dart';
+
 transactionsFromMap(var map) {
   return List<Transactions>.from(map.map((value) => Transactions.fromMap(value)));
 }
@@ -10,6 +12,7 @@ class Transactions {
   final DateTime? date;
   final int? state;
   final int? categoryID;
+  final Categories? category;
 
   Transactions({
     this.id,
@@ -19,6 +22,7 @@ class Transactions {
     this.date,
     this.state,
     this.categoryID,
+    this.category,
   });
 
   factory Transactions.fromMap(Map<String, dynamic> map) {

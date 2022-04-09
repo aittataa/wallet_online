@@ -44,7 +44,7 @@ class TransactionShape extends StatelessWidget {
         title: Row(
           children: [
             Text(
-              "${transaction.title}",
+              "${transaction.category!.title}",
               overflow: TextOverflow.ellipsis,
               style: const TextStyle(
                 color: AppTheme.primaryTextColor,

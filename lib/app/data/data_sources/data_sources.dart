@@ -21,13 +21,17 @@ class DataSources extends GetConnect {
 
   static const String _tbl_settings = "settings";
   static const String _currency = "currency";
+  static const String _language = "language";
   static const String _tbl_settings_query = '''
     CREATE TABLE $_tbl_settings(
         $_id INTEGER PRIMARY KEY AUTOINCREMENT, 
-        $_currency TEXT NOT NULL
+        $_currency TEXT NOT NULL,
+        $_language TEXT NOT NULL
   );''';
   static String _tbl_settings_data_query = '''
-    INSERT INTO $_tbl_settings ($_id, $_currency) VALUES (1, '${Currencies.MAD.name}')''';
+    INSERT INTO $_tbl_settings ($_id, $_currency, $_language) VALUES 
+      (1, '${AppCurrencies.MAD.name}', '${AppLanguages.en.name}')
+    ''';
 
   static const String _tbl_category = "categories";
   static const String _color = "color";
@@ -60,24 +64,23 @@ class DataSources extends GetConnect {
     CREATE TABLE $_tbl_transaction(
         $_id INTEGER PRIMARY KEY AUTOINCREMENT,
         $_amount DOUBLE NOT NULL,
-        $_title TEXT,
         $_description TEXT,
         $_date DATETIME DEFAULT CURRENT_TIMESTAMP,
         $_state BIT NOT NULL,
         $_categoryID INTEGER NOT NULL
   );''';
   static String _tbl_transaction_data_query = '''
-   INSERT INTO $_tbl_transaction ($_date, $_title, $_description, $_amount, $_categoryID, $_state) VALUES
-    ('${DateTime.utc(DateTime.now().year, DateTime.now().month, DateTime.now().day + 1, DateTime.now().hour, DateTime.now().minute)}','Others', 'Others Stuff', 100, 3, 1),
-    ('${DateTime.utc(DateTime.now().year, DateTime.now().month, DateTime.now().day - 1, DateTime.now().hour, DateTime.now().minute)}','Salary', 'Raise', 1000, 2, 0),
-    ('${DateTime.utc(DateTime.now().year, DateTime.now().month, DateTime.now().day, DateTime.now().hour, DateTime.now().minute)}','Clothes', '', 1000, 5, 1),
-    ('${DateTime.utc(DateTime.now().year, DateTime.now().month, DateTime.now().day + 2, DateTime.now().hour, DateTime.now().minute)}','Food', 'Dinner', 100, 4, 1),
-    ('${DateTime.utc(DateTime.now().year, DateTime.now().month, DateTime.now().day - 2, DateTime.now().hour, DateTime.now().minute)}','Shopping', '', 500, 7, 1),
-    ('${DateTime.utc(DateTime.now().year, DateTime.now().month, DateTime.now().day + 3, DateTime.now().hour, DateTime.now().minute)}','Others', 'Gift', 1000, 1, 0),
-    ('${DateTime.utc(DateTime.now().year, DateTime.now().month, DateTime.now().day - 3, DateTime.now().hour, DateTime.now().minute)}','Salary', '', 5000, 2, 0),
-    ('${DateTime.utc(DateTime.now().year, DateTime.now().month, DateTime.now().day, DateTime.now().hour, DateTime.now().minute)}','Bills', 'Wi-Fi', 250, 8, 1),
-    ('${DateTime.utc(DateTime.now().year, DateTime.now().month, DateTime.now().day + 4, DateTime.now().hour, DateTime.now().minute)}','Food', 'Lunch', 100, 4, 1),
-    ('${DateTime.utc(DateTime.now().year, DateTime.now().month, DateTime.now().day - 4, DateTime.now().hour, DateTime.now().minute)}','Transportation', '', 75, 6, 1)
+   INSERT INTO $_tbl_transaction ($_date, $_description, $_amount, $_categoryID, $_state) VALUES
+    ('${DateTime.utc(DateTime.now().year, DateTime.now().month, DateTime.now().day + 1, DateTime.now().hour, DateTime.now().minute)}', 'Others Stuff', 100, 3, 1),
+    ('${DateTime.utc(DateTime.now().year, DateTime.now().month, DateTime.now().day - 1, DateTime.now().hour, DateTime.now().minute)}', 'Raise', 1000, 2, 0),
+    ('${DateTime.utc(DateTime.now().year, DateTime.now().month, DateTime.now().day, DateTime.now().hour, DateTime.now().minute)}', '', 1000, 5, 1),
+    ('${DateTime.utc(DateTime.now().year, DateTime.now().month, DateTime.now().day + 2, DateTime.now().hour, DateTime.now().minute)}', 'Dinner', 100, 4, 1),
+    ('${DateTime.utc(DateTime.now().year, DateTime.now().month, DateTime.now().day - 2, DateTime.now().hour, DateTime.now().minute)}', '', 500, 7, 1),
+    ('${DateTime.utc(DateTime.now().year, DateTime.now().month, DateTime.now().day + 3, DateTime.now().hour, DateTime.now().minute)}', 'Gift', 1000, 1, 0),
+    ('${DateTime.utc(DateTime.now().year, DateTime.now().month, DateTime.now().day - 3, DateTime.now().hour, DateTime.now().minute)}', '', 5000, 2, 0),
+    ('${DateTime.utc(DateTime.now().year, DateTime.now().month, DateTime.now().day, DateTime.now().hour, DateTime.now().minute)}', 'Wi-Fi', 250, 8, 1),
+    ('${DateTime.utc(DateTime.now().year, DateTime.now().month, DateTime.now().day + 4, DateTime.now().hour, DateTime.now().minute)}', 'Lunch', 100, 4, 1),
+    ('${DateTime.utc(DateTime.now().year, DateTime.now().month, DateTime.now().day - 4, DateTime.now().hour, DateTime.now().minute)}', '', 75, 6, 1)
    ''';
 
   /// TODO : About DataBase
@@ -126,6 +129,16 @@ class DataSources extends GetConnect {
     return categoriesFromMap(response);
   }
 
+  Future<Categories> getCategory(int id) async {
+    final db = await _database;
+    final List<Map<String, dynamic>> response = await db.query(
+      _tbl_category,
+      where: "$_id = ?",
+      whereArgs: [id],
+    );
+    return Categories.fromMap(response.first);
+  }
+
   Future insertCategory(Categories category) async {
     final db = await _database;
     final response = await db.insert(
@@ -143,13 +156,6 @@ class DataSources extends GetConnect {
       where: "$_id = ?",
       whereArgs: [category.id],
     );
-    final data = await updateTransaction(
-      Transactions(
-        title: category.title,
-        categoryID: category.id,
-      ),
-    );
-    print("its updated $data");
     return response;
   }
 

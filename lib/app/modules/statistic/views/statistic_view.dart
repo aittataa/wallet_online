@@ -4,10 +4,8 @@ import 'package:get/get.dart';
 import 'package:wallet_online/app/config/app_translation.dart';
 
 import '../../../config/app_constant.dart';
-import '../../../config/app_enum.dart';
 import '../../../config/app_function.dart';
 import '../../../data/models/categories.dart';
-import '../../../data/models/settings.dart';
 import '../../../shared/bounce_point.dart';
 import '../../../shared/header_button.dart';
 import '../controllers/statistic_controller.dart';
@@ -36,8 +34,9 @@ class _StatisticViewState extends State<StatisticView> {
         future: controller.loadStatistics,
         builder: (_, snapshot) {
           if (snapshot.hasData) {
-            final Settings appSettings = controller.settings.value;
-            AppConstant.appCurrency = AppEnum.currencies[appSettings.currency]!;
+            // final Settings appSettings = controller.settings.value;
+            // AppConstant.currency = appSettings.currency!;
+            // AppConstant.appCurrency = AppEnum.currencies[appSettings.currency]!;
             final List<Categories> myList = snapshot.data!;
             return Column(
               children: [

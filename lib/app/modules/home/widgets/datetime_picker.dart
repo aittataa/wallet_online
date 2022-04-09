@@ -10,6 +10,7 @@ class DateTimePicker extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: 75,
+      padding: EdgeInsets.symmetric(horizontal: 10),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10),
         border: Border.all(color: AppTheme.mainColor),

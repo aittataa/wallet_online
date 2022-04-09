@@ -19,4 +19,9 @@ class InitialController extends GetxController {
     settings.value = await _dataSources.getSettings;
     state.value = false;
   }
+
+  Future<Settings> get loadSettings async {
+    final Settings settings = await _dataSources.getSettings;
+    return settings;
+  }
 }

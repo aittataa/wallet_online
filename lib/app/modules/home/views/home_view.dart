@@ -1,15 +1,11 @@
-import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:get/get.dart';
 import 'package:grouped_list/grouped_list.dart';
 import 'package:wallet_online/app/config/app_translation.dart';
+import 'package:wallet_online/app/data/models/categories.dart';
 
-import '../../../config/app_constant.dart';
-import '../../../config/app_enum.dart';
 import '../../../config/app_function.dart';
-import '../../../config/app_theme.dart';
-import '../../../data/models/settings.dart';
 import '../../../data/models/transactions.dart';
 import '../../../shared/bounce_point.dart';
 import '../../../shared/empty_box.dart';
@@ -31,31 +27,32 @@ class _HomeViewState extends State<HomeView> {
 
   @override
   Widget build(BuildContext context) {
-    visible = MediaQuery.of(context).viewInsets.bottom == 0;
+    final bool anVisible = MediaQuery.of(context).viewInsets.bottom == 0;
     return Scaffold(
-      appBar: AppBar(title: Text(AppKey.appTitle.name.tr)),
+      appBar: AppBar(
+        title: Text(AppKey.appTitle.name.tr),
+      ),
       floatingActionButton: FloatingButton(
-        visible: visible,
+        visible: visible && anVisible,
         onPressed: () {
           AppFunction.lunchNew(context, builder: TransactionAdd(controller: controller));
         },
       ),
       body: FutureBuilder<List<Transactions>>(
-        future: controller.loadTransactions,
-        builder: (_, snapshot) {
-          if (snapshot.hasData) {
-            final Settings appSettings = controller.settings.value;
-            AppConstant.currency = appSettings.currency!;
-            AppConstant.appCurrency = AppEnum.currencies[appSettings.currency]!;
-            final List<Transactions> myList = snapshot.data!;
+        future: controller.getTransactions,
+        builder: (_, snapshot_1) {
+          if (snapshot_1.hasData) {
+            final List<Transactions> myList = snapshot_1.data!;
             final bool isNotEmpty = myList.isNotEmpty;
             if (isNotEmpty) {
               final double incomes = AppFunction.loadCount(myList, 0);
               final double expenses = AppFunction.loadCount(myList, 1);
               final balance = incomes - expenses;
               final balanceState = balance >= 0;
+
               return NotificationListener<UserScrollNotification>(
                 onNotification: (notification) {
+                  FocusScope.of(context).unfocus();
                   if (notification.direction == ScrollDirection.forward) {
                     if (!visible) setState(() => {visible = true});
                   } else if (notification.direction == ScrollDirection.reverse) {
@@ -68,7 +65,7 @@ class _HomeViewState extends State<HomeView> {
                   padding: const EdgeInsets.all(10),
                   physics: const BouncingScrollPhysics(),
                   children: [
-                    Container(
+                    /*Container(
                       height: 250,
                       padding: const EdgeInsets.all(10),
                       decoration: BoxDecoration(
@@ -142,7 +139,7 @@ class _HomeViewState extends State<HomeView> {
                         ],
                       ),
                     ),
-                    SizedBox(height: 5),
+                    SizedBox(height: 5),*/
                     GroupedListView<dynamic, DateTime>(
                       shrinkWrap: true,
                       physics: const NeverScrollableScrollPhysics(),
@@ -166,7 +163,28 @@ class _HomeViewState extends State<HomeView> {
                         }
                       },
                       itemBuilder: (context, transaction) {
-                        return TransactionShape(
+                        return FutureBuilder<Categories>(
+                          future: controller.getCategory(transaction.categoryID),
+                          builder: (_, snapshot_2) {
+                            if (snapshot_2.hasData) {
+                              transaction.category = snapshot_2.data!;
+                              return TransactionShape(
+                                controller: controller,
+                                transaction: transaction,
+                                onPressed: () async {
+                                  final int id = transaction.id!;
+                                  var data = await controller.deleteTransaction(id);
+                                  setState(() {
+                                    myList.remove(transaction);
+                                    print(!(data == null));
+                                  });
+                                },
+                              );
+                            }
+                            return SizedBox();
+                          },
+                        );
+                        /*return TransactionShape(
                           controller: controller,
                           transaction: transaction,
                           onPressed: () async {
@@ -177,7 +195,7 @@ class _HomeViewState extends State<HomeView> {
                               print(!(data == null));
                             });
                           },
-                        );
+                        );*/
                       },
                     ),
                   ],

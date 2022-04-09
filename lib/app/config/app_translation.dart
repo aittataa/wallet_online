@@ -4,7 +4,7 @@ class AppTranslation extends Translations {
   @override
   Map<String, Map<String, String>> get keys {
     return {
-      AppLanguage.en_US.name: {
+      AppKey.en_US.name: {
         AppKey.appTitle.name: "Wallet Online",
         AppKey.labelHome.name: "Home",
         AppKey.labelCategories.name: "Categories",
@@ -28,11 +28,12 @@ class AppTranslation extends Translations {
         AppKey.labelTomorrow.name: "Tomorrow",
         AppKey.noDataFound.name: "No Data Found",
         AppKey.currencyLabel.name: "Currency",
+        AppKey.languageLabel.name: "Language",
         AppKey.amount.name: "200",
         AppKey.errorTitle.name: "Error",
         AppKey.errorMessage.name: "Something Went Wrong",
       },
-      AppLanguage.fr_FR.name: {
+      AppKey.fr_FR.name: {
         AppKey.appTitle.name: "Mon Portefeuille",
         AppKey.labelHome.name: "Main",
         AppKey.labelCategories.name: "Catégories",
@@ -56,6 +57,7 @@ class AppTranslation extends Translations {
         AppKey.labelTomorrow.name: "Demain",
         AppKey.noDataFound.name: "Aucune donnée disponible",
         AppKey.currencyLabel.name: "Monnaie",
+        AppKey.languageLabel.name: "Langue",
         AppKey.amount.name: "200",
         AppKey.errorTitle.name: "Erreur",
         AppKey.errorMessage.name: "Quelque chose a mal tourné",
@@ -64,18 +66,9 @@ class AppTranslation extends Translations {
   }
 }
 
-enum AppLanguage {
-  en,
-  US,
-  en_US,
-  English,
-  fr,
-  FR,
-  fr_FR,
-  Francais,
-}
-
 enum AppKey {
+  en_US,
+  fr_FR,
   appTitle,
   labelHome,
   labelCategories,
@@ -99,6 +92,7 @@ enum AppKey {
   labelTomorrow,
   noDataFound,
   currencyLabel,
+  languageLabel,
   amount,
   errorTitle,
   errorMessage,

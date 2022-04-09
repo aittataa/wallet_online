@@ -5,12 +5,15 @@ settingsFromMap(map) {
 class Settings {
   final int? id;
   final String? currency;
-  Settings({this.id, this.currency});
+  final String? language;
+
+  Settings({this.id, this.currency, this.language});
 
   factory Settings.fromMap(Map<String, dynamic> map) {
     return Settings(
       id: map["id"],
       currency: map["currency"],
+      language: map["language"],
     );
   }
 
@@ -18,6 +21,7 @@ class Settings {
     return {
       "id": id,
       "currency": currency,
+      "language": language,
     };
   }
 }

@@ -31,67 +31,68 @@ class _TransactionAddState extends State<TransactionAdd> {
   @override
   Widget build(BuildContext context) {
     return FutureBuilder<List<Categories>>(
-        future: controller.loadCategories,
-        builder: (_, snapshot) {
-          if (snapshot.hasData) {
-            final List<Categories> myList = snapshot.data!;
-            return AlertDialog(
-              contentPadding: EdgeInsets.zero,
-              insetPadding: EdgeInsets.zero,
-              titlePadding: EdgeInsets.zero,
-              actionsPadding: EdgeInsets.zero,
-              buttonPadding: EdgeInsets.zero,
-              backgroundColor: AppTheme.primaryBackColor,
-              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-              title: Row(
+      future: controller.getCategories,
+      builder: (_, snapshot) {
+        if (snapshot.hasData) {
+          final List<Categories> myList = snapshot.data!;
+          return AlertDialog(
+            contentPadding: EdgeInsets.zero,
+            insetPadding: EdgeInsets.zero,
+            titlePadding: EdgeInsets.zero,
+            actionsPadding: EdgeInsets.zero,
+            buttonPadding: EdgeInsets.zero,
+            backgroundColor: AppTheme.primaryBackColor,
+            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+            title: Row(
+              children: [
+                HeaderButton(
+                  title: AppKey.incomes.name.tr,
+                  icon: CupertinoIcons.square_arrow_down_fill,
+                  state: AppConstant.pageIndex == 0,
+                  onPressed: () {
+                    setState(() {
+                      AppConstant.pageIndex = 0;
+                      AppConstant.pageController.jumpToPage(AppConstant.pageIndex);
+                    });
+                  },
+                ),
+                HeaderButton(
+                  title: AppKey.expenses.name.tr,
+                  icon: CupertinoIcons.square_arrow_up_fill,
+                  state: AppConstant.pageIndex == 1,
+                  onPressed: () {
+                    setState(() {
+                      AppConstant.pageIndex = 1;
+                      AppConstant.pageController.jumpToPage(AppConstant.pageIndex);
+                    });
+                  },
+                ),
+              ],
+            ),
+            content: SizedBox(
+              width: AppConstant.screenWidth * 0.95,
+              height: 270,
+              child: PageView(
+                controller: AppConstant.pageController,
+                physics: NeverScrollableScrollPhysics(),
                 children: [
-                  HeaderButton(
-                    title: AppKey.incomes.name.tr,
-                    icon: CupertinoIcons.square_arrow_down_fill,
-                    state: AppConstant.pageIndex == 0,
-                    onPressed: () {
-                      setState(() {
-                        AppConstant.pageIndex = 0;
-                        AppConstant.pageController.jumpToPage(AppConstant.pageIndex);
-                      });
-                    },
+                  TransactionForm(
+                    controller: controller,
+                    pageIndex: AppConstant.pageIndex,
+                    myList: myList.where((category) => category.state == 0).toList()..sort((a, b) => b.id!.compareTo(a.id!)),
                   ),
-                  HeaderButton(
-                    title: AppKey.expenses.name.tr,
-                    icon: CupertinoIcons.square_arrow_up_fill,
-                    state: AppConstant.pageIndex == 1,
-                    onPressed: () {
-                      setState(() {
-                        AppConstant.pageIndex = 1;
-                        AppConstant.pageController.jumpToPage(AppConstant.pageIndex);
-                      });
-                    },
+                  TransactionForm(
+                    controller: controller,
+                    pageIndex: AppConstant.pageIndex,
+                    myList: myList.where((category) => category.state == 1).toList()..sort((a, b) => b.id!.compareTo(a.id!)),
                   ),
                 ],
               ),
-              content: SizedBox(
-                width: AppConstant.screenWidth * 0.95,
-                height: 270,
-                child: PageView(
-                  controller: AppConstant.pageController,
-                  physics: NeverScrollableScrollPhysics(),
-                  children: [
-                    TransactionForm(
-                      controller: controller,
-                      pageIndex: AppConstant.pageIndex,
-                      myList: myList.where((category) => category.state == 0).toList()..sort((a, b) => b.id!.compareTo(a.id!)),
-                    ),
-                    TransactionForm(
-                      controller: controller,
-                      pageIndex: AppConstant.pageIndex,
-                      myList: myList.where((category) => category.state == 1).toList()..sort((a, b) => b.id!.compareTo(a.id!)),
-                    ),
-                  ],
-                ),
-              ),
-            );
-          }
-          return const EmptyBox();
-        });
+            ),
+          );
+        }
+        return const EmptyBox();
+      },
+    );
   }
 }

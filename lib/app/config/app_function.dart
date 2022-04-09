@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
@@ -53,9 +54,9 @@ class AppFunction {
 
   static int get getRandomColor => Color(Random().nextInt(0xFFFFFFFF)).withAlpha(0xFF).value;
 
-  static String dateShape(DateTime date) => DateFormat('MMM dd, yyyy').format(date);
+  static String dateShape(DateTime date) => DateFormat('MMM dd, yyyy', AppConstant.language).format(date);
 
-  static String datetimeShape(DateTime date) => DateFormat('MMM dd, yyyy - HH:MM').format(date);
+  static String datetimeShape(DateTime date) => DateFormat('MMM dd, yyyy - HH:MM', AppConstant.language).format(date);
 
   static int getCategoryID(String value, List myList) {
     return myList.where((category) => category.title == value).toList()[0].id;
@@ -112,12 +113,12 @@ class AppFunction {
     SystemChrome.setSystemUIOverlayStyle(
       SystemUiOverlayStyle(
         systemNavigationBarColor: AppTheme.transparentColor,
-        // systemNavigationBarDividerColor: AppTheme.transparentColor,
+        systemNavigationBarDividerColor: AppTheme.transparentColor,
         systemNavigationBarIconBrightness: Brightness.dark,
         systemNavigationBarContrastEnforced: true,
         statusBarColor: AppTheme.transparentColor,
-        // statusBarIconBrightness: Brightness.light,
-        // statusBarBrightness: Brightness.light,
+        statusBarIconBrightness: Brightness.light,
+        statusBarBrightness: Brightness.light,
         systemStatusBarContrastEnforced: true,
       ),
     );

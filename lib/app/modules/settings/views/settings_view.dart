@@ -31,8 +31,9 @@ class _SettingsViewState extends State<SettingsView> {
         if (state) {
           return BouncePoint();
         } else {
-          final Settings appSettings = controller.settings.value;
-          AppConstant.appCurrency = AppEnum.currencies[appSettings.currency]!;
+          // final Settings appSettings = controller.settings.value;
+          // AppConstant.currency = appSettings.currency!;
+          // AppConstant.appCurrency = AppEnum.currencies[appSettings.currency]!;
           return SingleChildScrollView(
             padding: const EdgeInsets.all(10),
             child: Column(
@@ -70,13 +71,13 @@ class _SettingsViewState extends State<SettingsView> {
                       print(value);
                       setState(() => AppConstant.currency = value);
                     },
-                    myList: List.generate(Currencies.values.length, (i) {
-                      final String index = Currencies.values[i].name;
-                      final String? currency = AppEnum.currencies[index];
+                    myList: List.generate(AppCurrencies.values.length, (i) {
+                      final String _index = AppCurrencies.values[i].name;
+                      final String _currency = AppEnum.currencies[_index]!;
                       return DropdownMenuItem(
-                        value: index,
+                        value: _index,
                         child: Text(
-                          "$currency",
+                          "$_currency",
                           style: TextStyle(
                             color: AppTheme.primaryTextColor,
                             fontWeight: FontWeight.bold,
@@ -88,43 +89,43 @@ class _SettingsViewState extends State<SettingsView> {
                 ),
 
                 /// TODO : Languages
-                /*ListTile(
-                    dense: true,
-                    contentPadding: const EdgeInsets.symmetric(vertical: 5),
-                    minVerticalPadding: 0,
-                    leading: SizedBox(
-                      width: 100,
-                      child: Text(
-                        "${AppMessage.languageLabel} : ",
-                        style: TextStyle(
-                          color: AppTheme.primaryTextColor,
-                          fontWeight: FontWeight.bold,
-                        ),
+                ListTile(
+                  dense: true,
+                  contentPadding: const EdgeInsets.symmetric(vertical: 5),
+                  minVerticalPadding: 0,
+                  leading: SizedBox(
+                    width: 100,
+                    child: Text(
+                      AppKey.languageLabel.name.tr,
+                      style: TextStyle(
+                        color: AppTheme.primaryTextColor,
+                        fontWeight: FontWeight.bold,
                       ),
                     ),
-                    title: DropdownList(
-                      hint: AppMessage.languageLabel,
-                      value: selectedLanguage,
-                      onChanged: (value) async {
-                        setState(() => selectedLanguage = value);
-                      },
-                      myList: List.generate(Languages.values.length, (i) {
-                        // final String language = Languages.values[i].name;
-                        final Languages index = Languages.values[i];
-                        final String? language = AppEnum.languages[index];
-                        return DropdownMenuItem(
-                          value: language,
-                          child: Text(
-                            "$language",
-                            style: TextStyle(
-                              color: AppTheme.primaryTextColor,
-                              fontWeight: FontWeight.bold,
-                            ),
+                  ),
+                  title: DropdownList(
+                    hint: AppKey.languageLabel.name.tr,
+                    value: AppConstant.language,
+                    onChanged: (value) {
+                      print(value);
+                      setState(() => AppConstant.language = value);
+                    },
+                    myList: List.generate(AppLanguages.values.length, (i) {
+                      final String _index = AppLanguages.values[i].name;
+                      final String _language = AppEnum.languages[_index]!;
+                      return DropdownMenuItem(
+                        value: _index,
+                        child: Text(
+                          "$_language",
+                          style: TextStyle(
+                            color: AppTheme.primaryTextColor,
+                            fontWeight: FontWeight.bold,
                           ),
-                        );
-                      }),
-                    ),
-                  ),*/
+                        ),
+                      );
+                    }),
+                  ),
+                ),
 
                 /// TODO : Save Button
                 ListTile(
@@ -133,10 +134,16 @@ class _SettingsViewState extends State<SettingsView> {
                     color: AppTheme.mainColor,
                     onPressed: () async {
                       final data = await controller.updateSettings(
-                        Settings(id: 1, currency: AppConstant.currency),
+                        Settings(
+                          id: 1,
+                          currency: AppConstant.currency,
+                          language: AppConstant.language,
+                        ),
                       );
+                      Get.updateLocale(Locale(AppConstant.language));
                       if (!(data == null)) {
                         AppConstant.appCurrency = AppEnum.currencies[AppConstant.currency]!;
+                        AppConstant.appLanguage = AppEnum.languages[AppConstant.language]!;
                         AppFunction.messageBox(message: AppKey.messageUpdate.name.tr);
                       }
                     },

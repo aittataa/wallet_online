@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/date_symbol_data_local.dart';
+import 'package:wallet_online/app/config/app_constant.dart';
 
 import 'app/config/app_function.dart';
 import 'app/config/app_theme.dart';
@@ -24,8 +25,7 @@ class WalletOnline extends StatelessWidget {
       title: AppKey.appTitle.name.tr,
       theme: AppTheme.themeData,
       translations: AppTranslation(),
-      // locale: Locale(AppLanguage.fr.name),
-      locale: Locale(AppLanguage.en.name),
+      locale: Locale(AppConstant.language),
       // home: InitialView(),
       home: Splash(),
     );
