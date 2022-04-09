@@ -13,17 +13,16 @@ class HomeController extends GetxController {
   @override
   void onInit() {
     super.onInit();
-    // _loadSettings;
   }
 
-  // get _loadSettings async {
-  //   state.value = true;
-  //   settings.value = await _dataSources.getSettings;
-  //   state.value = false;
-  // }
+  Future<Settings> get getSettings async {
+    final Settings settings = await _dataSources.getSettings;
+    return settings;
+  }
 
   Future<List<Categories>> get getCategories async {
-    return await _dataSources.getCategories;
+    final List<Categories> categories = await _dataSources.getCategories;
+    return categories;
   }
 
   Future<Categories> getCategory(int id) async {
@@ -32,7 +31,8 @@ class HomeController extends GetxController {
   }
 
   Future<List<Transactions>> get getTransactions async {
-    return await _dataSources.getTransactions;
+    List<Transactions> transactions = await _dataSources.getTransactions;
+    return transactions;
   }
 
   addTransaction(Transactions transaction) async {

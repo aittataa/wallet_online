@@ -7,17 +7,18 @@ transactionsFromMap(var map) {
 class Transactions {
   final int? id;
   final double? amount;
-  final String? title;
+
+  //final String? title;
   final String? description;
   final DateTime? date;
   final int? state;
   final int? categoryID;
-  final Categories? category;
+  late Categories? category;
 
   Transactions({
     this.id,
     this.amount,
-    this.title,
+    //this.title,
     this.description,
     this.date,
     this.state,
@@ -29,7 +30,6 @@ class Transactions {
     return Transactions(
       id: map['id'],
       amount: map['amount'],
-      title: map['title'],
       description: map['description'],
       date: DateTime.parse(map['date']),
       state: map['state'],
@@ -41,7 +41,6 @@ class Transactions {
     return {
       "id": id,
       "amount": amount,
-      "title": title,
       "description": description,
       "date": date?.toIso8601String(),
       "state": state,
@@ -49,10 +48,10 @@ class Transactions {
     };
   }
 
-  Map<String, dynamic> toUpdate() {
-    return {
-      "title": title,
-      "category_id": categoryID,
-    };
-  }
+// Map<String, dynamic> toUpdate() {
+//   return {
+//     "title": title,
+//     "category_id": categoryID,
+//   };
+// }
 }

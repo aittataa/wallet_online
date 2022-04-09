@@ -188,17 +188,6 @@ class DataSources extends GetConnect {
     return response;
   }
 
-  Future updateTransaction(Transactions transaction) async {
-    final db = await _database;
-    final response = await db.update(
-      _tbl_transaction,
-      transaction.toUpdate(),
-      where: "$_categoryID = ?",
-      whereArgs: [transaction.categoryID],
-    );
-    return response;
-  }
-
   Future deleteTransaction(int id) async {
     final db = await _database;
     final response = await db.delete(

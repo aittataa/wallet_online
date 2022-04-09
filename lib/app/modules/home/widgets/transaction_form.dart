@@ -118,7 +118,7 @@ class _TransactionFormState extends State<TransactionForm> {
                   final DateTime datetime = DateTime(selectedDate.year, selectedDate.month, selectedDate.day, DateTime.now().hour, DateTime.now().minute);
                   final Transactions transaction = Transactions(
                     amount: double.parse(amountController.text),
-                    title: selectedCategory,
+                    //title: selectedCategory,
                     description: descriptionController.text.trim(),
                     date: datetime,
                     state: pageIndex,

@@ -1,3 +1,4 @@
+import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:get/get.dart';
@@ -5,7 +6,9 @@ import 'package:grouped_list/grouped_list.dart';
 import 'package:wallet_online/app/config/app_translation.dart';
 import 'package:wallet_online/app/data/models/categories.dart';
 
+import '../../../config/app_constant.dart';
 import '../../../config/app_function.dart';
+import '../../../config/app_theme.dart';
 import '../../../data/models/transactions.dart';
 import '../../../shared/bounce_point.dart';
 import '../../../shared/empty_box.dart';
@@ -17,6 +20,7 @@ import '../widgets/transaction_shape.dart';
 
 class HomeView extends StatefulWidget {
   const HomeView({Key? key}) : super(key: key);
+
   @override
   State<HomeView> createState() => _HomeViewState();
 }
@@ -65,7 +69,7 @@ class _HomeViewState extends State<HomeView> {
                   padding: const EdgeInsets.all(10),
                   physics: const BouncingScrollPhysics(),
                   children: [
-                    /*Container(
+                    Container(
                       height: 250,
                       padding: const EdgeInsets.all(10),
                       decoration: BoxDecoration(
@@ -139,7 +143,7 @@ class _HomeViewState extends State<HomeView> {
                         ],
                       ),
                     ),
-                    SizedBox(height: 5),*/
+                    SizedBox(height: 5),
                     GroupedListView<dynamic, DateTime>(
                       shrinkWrap: true,
                       physics: const NeverScrollableScrollPhysics(),
