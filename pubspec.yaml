@@ -1,5 +1,5 @@
 name: wallet_online
-version: 4.0.0+7
+version: 5.0.0+8
 description: Wallet Online.
 environment:
   sdk: '>=2.15.0 <3.0.0'
