@@ -5,8 +5,8 @@ environment:
   sdk: '>=2.15.0 <3.0.0'
 
 dependencies:
-  cupertino_icons: 1.0.4
   get: 4.6.1
+  cupertino_icons: 1.0.4
   animated_splash_screen: 1.2.0
   flutter_spinkit: 5.1.0
   sqflite: 2.0.2
