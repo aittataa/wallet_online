@@ -1,5 +1,6 @@
 // ignore_for_file: non_constant_identifier_names
 
+import 'package:flutter/foundation.dart';
 import 'package:get/get.dart';
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
@@ -96,7 +97,9 @@ class DataSources extends GetConnect {
         ///
         await db.execute(_tbl_settings_data_query);
         await db.execute(_tbl_category_data_query);
-        // await db.execute(_tbl_transaction_data_query);
+        if (kDebugMode) {
+          await db.execute(_tbl_transaction_data_query);
+        }
       },
     );
   }
