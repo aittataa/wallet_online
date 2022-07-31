@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:iconly/iconly.dart';
 
 import '../../../config/app_constant.dart';
 import '../../../config/app_function.dart';
@@ -78,7 +79,7 @@ class TransactionShape extends StatelessWidget {
           color: AppTheme.mainColor,
           splashColor: AppTheme.transparentColor,
           highlightColor: AppTheme.transparentColor,
-          icon: const Icon(CupertinoIcons.delete_solid),
+          icon: const Icon(IconlyBold.delete),
         ),
       ),
     );

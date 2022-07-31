@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:iconly/iconly.dart';
 import 'package:wallet_online/app/config/app_translation.dart';
 
 import '../../../config/app_constant.dart';
@@ -30,23 +31,23 @@ class FooterBar extends StatelessWidget {
       items: [
         BottomNavigationBarItem(
           label: AppKey.labelHome.name.tr,
-          icon: Icon(CupertinoIcons.house_alt),
-          activeIcon: Icon(CupertinoIcons.house_alt_fill),
+          icon: Icon(IconlyBroken.home),
+          activeIcon: Icon(IconlyBold.home),
         ),
         BottomNavigationBarItem(
           label: AppKey.labelCategories.name.tr,
-          icon: Icon(CupertinoIcons.layers_alt),
-          activeIcon: Icon(CupertinoIcons.layers_alt_fill),
+          icon: Icon(IconlyBroken.category),
+          activeIcon: Icon(IconlyBold.category),
         ),
         BottomNavigationBarItem(
           label: AppKey.labelStatistic.name.tr,
-          icon: Icon(CupertinoIcons.chart_pie),
-          activeIcon: Icon(CupertinoIcons.chart_pie_fill),
+          icon: Icon(IconlyBroken.graph),
+          activeIcon: Icon(IconlyBold.graph),
         ),
         BottomNavigationBarItem(
           label: AppKey.labelSettings.name.tr,
-          icon: Icon(CupertinoIcons.gear),
-          activeIcon: Icon(CupertinoIcons.gear_solid),
+          icon: Icon(IconlyBroken.setting),
+          activeIcon: Icon(IconlyBold.setting),
         ),
       ],
     );

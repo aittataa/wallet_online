@@ -14,6 +14,7 @@ dependencies:
   intl: 0.17.0
   grouped_list: 4.2.0
   flutter_speed_dial: 5.0.0+1
+  iconly: 1.0.1
   flutter:
     sdk: flutter
 
@@ -23,12 +24,12 @@ dev_dependencies:
     sdk: flutter
 
 flutter_icons:
-  android: "app_icon_round"
+  android: app_icon_round
+  image_path: assets/app_icon_round.png
   ios: true
-  image_path: "assets/app_icon_round.png"
 
 flutter:
-  uses-material-design: true
   assets:
     - assets/
+  uses-material-design: true
 

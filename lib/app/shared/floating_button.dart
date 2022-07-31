@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_speed_dial/flutter_speed_dial.dart';
+import 'package:iconly/iconly.dart';
 
 import '../config/app_constant.dart';
 import '../config/app_theme.dart';
@@ -24,7 +25,7 @@ class FloatingButton extends StatelessWidget {
       elevation: 1,
       curve: AppConstant.curve,
       child: Icon(
-        CupertinoIcons.plus_app,
+        IconlyLight.plus,
         color: AppTheme.secondaryIconColor,
       ),
     );

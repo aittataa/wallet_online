@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:iconly/iconly.dart';
 
 import '../../../config/app_constant.dart';
 import '../../../config/app_function.dart';
@@ -61,7 +62,7 @@ class CategoryShape extends StatelessWidget {
                 color: AppTheme.primaryIconColor.withOpacity(.75),
                 splashColor: AppTheme.transparentColor,
                 highlightColor: AppTheme.transparentColor,
-                icon: Icon(Icons.edit),
+                icon: Icon(IconlyLight.edit),
                 onPressed: () => AppFunction.lunchNew(
                   context,
                   builder: CategoriesAdd(
@@ -75,7 +76,7 @@ class CategoryShape extends StatelessWidget {
               IconButton(
                 onPressed: onPressed,
                 icon: Icon(
-                  CupertinoIcons.delete_solid,
+                  IconlyBold.delete,
                   color: AppTheme.primaryIconColor.withOpacity(.75),
                 ),
               ),

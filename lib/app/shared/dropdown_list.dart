@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:iconly/iconly.dart';
 
 import '../config/app_theme.dart';
 
@@ -28,7 +29,8 @@ class DropdownList extends StatelessWidget {
       child: DropdownButton(
         onChanged: onChanged,
         onTap: () => FocusScope.of(context).unfocus(),
-        icon: const Icon(CupertinoIcons.chevron_down),
+        icon: const Icon(IconlyBold.arrow_down_2),
+        // icon: const Icon(CupertinoIcons.chevron_down),
         iconEnabledColor: AppTheme.mainColor,
         isExpanded: true,
         dropdownColor: AppTheme.backgroundColor,

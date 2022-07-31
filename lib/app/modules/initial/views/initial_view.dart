@@ -6,7 +6,7 @@ import '../../../modules/categories/views/categories_view.dart';
 import '../../../modules/home/views/home_view.dart';
 import '../../../modules/settings/views/settings_view.dart';
 import '../../../modules/statistic/views/statistic_view.dart';
-import '../widgets/navigation_bar.dart';
+import '../widgets/footer_bar.dart';
 
 class InitialView extends StatefulWidget {
   const InitialView({Key? key}) : super(key: key);

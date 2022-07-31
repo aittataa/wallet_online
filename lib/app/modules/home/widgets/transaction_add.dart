@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:iconly/iconly.dart';
 import 'package:wallet_online/app/config/app_translation.dart';
 import 'package:wallet_online/app/shared/empty_box.dart';
 
@@ -47,7 +48,7 @@ class _TransactionAddState extends State<TransactionAdd> {
               children: [
                 HeaderButton(
                   title: AppKey.incomes.name.tr,
-                  icon: CupertinoIcons.square_arrow_down_fill,
+                  icon: IconlyBold.arrow_down_square,
                   state: AppConstant.pageIndex == 0,
                   onPressed: () {
                     setState(() {
@@ -58,7 +59,7 @@ class _TransactionAddState extends State<TransactionAdd> {
                 ),
                 HeaderButton(
                   title: AppKey.expenses.name.tr,
-                  icon: CupertinoIcons.square_arrow_up_fill,
+                  icon: IconlyBold.arrow_up_square,
                   state: AppConstant.pageIndex == 1,
                   onPressed: () {
                     setState(() {
