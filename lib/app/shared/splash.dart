@@ -26,7 +26,7 @@ class Splash extends StatelessWidget {
       },
       splash: Column(
         children: [
-          Expanded(flex: 3, child: Image.asset(AppMessage.appLogo, width: 200, height: 200)),
+          Expanded(flex: 3, child: Image.asset(AppMessage.splash_icon, width: 200, height: 200)),
           Expanded(child: BouncePoint(size: 60)),
         ],
       ),
