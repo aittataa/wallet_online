@@ -8,9 +8,9 @@ import '../../../config/app_function.dart';
 import '../../../config/app_message.dart';
 import '../../../config/app_theme.dart';
 import '../../../data/models/settings.dart';
-import '../../../shared/add_button.dart';
 import '../../../shared/bounce_point.dart';
 import '../../../shared/dropdown_list.dart';
+import '../../../shared/outline_button.dart';
 import '../controllers/settings_controller.dart';
 
 class SettingsView extends StatefulWidget {
@@ -129,7 +129,7 @@ class _SettingsViewState extends State<SettingsView> {
 
                 /// TODO : Save Button
                 ListTile(
-                  title: AddButton(
+                  title: OutlineButton(
                     title: AppKey.labelSave.name.tr,
                     color: AppTheme.mainColor,
                     onPressed: () async {

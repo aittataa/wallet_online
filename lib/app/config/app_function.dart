@@ -112,10 +112,12 @@ class AppFunction {
     //SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersive, overlays: [SystemUiOverlay.top]);
     SystemChrome.setSystemUIOverlayStyle(
       SystemUiOverlayStyle(
-        systemNavigationBarColor: AppTheme.transparentColor,
-        systemNavigationBarDividerColor: AppTheme.transparentColor,
+        systemNavigationBarColor: AppTheme.primaryBackColor,
+        systemNavigationBarDividerColor: AppTheme.primaryBackColor,
         systemNavigationBarIconBrightness: Brightness.dark,
         systemNavigationBarContrastEnforced: true,
+
+        ///
         statusBarColor: AppTheme.transparentColor,
         statusBarIconBrightness: Brightness.light,
         statusBarBrightness: Brightness.light,

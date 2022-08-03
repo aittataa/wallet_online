@@ -6,8 +6,8 @@ import '../../../config/app_constant.dart';
 import '../../../config/app_function.dart';
 import '../../../config/app_theme.dart';
 import '../../../data/models/categories.dart';
-import '../../../shared/add_button.dart';
 import '../../../shared/field_text.dart';
+import '../../../shared/outline_button.dart';
 import '../controllers/categories_controller.dart';
 
 class CategoriesAdd extends StatefulWidget {
@@ -80,7 +80,7 @@ class _CategoriesAddState extends State<CategoriesAdd> {
               hintText: state ? AppKey.typeNewIncome.name.tr : AppKey.typeNewExpenses.name.tr,
               index: index,
             ),
-            AddButton(
+            OutlineButton(
               title: widget.status ? AppKey.labelUpdate.name.tr : AppKey.labelAdd.name.tr,
               color: state ? AppTheme.incomeColor : AppTheme.expenseColor,
               onPressed: () async {

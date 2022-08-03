@@ -3,11 +3,12 @@ import 'package:flutter/material.dart';
 import '../config/app_constant.dart';
 import '../config/app_theme.dart';
 
-class AddButton extends StatelessWidget {
+class OutlineButton extends StatelessWidget {
   final String title;
   final Color color;
   final Function()? onPressed;
-  const AddButton({
+
+  const OutlineButton({
     Key? key,
     required this.title,
     required this.color,

@@ -77,7 +77,8 @@ class CategoryShape extends StatelessWidget {
                 onPressed: onPressed,
                 icon: Icon(
                   IconlyBold.delete,
-                  color: AppTheme.primaryIconColor.withOpacity(.75),
+                  color: Color(category.color!),
+                  //color: AppTheme.primaryIconColor.withOpacity(.75),
                 ),
               ),
             ],

@@ -6,9 +6,9 @@ import '../../../config/app_function.dart';
 import '../../../config/app_theme.dart';
 import '../../../data/models/categories.dart';
 import '../../../data/models/transactions.dart';
-import '../../../shared/add_button.dart';
 import '../../../shared/dropdown_list.dart';
 import '../../../shared/field_text.dart';
+import '../../../shared/outline_button.dart';
 import '../controllers/home_controller.dart';
 import '../widgets/datetime_picker.dart';
 
@@ -56,7 +56,9 @@ class _TransactionFormState extends State<TransactionForm> {
     return Padding(
       padding: const EdgeInsets.only(bottom: 5, left: 5, right: 5),
       child: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        mainAxisSize: MainAxisSize.min,
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Row(
             children: [
@@ -108,7 +110,8 @@ class _TransactionFormState extends State<TransactionForm> {
             maxLines: 3,
           ),
           SizedBox(height: 5),
-          AddButton(
+          // OutlineButton(onPressed: null, child: child),
+          OutlineButton(
             title: AppKey.labelAdd.name.tr,
             color: pageIndex == 0 ? AppTheme.incomeColor : AppTheme.expenseColor,
             onPressed: () async {
