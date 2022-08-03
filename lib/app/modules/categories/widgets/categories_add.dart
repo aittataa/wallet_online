@@ -91,6 +91,7 @@ class _CategoriesAddState extends State<CategoriesAdd> {
                     if (widget.status) {
                       late Categories updatedCategory = Categories(id: category.id, title: title);
                       var data = await controller.updateCategory(updatedCategory);
+
                       print(!(data == null));
                     } else {
                       final Categories insertedCategory = Categories(title: title, color: color, state: index);
